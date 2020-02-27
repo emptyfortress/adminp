@@ -19,7 +19,6 @@ v-app
 				.status
 		v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
 			v-icon mdi-dock-right
-	//- v-content(v-scroll="handleScroll" id="target" :class="$route.name === 'home' ? 'bg' : ''")
 	v-content(v-scroll="handleScroll" id="target").bgd
 		v-container(fluid :class="drawer ? '' : 'leftmargin'").rel
 			transition(name="fade" mode="out-in")
@@ -35,7 +34,7 @@ v-app
 						router-view
 				SearchPanel(v-else key="search")
 
-	//- Footer
+	Footer
 	Dialog
 	v-alert(v-show="!preview" transition="scale-transition").plus
 		v-btn(dark fab large color="color5" @click="toggleAdd" :class="add ? 'active' : '' ")
