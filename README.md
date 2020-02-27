@@ -1,6 +1,9 @@
-# trip
-Проект для проверки разных опций грида. На основе vue-cli, vuetify.
-Preview для файлового контрола в панели и инлайн.
+# Admin panel DV
+Прототип web панели настройки и управления ДВ.
+* vue
+* vuetify
+* mdi icon
+* vis
 
 ## Project setup
 ```
