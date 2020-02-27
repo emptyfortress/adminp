@@ -49,6 +49,7 @@ export default {
 
 <style scoped lang="scss">
 @import '@/assets/css/colors.scss';
+@import '@/assets/css/palette.scss';
 
 .second {
 	font-size: 1.2rem;
@@ -64,13 +65,12 @@ export default {
 }
 
 .vue-grid-item {
-	background: #ffffffcc;
-	/* border: 1px solid #ccc; */
+	background: lighten($color5, 10%);
 	border-radius: .4rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #333;
+	color: #ccc;
 
 }
 </style>

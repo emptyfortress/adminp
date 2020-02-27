@@ -3,16 +3,14 @@ v-app
 	Preview
 	Drawer(v-if="!fullWindow")
 	AddDrawer
-	v-app-bar(app collapse-on-scroll dark :color="color" clipped-left :class="calcWidth()").pr-2
-		v-app-bar-nav-icon(@click.stop="toggle")
-		.d-flex.lft
-			v-img( src="@/assets/img/logo-w.svg" transition="scale-transition" width="150" v-show="logo" )
+	v-app-bar(app collapse-on-scroll dark color="black" clipped-left :class="calcWidth()").pr-2
+		.lft
+			v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
+			span Administration
 		v-spacer
 		v-scale-transition(origin="center right")
 			v-card(v-show="searchMode").searchbox
 				input(placeholder="Найти" autofocus)
-		v-btn( href="" icon  v-show="offsetTop && !searchMode")
-			i.icon-search-scan
 		v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
 			i.icon-search
 		v-btn( href="" icon v-show="offsetTop")
@@ -21,10 +19,8 @@ v-app
 				.status
 		v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
 			v-icon mdi-dock-right
-			//- v-icon(v-if="!preview") mdi-arrow-expand-left
-			//- v-icon(v-if="preview") mdi-arrow-expand-right
-			//- v-icon mdi-help-circle-outline
-	v-content(v-scroll="handleScroll" id="target" :class="$route.name === 'home' ? 'bg' : ''")
+	//- v-content(v-scroll="handleScroll" id="target" :class="$route.name === 'home' ? 'bg' : ''")
+	v-content(v-scroll="handleScroll" id="target").bgd
 		v-container(fluid :class="drawer ? '' : 'leftmargin'").rel
 			transition(name="fade" mode="out-in")
 				v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="back").back
@@ -39,11 +35,11 @@ v-app
 						router-view
 				SearchPanel(v-else key="search")
 
-	Footer
+	//- Footer
 	Dialog
 	v-alert(v-show="!preview" transition="scale-transition").plus
-		v-btn(dark fab large color="pink" @click="toggleAdd" :class="add ? 'active' : '' ")
-			v-icon(dark) mdi-plus
+		v-btn(dark fab large color="color5" @click="toggleAdd" :class="add ? 'active' : '' ")
+			v-icon mdi-plus
 	v-alert(v-show="scroll" transition="scale-transition").up
 		v-btn(fab color="white" @click="$vuetify.goTo(0)")
 			v-icon(dark) mdi-arrow-up
@@ -55,6 +51,7 @@ import Drawer from './components/Drawer'
 import AddDrawer from './components/AddDrawer'
 import Footer from './components/Footer'
 import SearchPanel from './components/SearchPanel'
+import './assets/css/palette.scss'
 
 export default {
 	name: 'App',
@@ -66,7 +63,7 @@ export default {
 		SearchPanel
 	},
 	data: () => ({
-		color: '#2C4159',
+		// color: $color1,
 		offsetTop: true,
 		scroll: false,
 		logo: true
@@ -156,9 +153,18 @@ export default {
 
 <style scoped lang="scss">
 @import '@/assets/css/colors.scss';
+@import '@/assets/css/palette.scss';
 
 .lft {
-	margin-left: 18px;
+	font-size: 1.7rem;
+	font-weight: 300;
+	display: flex;
+	.v-responsive.v-image {
+		width: 40px;
+	}
+	span { margin-left: 1rem; text-transform: uppercase; }
+
+	/* vertical-align: middle; */
 }
 .v-toolbar.v-toolbar--collapsed {
 	max-width: 260px;
@@ -195,7 +201,7 @@ export default {
 	background: transparent;
 	position: fixed;
 	transition: all .2s ease;
-	bottom: 2rem;
+	bottom: 1rem;
 	right: 1rem;
 	z-index: 1000;
 	.active {
@@ -241,5 +247,8 @@ export default {
 .bg {
 	background: url(assets/img/beach.jpg);
 	background-size: cover;
+}
+.bgd {
+	background: $color4;
 }
 </style>
