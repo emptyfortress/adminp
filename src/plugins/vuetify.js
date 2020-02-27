@@ -15,7 +15,7 @@ export default new Vuetify({
 				color5: '#292d2d'
 			},
 			light: {
-				primary: '#f5f9fa',
+				color1: '#f5f9fa',
 				color2: '#c7c9cc',
 				color3: '#979ba0',
 				color4: '#696e72',
