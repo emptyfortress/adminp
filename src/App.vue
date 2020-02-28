@@ -3,7 +3,7 @@ v-app
 	Preview
 	Drawer(v-if="!fullWindow")
 	AddDrawer
-	v-app-bar(app collapse-on-scroll dark color="black" clipped-left :class="calcWidth()").pr-2
+	v-app-bar(app collapse-on-scroll dark color="primary" clipped-left :class="calcWidth()").pr-2
 		.lft
 			v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
 			span Administration
