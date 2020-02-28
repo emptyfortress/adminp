@@ -1,47 +1,50 @@
 <template lang="pug">
 v-app
-	Preview
-	Drawer(v-if="!fullWindow")
-	AddDrawer
-	v-app-bar(app collapse-on-scroll dark color="primary" clipped-left :class="calcWidth()").pr-2
-		.lft
-			v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
-			span Administration
-		v-spacer
-		v-scale-transition(origin="center right")
-			v-card(v-show="searchMode").searchbox
-				input(placeholder="Найти" autofocus)
-		v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
-			i.icon-search
-		v-btn( href="" icon v-show="offsetTop")
-			.rel
-				img(src="@/assets/img/user.png" width="32")
-				.status
-		v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
-			v-icon mdi-dock-right
-	v-content(v-scroll="handleScroll" id="target").bgd
-		v-container(fluid :class="drawer ? '' : 'leftmargin'").rel
-			transition(name="fade" mode="out-in")
-				v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="back").back
-					v-icon(color="#aaa") mdi-arrow-left
-			transition(name="fade" mode="out-in")
-				v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="forward").forward
-					v-icon(color="#aaa") mdi-arrow-right
+	v-theme-provider(root)
+		Preview
+		Drawer(v-if="!fullWindow")
+		AddDrawer
+		v-app-bar(app collapse-on-scroll clipped-left :class="calcWidth()").pr-2
+			.lft
+				v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
+				span Administration
+			v-spacer
+			v-switch(v-model="$vuetify.theme.dark" hide-details label="Theme Dark")
+			v-spacer
+			v-scale-transition(origin="center right")
+				v-card(v-show="searchMode").searchbox
+					input(placeholder="Найти" autofocus)
+			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
+				i.icon-search
+			v-btn( href="" icon v-show="offsetTop")
+				.rel
+					img(src="@/assets/img/user.png" width="32")
+					.status
+			v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
+				v-icon mdi-dock-right
+		v-content(v-scroll="handleScroll" id="target")
+			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel
+				transition(name="fade" mode="out-in")
+					v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="back").back
+						v-icon(color="#aaa") mdi-arrow-left
+				transition(name="fade" mode="out-in")
+					v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="forward").forward
+						v-icon(color="#aaa") mdi-arrow-right
 
-			transition(name="slide-fade" mode="out-in")
-				div(v-if="!searchMode" key="start")
-					v-slide-x-transition(mode="out-in")
-						router-view
-				SearchPanel(v-else key="search")
+				transition(name="slide-fade" mode="out-in")
+					div(v-if="!searchMode" key="start")
+						v-slide-x-transition(mode="out-in")
+							router-view
+					SearchPanel(v-else key="search")
 
-	Footer
-	Dialog
-	v-alert(v-show="!preview" transition="scale-transition").plus
-		v-btn(dark fab large color="color5" @click="toggleAdd" :class="add ? 'active' : '' ")
-			v-icon mdi-plus
-	v-alert(v-show="scroll" transition="scale-transition").up
-		v-btn(fab color="white" @click="$vuetify.goTo(0)")
-			v-icon(dark) mdi-arrow-up
+		Footer
+		Dialog
+		v-alert(v-show="!preview" transition="scale-transition").plus
+			v-btn(dark fab large color="color5" @click="toggleAdd" :class="add ? 'active' : '' ")
+				v-icon mdi-plus
+		v-alert(v-show="scroll" transition="scale-transition").up
+			v-btn(fab color="white" @click="$vuetify.goTo(0)")
+				v-icon(dark) mdi-arrow-up
 </template>
 
 <script>
@@ -61,12 +64,18 @@ export default {
 		Footer,
 		SearchPanel
 	},
-	data: () => ({
-		// color: $color1,
+	data: vm => ({
+		initialDark: vm.$vuetify
+			? vm.$vuetify.theme.dark
+			: false,
 		offsetTop: true,
 		scroll: false,
 		logo: true
 	}),
+	// beforeDestroy () {
+	// 	if (!this.$vuetify) return
+	// 	this.$vuetify.theme.dark = this.initialDark
+	// },
 	computed: {
 		fullWindow () {
 			return this.$store.getters.fullWindow
@@ -246,8 +255,5 @@ export default {
 .bg {
 	background: url(assets/img/beach.jpg);
 	background-size: cover;
-}
-.bgd {
-	background: $color4;
 }
 </style>

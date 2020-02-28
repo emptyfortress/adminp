@@ -4,7 +4,8 @@ div
 	br
 	grid-layout(:layout.sync="layout" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true" )
 		grid-item( v-for="item in layout" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" )
-			.hd Widget {{ item.i }}
+			v-card
+				.hd Widget {{ item.i }}
 
 </template>
 
@@ -67,12 +68,14 @@ export default {
 }
 
 .vue-grid-item {
-	background: lighten($color5, 10%);
-	border-radius: .4rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #ccc;
+	.v-card {
+		width: 100%;
+		height: 100%;
+		border-radius: .4rem;
+	}
 
 }
 </style>
