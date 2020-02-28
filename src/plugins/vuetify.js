@@ -8,7 +8,7 @@ export default new Vuetify({
 	theme: {
 		themes: {
 			dark: {
-				primary: '#ff0000',
+				// primary: '#ff0000',
 				color1: '#f5f9fa',
 				color2: '#c7c9cc',
 				color3: '#979ba0',
@@ -16,7 +16,7 @@ export default new Vuetify({
 				color5: '#292d2d'
 			},
 			light: {
-				primary: '#271F47',
+				// primary: '#271F47',
 				color1: '#f5f9fa',
 				color2: '#c7c9cc',
 				color3: '#979ba0',

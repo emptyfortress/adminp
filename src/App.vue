@@ -9,16 +9,16 @@ v-app
 				v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
 				span Administration
 			v-spacer
-			v-switch(v-model="$vuetify.theme.dark" hide-details label="Theme Dark")
+			v-switch(v-model="$vuetify.theme.dark" color="primary" hide-details label="Dark")
 			v-spacer
 			v-scale-transition(origin="center right")
 				v-card(v-show="searchMode").searchbox
 					input(placeholder="Найти" autofocus)
 			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
 				i.icon-search
-			v-btn( href="" icon v-show="offsetTop")
+			v-btn( href="" icon v-show="offsetTop").brd
 				.rel
-					img(src="@/assets/img/user.png" width="32")
+					img(src="@/assets/img/user0.svg" width="45")
 					.status
 			v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
 				v-icon mdi-dock-right
@@ -40,7 +40,7 @@ v-app
 		Footer
 		Dialog
 		v-alert(v-show="!preview" transition="scale-transition").plus
-			v-btn(dark fab large color="color5" @click="toggleAdd" :class="add ? 'active' : '' ")
+			v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' ")
 				v-icon mdi-plus
 		v-alert(v-show="scroll" transition="scale-transition").up
 			v-btn(fab color="white" @click="$vuetify.goTo(0)")
@@ -251,9 +251,12 @@ export default {
 .ful {
 	height: 100%;
 }
-
-.bg {
-	background: url(assets/img/beach.jpg);
-	background-size: cover;
+.brd {
+	border: 1px solid #ccc;
+	overflow: hidden;
 }
+/* .bg { */
+/* 	background: url(assets/img/beach.jpg); */
+/* 	background-size: cover; */
+/* } */
 </style>
