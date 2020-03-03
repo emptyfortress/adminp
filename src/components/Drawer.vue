@@ -3,7 +3,7 @@ v-navigation-drawer(v-model="drawer" clipped app :mini-variant.sync="mini" )
 	v-list
 		v-list-item(link @click="goTo(item.url)" v-for="item in menu" :key="item.text")
 			v-list-item-icon
-				v-icon {{ item.icon }}
+				v-icon.big {{ item.icon }}
 			v-list-item-content
 				v-list-item-title {{ item.text }}
 
@@ -88,6 +88,8 @@ export default {
 .v-navigation-drawer--mini-variant .v-list-item > *:first-child {
 	margin-left: 0;
 	margin-right: 0;
-
+}
+.big {
+	font-size: 2.2rem;
 }
 </style>
