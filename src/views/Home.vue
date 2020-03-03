@@ -45,6 +45,31 @@ export default {
 	components: {
 		GridLayout: VueGridLayout.GridLayout,
 		GridItem: VueGridLayout.GridItem
+	},
+	mounted () {
+		window.addEventListener('keydown', this.setOn)
+		window.addEventListener('keyup', this.setOff)
+	},
+	beforeDestroy () {
+		window.removeEventListener('keydown', this.setOn)
+		window.removeEventListener('keyup', this.setOff)
+	},
+	methods: {
+		setOn (event) {
+			if (event.keyCode === 18) {
+				this.drag = true
+				this.resize = true
+			}
+		},
+		setOff (event) {
+			if (event.keyCode === 18) {
+				this.drag = false
+				this.resize = false
+			}
+		}
+	},
+	watch () {
+
 	}
 }
 
