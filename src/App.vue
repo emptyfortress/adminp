@@ -16,10 +16,8 @@ v-app
 					input(placeholder="Найти" autofocus)
 			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
 				i.icon-search
-			v-btn( href="" icon v-show="offsetTop").brd
-				.rel
-					img(src="@/assets/img/user0.svg" width="45")
-					.status
+			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple)
+				img(src="@/assets/img/user0.svg" )
 			v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
 				v-icon mdi-dock-right
 		v-content(v-scroll="handleScroll" id="target")
@@ -40,7 +38,7 @@ v-app
 		Footer
 		Dialog
 		v-alert(v-show="!preview" transition="scale-transition").plus
-			v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' ")
+			v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
 				v-icon mdi-plus
 		v-alert(v-show="scroll" transition="scale-transition").up
 			v-btn(fab color="white" @click="$vuetify.goTo(0)")
@@ -209,11 +207,14 @@ export default {
 	background: transparent;
 	position: fixed;
 	transition: all .2s ease;
-	bottom: 1rem;
+	bottom: 2rem;
 	right: 1rem;
 	z-index: 1000;
 	.active {
 		transform: rotate(45deg);
+	}
+	.v-btn {
+		background: #ccc;
 	}
 }
 .up {
@@ -255,8 +256,4 @@ export default {
 	border: 1px solid #ccc;
 	overflow: hidden;
 }
-/* .bg { */
-/* 	background: url(assets/img/beach.jpg); */
-/* 	background-size: cover; */
-/* } */
 </style>

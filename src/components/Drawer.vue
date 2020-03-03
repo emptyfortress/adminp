@@ -1,5 +1,5 @@
 <template lang="pug">
-v-navigation-drawer(v-model="drawer" clipped app :mini-variant.sync="mini")
+v-navigation-drawer(v-model="drawer" clipped app :mini-variant.sync="mini" )
 	v-list
 		v-list-item(link @click="goTo(item.url)" v-for="item in menu" :key="item.text")
 			v-list-item-icon

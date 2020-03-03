@@ -1,4 +1,4 @@
-/* Coolors Exported Palette - coolors.co/f5f8fa-c7c9cc-979ba0-696e72-292d2d */
+/* Coolors Exported Paalette - coolors.co/f5f8fa-c7c9cc-979ba0-696e72-292d2d */
 
 /* HSL */
 $color1: hsla(204%, 33%, 97%, 1);
@@ -20,3 +20,20 @@ $color2: #c7c9cc;
 $color3: #979ba0;
 $color4: #696e72;
 $color5: #292d2d;
+
+.theme--light.v-application {
+	background: #f8f8f8;
+}
+.theme--light.v-app-bar {
+	background: #F2F3F5;
+}
+.theme--light.v-navigation-drawer {
+	background: #E3E5E8;
+}
+.theme--light.v-footer {
+	background: #E3E5E8;
+}
+.theme--light.fab.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+		background: $color4;
+		color: #fff;
+}
