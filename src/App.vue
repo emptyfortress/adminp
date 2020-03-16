@@ -40,6 +40,7 @@ v-app
 		v-alert(v-show="!preview" transition="scale-transition").plus
 			v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
 				v-icon mdi-plus
+
 		v-alert(v-show="scroll" transition="scale-transition").up
 			v-btn(fab color="white" @click="$vuetify.goTo(0)")
 				v-icon(dark) mdi-arrow-up
@@ -118,7 +119,6 @@ export default {
 			this.$router.push(this.pathforward)
 		},
 		toggleAdd () {
-			console.log('add')
 			this.$store.commit('toggleAdd')
 		},
 		toggleSearch () {

@@ -27,6 +27,8 @@ $color5: #292d2d;
 }
 .theme--light.v-app-bar {
 	background: #F2F3F5;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+	// box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 .theme--light.v-navigation-drawer {
 	background: #E3E5E8;
