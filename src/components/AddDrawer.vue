@@ -1,36 +1,27 @@
 <template lang="pug">
-v-navigation-drawer(v-model="add" stateless app right temporary width="40%" )
+v-navigation-drawer(v-model="add" stateless app right temporary width="40%" hide-overlay)
 	p.text-center
 		v-switch(v-model="$vuetify.theme.dark" color="primary" hide-details inset label="Theme Dark").d-inline-block
 
-	grid-layout(:layout.sync="layout" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true" )
-		grid-item( v-for="item in layout" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" )
-			v-card.cardd
-				.hd Widget {{ item.i }}
+	.cen
+		draggable(:list="widget1" group="people" draggable=".item" v-if="$route.path === '/'" ).myrow
+			v-card(v-for="item in widget1" :key="item.i").item
+				v-card-title {{ item.i }}
 
-	//- v-row
-	//- 	v-col(v-for="k in 3" :key="k")
-	//- 		vue-draggable-resizable(:x="0" :y="0" :w="100" :h="100" @dragging="onDrag" :parent="true" class-name="drag" ).elevation-5
-	//- 			v-card
-	//- 				v-card-title {{ k }}
-
+	br
+	.cen
+		draggable(:list="widget2" group="people" draggable=".item" v-if="$route.path === '/'" ).myrow
+			v-card(v-for="item in widget2").item
+				v-card-title {{ item.i }}
 </template>
 
 <script>
-import VueGridLayout from 'vue-grid-layout'
-// import VueDraggableResizable from 'vue-draggable-resizable'
-// import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
+import draggable from 'vuedraggable'
 
 export default {
 	data () {
 		return {
-			drag: true,
-			resize: false,
-			layout: [
-				{ 'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '0' },
-				{ 'x': 2, 'y': 0, 'w': 2, 'h': 4, 'i': '1' },
-				{ 'x': 4, 'y': 0, 'w': 2, 'h': 5, 'i': '2' }
-			]
+			order: 1
 		}
 	},
 	computed: {
@@ -39,16 +30,17 @@ export default {
 				return this.$store.getters.add
 			},
 			set () {}
+		},
+		widget1 () {
+			return this.$store.getters.widget1
+		},
+		widget2 () {
+			return this.$store.getters.widget2
 		}
-
 	},
 	components: {
-		GridLayout: VueGridLayout.GridLayout,
-		GridItem: VueGridLayout.GridItem
+		draggable
 	}
-	// components: {
-	// 	VueDraggableResizable
-	// }
 }
 
 </script>
@@ -56,6 +48,11 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/css/colors.scss';
 
+.item {
+	width: 165px;
+	height: 100px;
+	margin: .25rem;
+}
 .vue-grid-item {
 	display: flex;
 	justify-content: center;
@@ -66,7 +63,15 @@ export default {
 		border-radius: .4rem;
 		padding: 1rem;
 	}
-
+}
+.myrow {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+.cen {
+	padding: 1rem;
+	background: #ccc;
 }
 
 </style>

@@ -9,6 +9,35 @@ export default new Vuex.Store({
 		add: false,
 		preview: false,
 		fullWindow: false,
+		widget1: [
+			{ 'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '0' },
+			{ 'x': 2, 'y': 0, 'w': 2, 'h': 4, 'i': '1' },
+			{ 'x': 4, 'y': 0, 'w': 2, 'h': 5, 'i': '2' },
+			{ 'x': 6, 'y': 0, 'w': 2, 'h': 3, 'i': '3' },
+			{ 'x': 8, 'y': 0, 'w': 2, 'h': 3, 'i': '4' },
+			{ 'x': 10, 'y': 0, 'w': 2, 'h': 3, 'i': '5' },
+			{ 'x': 0, 'y': 5, 'w': 2, 'h': 5, 'i': '6' },
+			{ 'x': 2, 'y': 5, 'w': 2, 'h': 5, 'i': '7' },
+			{ 'x': 4, 'y': 5, 'w': 2, 'h': 5, 'i': '8' },
+			{ 'x': 6, 'y': 3, 'w': 2, 'h': 4, 'i': '9' },
+			{ 'x': 8, 'y': 4, 'w': 2, 'h': 4, 'i': '10' },
+			{ 'x': 10, 'y': 4, 'w': 2, 'h': 4, 'i': '11' },
+			{ 'x': 0, 'y': 10, 'w': 2, 'h': 5, 'i': '12' },
+			{ 'x': 2, 'y': 10, 'w': 2, 'h': 5, 'i': '13' },
+			{ 'x': 4, 'y': 8, 'w': 2, 'h': 4, 'i': '14' },
+			{ 'x': 6, 'y': 8, 'w': 2, 'h': 4, 'i': '15' },
+			{ 'x': 8, 'y': 10, 'w': 2, 'h': 5, 'i': '16' },
+			{ 'x': 10, 'y': 4, 'w': 2, 'h': 2, 'i': '17' },
+			{ 'x': 0, 'y': 9, 'w': 2, 'h': 3, 'i': '18' },
+			{ 'x': 2, 'y': 6, 'w': 2, 'h': 2, 'i': '19' }
+		],
+		widget2: [
+			{ 'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '20' },
+			{ 'x': 2, 'y': 0, 'w': 2, 'h': 4, 'i': '21' },
+			{ 'x': 4, 'y': 0, 'w': 2, 'h': 5, 'i': '22' },
+			{ 'x': 6, 'y': 0, 'w': 2, 'h': 3, 'i': '23' },
+			{ 'x': 6, 'y': 0, 'w': 2, 'h': 3, 'i': '24' }
+		],
 		headers: [
 			{ id: 0, class: '', value: 'title', width: '', active: true, sortable: true, align: 'start', text: 'Название' },
 			{ id: 1, class: 'text-no-wrap', value: 'executor', width: '400', active: true, sortable: true, align: 'start', text: 'Исполнитель' },
@@ -28,7 +57,6 @@ export default new Vuex.Store({
 			{ id: 6, class: '', value: 'budget', width: '', active: true, sortable: true, align: 'start', text: 'Бюджет' },
 			{ id: 7, class: '', value: 'approve', width: '', active: true, sortable: true, align: 'start', text: 'Согласовано' },
 			{ id: 8, class: '', value: 'report', width: '', active: true, sortable: true, align: 'start', text: 'Отчет' }
-
 		],
 		mini: false,
 		grouping: false,
@@ -59,7 +87,9 @@ export default new Vuex.Store({
 		searchMode: state => { return state.searchMode },
 		dialog: state => { return state.dialog },
 		file: state => { return state.file },
-		chat: state => { return state.chat }
+		chat: state => { return state.chat },
+		widget1: state => { return state.widget1 },
+		widget2: state => { return state.widget2 }
 	},
 	mutations: {
 		togglePreview (state) { state.preview = !state.preview },
