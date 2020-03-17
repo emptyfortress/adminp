@@ -1,22 +1,21 @@
 <template lang="pug">
-v-navigation-drawer(v-model="add" stateless app right temporary width="40%" hide-overlay)
+v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide-overlay)
 	p.text-center
 		v-switch(v-model="$vuetify.theme.dark" color="primary" hide-details inset label="Theme Dark").d-inline-block
 
-	.cen
-		draggable(:list="widget1" group="people" draggable=".item" v-if="$route.path === '/'" ).myrow
-			v-card(v-for="item in widget1" :key="item.i").item
-				v-card-title {{ item.i }}
+	div(v-show="$route.name === 'home'")
+		h4 Выберите виджеты для дашборда
+		v-item-group(multiple v-model="selected").listwrap
+			v-item(v-slot:default="{active, toggle}" v-for="item in widget1" :key="item.i")
+				v-card(:color="active ? 'primary' : '' " height="42" @click="mytoggle(item.i)").toggle
+					.txt Widget {{ item.i }}
+					v-scroll-y-transition(mode="out-in")
+						.act(v-if="active")
+							v-icon(color="white" ) mdi-check-bold
 
-	br
-	.cen
-		draggable(:list="widget2" group="people" draggable=".item" v-if="$route.path === '/'" ).myrow
-			v-card(v-for="item in widget2").item
-				v-card-title {{ item.i }}
 </template>
 
 <script>
-import draggable from 'vuedraggable'
 
 export default {
 	data () {
@@ -34,12 +33,27 @@ export default {
 		widget1 () {
 			return this.$store.getters.widget1
 		},
-		widget2 () {
-			return this.$store.getters.widget2
+		selected () {
+			return this.widget1
+				.filter(item => item.selected === true)
+				.map(item => parseInt(item.i))
 		}
 	},
 	components: {
-		draggable
+	},
+	methods: {
+		mytoggle (e) {
+			const temp = []
+			this.widget1.map((item) => {
+				if (item.i === e) {
+					item.selected = !item.selected
+					temp.push(item)
+				} else {
+					temp.push(item)
+				}
+			})
+			this.$store.commit('updateWidget1', temp)
+		}
 	}
 }
 
@@ -48,30 +62,39 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/css/colors.scss';
 
-.item {
-	width: 165px;
-	height: 100px;
-	margin: .25rem;
-}
-.vue-grid-item {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	.cardd {
-		width: 100%;
-		height: 100%;
-		border-radius: .4rem;
-		padding: 1rem;
-	}
-}
-.myrow {
+.listwrap {
+	margin: 0 .5rem;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: flex-start;
 }
-.cen {
-	padding: 1rem;
+.theme--light.v-card.toggle {
+	box-shadow: none;
 	background: #ccc;
+	position: relative;
+	margin: .25rem;
+}
+.theme--dark.v-card.toggle {
+	box-shadow: none;
+	background: #585858;
+	position: relative;
+	margin: .25rem;
+}
+.act {
+	position: absolute;
+	top: .3rem;
+	right: .5rem;
+}
+.theme--light.v-item--active .txt {
+	color: #fff;
 }
 
-</style>
+.txt {
+	line-height: 42px;
+	margin-left: 1rem;
+	margin-right: 3rem;
+}
+h4 {
+	text-align: center;
+	font-weight: 400;
+}
+</style>k

@@ -21,7 +21,7 @@ export default {
 	},
 	computed: {
 		widget1 () {
-			return this.$store.getters.widget1
+			return this.$store.getters.widget1.filter((item) => item.selected === true)
 		}
 	},
 	components: {
@@ -49,9 +49,6 @@ export default {
 				this.resize = false
 			}
 		}
-	},
-	watch () {
-
 	}
 }
 
