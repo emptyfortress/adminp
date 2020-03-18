@@ -6,9 +6,10 @@ v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide
 	div(v-show="$route.name === 'home'")
 		h4 Выберите виджеты для дашборда
 		v-item-group(multiple v-model="selected").listwrap
-			v-item(v-slot:default="{active, toggle}" v-for="item in widget1" :key="item.i")
-				v-card(:color="active ? 'primary' : '' " height="42" @click="mytoggle(item.i)").toggle
-					.txt Widget {{ item.i }}
+			v-item(v-slot:default="{active, toggle}" v-for="item in widget1" :key="item.id")
+				v-card(:color="active ? 'primary' : '' " height="42" @click="mytoggle(item.id)").toggle
+					.txt(v-if="item.text.length") {{ item.text }}
+					.txt(v-else) Widget {{ item.i }}
 					v-scroll-y-transition(mode="out-in")
 						.act(v-if="active")
 							v-icon(color="white" ) mdi-check-bold
@@ -36,7 +37,7 @@ export default {
 		selected () {
 			return this.widget1
 				.filter(item => item.selected === true)
-				.map(item => parseInt(item.i))
+				.map(item => item.id)
 		}
 	},
 	components: {
@@ -45,7 +46,7 @@ export default {
 		mytoggle (e) {
 			const temp = []
 			this.widget1.map((item) => {
-				if (item.i === e) {
+				if (item.id === e) {
 					item.selected = !item.selected
 					temp.push(item)
 				} else {
