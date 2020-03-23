@@ -34,13 +34,6 @@ export default new Vuex.Store({
 			{ id: 18, 'x': 0, 'y': 5, 'w': 2, 'h': 2, 'i': '18', selected: false, text: '' },
 			{ id: 19, 'x': 2, 'y': 5, 'w': 2, 'h': 2, 'i': '19', selected: false, text: '' }
 		],
-		widget2: [
-			{ 'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '20' },
-			{ 'x': 2, 'y': 0, 'w': 2, 'h': 4, 'i': '21' },
-			{ 'x': 4, 'y': 0, 'w': 2, 'h': 5, 'i': '22' },
-			{ 'x': 6, 'y': 0, 'w': 2, 'h': 3, 'i': '23' },
-			{ 'x': 6, 'y': 0, 'w': 2, 'h': 3, 'i': '24' }
-		],
 		headers: [
 			{ id: 0, class: '', value: 'title', width: '', active: true, sortable: true, align: 'start', text: 'Название' },
 			{ id: 1, class: 'text-no-wrap', value: 'executor', width: '400', active: true, sortable: true, align: 'start', text: 'Исполнитель' },

@@ -7,6 +7,8 @@ div
 			v-card.cardd
 				.hd(v-if="item.text.length") {{ item.text }}
 				.hd(v-else) Widget {{ item.i }}
+				.badge 25
+				.test
 
 </template>
 
@@ -81,7 +83,17 @@ export default {
 		height: 100%;
 		border-radius: .4rem;
 		padding: 1rem;
+		position: relative;
 	}
-
 }
+.badge {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	background: $info;
+	padding: .2rem .5rem;
+	color: #fff;
+	border-radius: 3rem;
+}
+
 </style>

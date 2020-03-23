@@ -1,6 +1,6 @@
 <template lang="pug">
 v-app
-	v-theme-provider(root name="ttt")
+	v-theme-provider(root)
 		Preview
 		Drawer(v-if="!fullWindow")
 		AddDrawer
@@ -63,12 +63,12 @@ export default {
 		Footer,
 		SearchPanel
 	},
-	props: {
-		attrs: {
-			type: Object,
-			default: () => ({})
-		}
-	},
+	// props: {
+	// 	attrs: {
+	// 		type: Object,
+	// 		default: () => ({})
+	// 	}
+	// },
 	data: vm => ({
 		initialDark: vm.$vuetify
 			? vm.$vuetify.theme.dark
