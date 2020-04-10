@@ -1,6 +1,5 @@
 <template lang="pug">
 v-app
-	v-theme-provider(root)
 		Preview
 		Drawer(v-if="!fullWindow")
 		AddDrawer
