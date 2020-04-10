@@ -1,13 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Trips from '../views/Trips.vue'
-import NewTrip from '../views/NewTrip.vue'
-import Approve from '../views/Approve.vue'
-import Folder from '../views/Folder.vue'
-import Card from '../views/Card.vue'
-import NewCard from '../views/NewCard.vue'
-import Stamp from '../components/Stamp.vue'
+import Vuetest from '../components/Vuetest.vue'
 
 Vue.use(VueRouter)
 
@@ -18,42 +12,9 @@ const routes = [
 		component: Home
 	},
 	{
-		path: '/folder',
-		name: 'folder',
-		component: Folder
-	},
-	{
-		path: '/trips',
-		name: 'trips',
-		component: Trips
-	},
-	{
-		path: '/newcard',
-		name: 'newcard',
-		component: NewCard
-	},
-	{
-		path: '/stamp',
-		name: 'stamp',
-		component: Stamp
-	},
-	{
-		path: '/cards/:id',
-		name: 'card',
-		component: Card,
-		props: true
-	},
-	{
-		path: '/approve/:id',
-		name: 'approve',
-		component: Approve,
-		props: true
-	},
-	{
-		path: '/newtrip/:id',
-		name: 'newtrip',
-		component: NewTrip,
-		props: true
+		path: '/vuetest',
+		name: 'vuetest',
+		component: Vuetest
 	},
 	{
 		path: '/about',
