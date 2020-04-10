@@ -26,10 +26,10 @@ export default {
 			menu: [
 				{ url: '/', icon: 'mdi-monitor-dashboard', text: 'Dashboard' },
 				{ url: '/setup', icon: 'mdi-hammer-wrench', text: 'Настройка' },
-				{ url: '', icon: 'mdi-cloud-download-outline', text: 'Обновления' },
-				{ url: '', icon: 'mdi-database-check', text: 'Бэкап' },
-				{ url: '', icon: 'mdi-alert', text: 'Проблемы' },
-				{ url: '', icon: 'mdi-script-text-outline', text: 'Логи' }
+				{ url: '/new', icon: 'mdi-cloud-download-outline', text: 'Обновления' },
+				{ url: '/backup', icon: 'mdi-database-check', text: 'Бэкап' },
+				{ url: '/problems', icon: 'mdi-alert', text: 'Проблемы' },
+				{ url: '/logs', icon: 'mdi-script-text-outline', text: 'Логи' }
 			]
 		}
 	},
