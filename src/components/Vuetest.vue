@@ -1,26 +1,23 @@
 <template lang="pug">
 .vuetest
-	h3 vuetest
-	v-text-field(v-model="email")
-
-	//- Switchmy(v-model="rec")
-
-	p Get emails - {{ rec }} {{ email }}
-	v-switch(v-model="rec" :label="rec.toString()" )
+	h2 vuetest
+	Scoped
+		template(v-slot="{user}")
+			|{{user.last}}
+		template(v-slot:footer)
+			|onoter
 </template>
 
 <script>
-import Switchmy from '@/components/Switchmy'
+import Scoped from '@/components/Scoped'
 
 export default {
 	data () {
 		return {
-			email: '',
-			rec: true
 		}
 	},
 	components: {
-		Switchmy
+		Scoped
 	}
 }
 
@@ -28,7 +25,7 @@ export default {
 
 <style scoped lang="scss">
 .vuetest {
-	margin: 4rem;
+	margin: 3rem;
 }
 
 </style>
