@@ -2,19 +2,25 @@
 .vuetest
 	h3 vuetest
 	v-text-field(v-model="email")
-	v-switch(v-model="recieve" :label="recieve.toString()")
-	p Get emails - {{ recieve }}
+
+	//- Switchmy(v-model="rec")
+
+	p Get emails - {{ rec }} {{ email }}
+	v-switch(v-model="rec" :label="rec.toString()" )
 </template>
 
 <script>
+import Switchmy from '@/components/Switchmy'
 
 export default {
 	data () {
 		return {
 			email: '',
-			recieve: false
-
+			rec: true
 		}
+	},
+	components: {
+		Switchmy
 	}
 }
 

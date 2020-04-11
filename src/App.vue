@@ -1,48 +1,48 @@
 <template lang="pug">
 v-app
-		Preview
-		Drawer(v-if="!fullWindow")
-		AddDrawer
-		v-app-bar(app collapse-on-scroll clipped-left :class="calcWidth()").pr-2
-			.lft
-				v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
-				span Administration
-			v-spacer
-			v-switch(v-model="$vuetify.theme.dark" color="primary" hide-details label="Dark")
-			v-spacer
-			v-scale-transition(origin="center right")
-				v-card(v-show="searchMode").searchbox
-					input(placeholder="Найти" autofocus)
-			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
-				i.icon-search
-			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple)
-				img(src="@/assets/img/user0.svg" )
-			v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
-				v-icon mdi-dock-right
-		v-content(v-scroll="handleScroll" id="target")
-			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel
-				transition(name="fade" mode="out-in")
-					v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="back").back
-						v-icon(color="#aaa") mdi-arrow-left
-				transition(name="fade" mode="out-in")
-					v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="forward").forward
-						v-icon(color="#aaa") mdi-arrow-right
+	Preview
+	//- Drawer(v-if="!fullWindow")
+	//- AddDrawer
+	v-app-bar(app collapse-on-scroll clipped-left :class="calcWidth()").pr-2
+		.lft
+			v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
+			span Administration
+		v-spacer
+		v-switch(v-model="$vuetify.theme.dark" color="primary" hide-details label="Dark")
+		v-spacer
+		v-scale-transition(origin="center right")
+			v-card(v-show="searchMode").searchbox
+				input(placeholder="Найти" autofocus)
+		v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
+			i.icon-search
+		v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple)
+			img(src="@/assets/img/user0.svg" )
+		v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
+			v-icon mdi-dock-right
+	v-content(v-scroll="handleScroll" id="target")
+		v-container(fluid :class="drawer ? '' : 'leftmargin'").rel
+			transition(name="fade" mode="out-in")
+				v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="back").back
+					v-icon(color="#aaa") mdi-arrow-left
+			transition(name="fade" mode="out-in")
+				v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="forward").forward
+					v-icon(color="#aaa") mdi-arrow-right
 
-				transition(name="slide-fade" mode="out-in")
-					div(v-if="!searchMode" key="start")
-						v-slide-x-transition(mode="out-in")
-							router-view
-					SearchPanel(v-else key="search")
+			transition(name="slide-fade" mode="out-in")
+				div(v-if="!searchMode" key="start")
+					v-slide-x-transition(mode="out-in")
+						router-view
+				SearchPanel(v-else key="search")
 
-		Footer
-		Dialog
-		v-alert(v-show="!preview" transition="scale-transition").plus
-			v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
-				v-icon mdi-plus
+	Footer
+	//- Dialog
+	v-alert(v-show="!preview" transition="scale-transition").plus
+		v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
+			v-icon mdi-plus
 
-		v-alert(v-show="scroll" transition="scale-transition").up
-			v-btn(fab color="white" @click="$vuetify.goTo(0)")
-				v-icon(dark) mdi-arrow-up
+	v-alert(v-show="scroll" transition="scale-transition").up
+		v-btn(fab color="white" @click="$vuetify.goTo(0)")
+			v-icon(dark) mdi-arrow-up
 </template>
 
 <script>
