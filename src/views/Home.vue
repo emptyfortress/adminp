@@ -9,7 +9,8 @@ div
 				.hd(v-else) Widget {{ item.i }}
 				.badge 25
 				.test
-
+	ul
+		li(v-for="n in 50") laksjlka
 </template>
 
 <script>

@@ -1,14 +1,12 @@
 <template lang="pug">
 v-app
-	Preview
-	//- Drawer(v-if="!fullWindow")
-	//- AddDrawer
-	v-app-bar(app collapse-on-scroll clipped-left :class="calcWidth()").pr-2
+	Preview(v-if="isLogged")
+	Drawer(v-if="isLogged")
+	AddDrawer(v-if="isLogged")
+	v-app-bar(app collapse-on-scroll clipped-left :class="calcWidth()" v-if="isLogged").pr-2
 		.lft
 			v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
 			span Administration
-		v-spacer
-		v-switch(v-model="$vuetify.theme.dark" color="primary" hide-details label="Dark")
 		v-spacer
 		v-scale-transition(origin="center right")
 			v-card(v-show="searchMode").searchbox
@@ -19,14 +17,15 @@ v-app
 			img(src="@/assets/img/user0.svg" )
 		v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
 			v-icon mdi-dock-right
+
 	v-content(v-scroll="handleScroll" id="target")
-		v-container(fluid :class="drawer ? '' : 'leftmargin'").rel
-			transition(name="fade" mode="out-in")
-				v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="back").back
-					v-icon(color="#aaa") mdi-arrow-left
-			transition(name="fade" mode="out-in")
-				v-btn(fab outlined color="#ccc" small v-show="$route.name === 'card' && !searchMode && !fullWindow" @click="forward").forward
-					v-icon(color="#aaa") mdi-arrow-right
+		v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
+			//- transition(name="fade" mode="out-in")
+			//- 	v-btn(fab outlined color="#ccc" small  @click="back").back
+			//- 		v-icon(color="#aaa") mdi-arrow-left
+			//- transition(name="fade" mode="out-in")
+			//- 	v-btn(fab outlined color="#ccc" small  @click="forward").forward
+			//- 		v-icon(color="#aaa") mdi-arrow-right
 
 			transition(name="slide-fade" mode="out-in")
 				div(v-if="!searchMode" key="start")
@@ -34,15 +33,15 @@ v-app
 						router-view
 				SearchPanel(v-else key="search")
 
-	Footer
+	//- Footer
 	//- Dialog
-	v-alert(v-show="!preview" transition="scale-transition").plus
-		v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
-			v-icon mdi-plus
+	//- v-alert(v-show="!preview" transition="scale-transition").plus
+	//- 	v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
+	//- 		v-icon mdi-plus
 
-	v-alert(v-show="scroll" transition="scale-transition").up
-		v-btn(fab color="white" @click="$vuetify.goTo(0)")
-			v-icon(dark) mdi-arrow-up
+	//- v-alert(v-show="scroll" transition="scale-transition").up
+	//- 	v-btn(fab color="white" @click="$vuetify.goTo(0)")
+	//- 		v-icon(dark) mdi-arrow-up
 </template>
 
 <script>
@@ -74,49 +73,46 @@ export default {
 			: false,
 		offsetTop: true,
 		scroll: false,
-		logo: true
+		logo: true,
+		isLogged: false
 	}),
 	beforeDestroy () {
 		if (!this.$vuetify) return
 		this.$vuetify.theme.dark = this.initialDark
 	},
 	computed: {
-		fullWindow () {
-			return this.$store.getters.fullWindow
-		},
 		add () { return this.$store.getters.add },
 		drawer () { return this.$store.getters.drawer },
 		mini () { return this.$store.getters.mini },
 		searchMode () { return this.$store.getters.searchMode },
-		preview () { return this.$store.getters.preview },
-		row () { return this.$router.params.id },
-		pathback () {
-			let a = this.$route.path.split('/')
-			let last = a[a.length - 1]
-			let middle = a[a.length - 2]
-			let newpath = ''
-			if (last < 0) { return '/folder' } else {
-				newpath = '/' + middle + '/' + (parseInt(last) - 1).toString()
-			}
-			return newpath
-		},
-		pathforward () {
-			let a = this.$route.path.split('/')
-			let last = a[a.length - 1]
-			let middle = a[a.length - 2]
-			let newpath = ''
-			if (last < 0) { return '/folder' } else {
-				newpath = '/' + middle + '/' + (parseInt(last) + 1).toString()
-			}
-			return newpath
-		}
+		row () { return this.$router.params.id }
+		// pathback () {
+		// 	let a = this.$route.path.split('/')
+		// 	let last = a[a.length - 1]
+		// 	let middle = a[a.length - 2]
+		// 	let newpath = ''
+		// 	if (last < 0) { return '/folder' } else {
+		// 		newpath = '/' + middle + '/' + (parseInt(last) - 1).toString()
+		// 	}
+		// 	return newpath
+		// },
+		// pathforward () {
+		// 	let a = this.$route.path.split('/')
+		// 	let last = a[a.length - 1]
+		// 	let middle = a[a.length - 2]
+		// 	let newpath = ''
+		// 	if (last < 0) { return '/folder' } else {
+		// 		newpath = '/' + middle + '/' + (parseInt(last) + 1).toString()
+		// 	}
+		// 	return newpath
+		// }
 	},
 	methods: {
-		showPreview () {
-			this.$store.commit('setPreviewMode', 1)
-			this.$store.commit('togglePreview')
-			this.$store.commit('setMini', true)
-		},
+		// showPreview () {
+		// 	this.$store.commit('setPreviewMode', 1)
+		// 	this.$store.commit('togglePreview')
+		// 	this.$store.commit('setMini', true)
+		// },
 		back () {
 			this.$router.push(this.pathback)
 		},
