@@ -1,16 +1,24 @@
 <template lang="pug">
 div
-	//- .headline.text-center.mt-9.white--text Доброе утро, username !
+	v-tabs(centered v-model="tabs")
+		v-tab Главная
+		v-tab
+			v-icon mdi-plus
 	br
-	grid-layout(:layout.sync="widget1" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true" )
-		grid-item( v-for="item in widget1" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" ).item
-			v-card.cardd
-				.hd(v-if="item.text.length") {{ item.text }}
-				.hd(v-else) Widget {{ item.i }}
-				.badge 25
-				.test
-	ul
-		li(v-for="n in 50") laksjlka
+	v-tabs-items(v-model="tabs")
+		v-tab-item
+			.dash
+				grid-layout(:layout.sync="widget1" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true" )
+					grid-item( v-for="item in widget1" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" ).item
+						v-card.cardd
+							.hd(v-if="item.text.length") {{ item.text }}
+							.hd(v-else) Widget {{ item.i }}
+							.badge 25
+							.test
+				ul
+					li(v-for="n in 50") laksjlka
+		v-tab-item
+			h2 Add
 </template>
 
 <script>
@@ -20,7 +28,8 @@ export default {
 	data () {
 		return {
 			drag: false,
-			resize: false
+			resize: false,
+			tabs: 0
 		}
 	},
 	computed: {
@@ -62,19 +71,6 @@ export default {
 @import '@/assets/css/colors.scss';
 @import '@/assets/css/palette.scss';
 
-.second {
-	font-size: 1.2rem;
-	padding: .5rem;
-	background: #ccc;
-}
-.second.stickto-auto-generated-sticker {
-	color: #fff;
-	background: $info;
-	width: 100%;
-	box-shadow: 0 4px 5px #33333355;
-	border-bottom: 1px solid #fff;
-}
-
 .vue-grid-item {
 	display: flex;
 	justify-content: center;
@@ -96,5 +92,4 @@ export default {
 	color: #fff;
 	border-radius: 3rem;
 }
-
 </style>

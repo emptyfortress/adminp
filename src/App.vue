@@ -15,8 +15,6 @@ v-app
 				i.icon-search
 			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple)
 				img(src="@/assets/img/user0.svg" )
-			v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
-				v-icon mdi-dock-right
 
 		v-content(v-scroll="handleScroll")
 			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
@@ -35,7 +33,7 @@ v-app
 
 		Footer
 		Dialog
-		v-alert(v-show="!preview" transition="scale-transition").plus
+		v-alert(transition="scale-transition").plus
 			v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
 				v-icon mdi-plus
 
