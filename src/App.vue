@@ -1,7 +1,6 @@
 <template lang="pug">
 v-app
 	template(v-if="isLogged")
-		Preview
 		Drawer
 		AddDrawer
 		v-app-bar(app collapse-on-scroll clipped-left :class="calcWidth()").pr-2
@@ -19,7 +18,7 @@ v-app
 			v-btn( href="" icon  v-show="offsetTop" @click="showPreview")
 				v-icon mdi-dock-right
 
-		v-content(v-scroll="handleScroll" id="target")
+		v-content(v-scroll="handleScroll")
 			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
 				//- transition(name="fade" mode="out-in")
 				//- 	v-btn(fab outlined color="#ccc" small  @click="back").back
@@ -48,7 +47,6 @@ v-app
 </template>
 
 <script>
-import Preview from './components/Preview'
 import Drawer from './components/Drawer'
 import AddDrawer from './components/AddDrawer'
 import Footer from './components/Footer'
@@ -59,19 +57,12 @@ import './assets/css/palette.scss'
 export default {
 	name: 'App',
 	components: {
-		Preview,
 		Drawer,
 		AddDrawer,
 		Footer,
 		SearchPanel,
 		Login
 	},
-	// props: {
-	// 	attrs: {
-	// 		type: Object,
-	// 		default: () => ({})
-	// 	}
-	// },
 	data: vm => ({
 		initialDark: vm.$vuetify
 			? vm.$vuetify.theme.dark

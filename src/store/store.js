@@ -8,7 +8,6 @@ export default new Vuex.Store({
 		isLogged: false,
 		drawer: true,
 		add: false,
-		preview: false,
 		widget1: [
 			{ id: 0, 'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '0', selected: true, text: 'Проблемы' },
 			{ id: 1, 'x': 2, 'y': 0, 'w': 2, 'h': 2, 'i': '1', selected: true, text: 'Сервера' },
@@ -38,14 +37,11 @@ export default new Vuex.Store({
 		selectMode: false,
 		searchMode: false,
 		dialog: false,
-		overlay: false,
-		previewMode: 0
+		overlay: false
 	},
 	getters: {
 		lo: state => { return state.lo },
 		overlay: state => { return state.overlay },
-		preview: state => { return state.preview },
-		previewMode: state => { return state.previewMode },
 		fullWindow: state => { return state.fullWindow },
 		drawer: state => { return state.drawer },
 		add: state => { return state.add },
@@ -61,9 +57,6 @@ export default new Vuex.Store({
 		widget2: state => { return state.widget2 }
 	},
 	mutations: {
-		togglePreview (state) { state.preview = !state.preview },
-		openPreview (state) { state.preview = true },
-		setPreviewMode (state, payload) { state.previewMode = payload },
 		toggleFullWindow (state) { state.fullWindow = !state.fullWindow },
 		setFullWindow (state, payload) { state.fullWindow = payload },
 		toggleDrawer (state) { state.drawer = !state.drawer },
