@@ -10,19 +10,19 @@
 				i.icon-mail
 				span kmg01@docsvision.com
 			form
-				input(type="password" placeholder="Пароль")
+				input(type="password" placeholder="Пароль").pass
 				br
 				br
-			v-card-actions
-				label
+				label.alien
 					input(type="checkbox").mr-2
 					span Чужой компьютер
-				v-spacer
-				v-btn(text) Отмена
-				v-btn(color="info" @click="login") Вход
-			.alien
+			v-card-actions.mt-5.px-0
+				v-btn(color="primary" @click="login" block) Вход
+			.forget
 				a(href="") Напомнить пароль
-	img(src="@/assets/img/logo-w.svg").dv
+	.dv
+		img(src="@/assets/img/logo-w.svg")
+		.txt admin interface
 
 </template>
 
@@ -31,6 +31,11 @@
 export default {
 	data () {
 		return {
+
+		}
+	},
+	methods: {
+		login () {
 
 		}
 	}
@@ -48,8 +53,22 @@ export default {
 	.dv {
 		position: absolute;
 		bottom: 1rem;
-		left: 2rem;
-		width: 300px;
+		left: 0;
+		display: flex;
+		justify-content: space-between;
+		width: 50%;
+		background: rgba(0,0,0,.4);
+		padding: 0 2rem;
+		img {
+			vertical-align: bottom;
+			height: 48px;
+			display: block;
+		}
+		.txt {
+			color: white;
+			font-size: 2rem;
+			font-weight: 300;
+		}
 	}
 }
 .img {
@@ -98,7 +117,7 @@ export default {
 	}
 	form {
 		margin-top: 2rem;
-		input {
+		.pass {
 			width: 100%;
 			height: 2.5rem;
 			border: none;
@@ -113,7 +132,7 @@ export default {
 	a:hover {
 		text-decoration: underline;
 	}
-	.alien {
+	.forget {
 		position: absolute;
 		bottom: -1.7rem;
 		left: 0;
