@@ -1,7 +1,8 @@
 <template lang="pug">
 v-navigation-drawer(v-model="drawer" clipped app :mini-variant.sync="mini" )
 	v-list
-		v-list-item(link @click="goTo(item.url)" v-for="item in menu" :key="item.text")
+		v-list-item(link @click="goTo(item.url)" v-for="item in menu" :key="item.text"
+			:class="path === item.url ? 'active' : ''")
 			v-list-item-icon
 				v-icon.big {{ item.icon }}
 			v-list-item-content
@@ -45,6 +46,9 @@ export default {
 		}
 	},
 	computed: {
+		path () {
+			return this.$route.path
+		},
 		drawer: {
 			get () {
 				return this.$store.getters.drawer
@@ -91,5 +95,12 @@ export default {
 }
 .big {
 	font-size: 2.2rem;
+}
+.theme--light .active {
+	background: rgba(0,0,0,.1);
+	color: black;
+}
+.theme--dark .active {
+	background: rgba(255,255,255,.07);
 }
 </style>

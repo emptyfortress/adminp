@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-	v-tabs(centered v-model="tabs")
+	v-tabs(centered v-model="tabs").mytabs
 		v-tab Главная
 		v-tab
 			v-icon mdi-plus
