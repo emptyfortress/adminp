@@ -40,8 +40,8 @@ export default new Vuex.Store({
 		overlay: false
 	},
 	getters: {
+		isLogged: state => { return state.isLogged },
 		overlay: state => { return state.overlay },
-		fullWindow: state => { return state.fullWindow },
 		drawer: state => { return state.drawer },
 		add: state => { return state.add },
 		headers: state => { return state.headers },
@@ -49,14 +49,12 @@ export default new Vuex.Store({
 		selectMode: state => { return state.selectMode },
 		searchMode: state => { return state.searchMode },
 		dialog: state => { return state.dialog },
-		file: state => { return state.file },
 		chat: state => { return state.chat },
 		widget1: state => { return state.widget1 },
 		widget2: state => { return state.widget2 }
 	},
 	mutations: {
-		toggleFullWindow (state) { state.fullWindow = !state.fullWindow },
-		setFullWindow (state, payload) { state.fullWindow = payload },
+		login (state) { state.isLogged = true },
 		toggleDrawer (state) { state.drawer = !state.drawer },
 		toggleAdd (state) { state.add = !state.add },
 		toggleDialog (state) { state.dialog = !state.dialog },
@@ -67,7 +65,6 @@ export default new Vuex.Store({
 		offDrawer (state) { state.drawer = false },
 		setHeaders (state, payload) { state.headers = payload },
 		setMini (state, payload) { state.mini = payload },
-		setFile (state, payload) { state.file = payload },
 		setOverlay (state, payload) { state.overlay = payload },
 		toggleChat (state) { state.chat = !state.chat },
 		updateWidget1 (state, payload) { state.widget1 = payload }

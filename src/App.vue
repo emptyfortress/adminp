@@ -69,14 +69,14 @@ export default {
 			: false,
 		offsetTop: true,
 		scroll: false,
-		logo: true,
-		isLogged: true
+		logo: true
 	}),
 	beforeDestroy () {
 		if (!this.$vuetify) return
 		this.$vuetify.theme.dark = this.initialDark
 	},
 	computed: {
+		isLogged () { return this.$store.getters.isLogged },
 		add () { return this.$store.getters.add },
 		drawer () { return this.$store.getters.drawer },
 		mini () { return this.$store.getters.mini },

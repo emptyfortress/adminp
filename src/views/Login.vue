@@ -36,7 +36,8 @@ export default {
 	},
 	methods: {
 		login () {
-
+			this.$store.commit('login')
+			this.$router.push('/')
 		}
 	}
 }
@@ -95,6 +96,7 @@ export default {
 	padding-top: 3rem;
 	position: relative;
 	box-shadow: 0 1px 3px #999;
+	border-radius: 5px;
 	h2 {
 		text-transform: none;
 		margin-bottom: .5rem;
