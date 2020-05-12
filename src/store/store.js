@@ -40,13 +40,11 @@ export default new Vuex.Store({
 		overlay: false
 	},
 	getters: {
-		lo: state => { return state.lo },
 		overlay: state => { return state.overlay },
 		fullWindow: state => { return state.fullWindow },
 		drawer: state => { return state.drawer },
 		add: state => { return state.add },
 		headers: state => { return state.headers },
-		tripheaders: state => { return state.tripheaders },
 		mini: state => { return state.mini },
 		selectMode: state => { return state.selectMode },
 		searchMode: state => { return state.searchMode },
