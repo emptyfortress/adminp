@@ -2,7 +2,7 @@
 .myrow
 	video( autoplay loop playsinline muted ).vid
 		source(src="@/assets/img/autumn.mp4" type="video/mp4")
-	.card
+	.card.elevation-3
 		.logo
 			img(src="@/assets/img/user0.svg")
 		h2 Привет, kmg01!
@@ -22,7 +22,7 @@
 			a(href="") Напомнить пароль
 	.dv
 		img(src="@/assets/img/logo-w.svg")
-		.txt admin interface
+		.txt admin web interface
 
 </template>
 
