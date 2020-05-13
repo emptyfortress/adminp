@@ -1,5 +1,6 @@
 <template lang="pug">
 .myrow
+	//- video(src="@/assets/img/network.mp4" autoplay).img
 	v-img(src="@/assets/img/nature.jpg").img
 	.sign
 		.card

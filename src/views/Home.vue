@@ -1,10 +1,10 @@
 <template lang="pug">
 div
 	v-tabs(centered v-model="tabs").mytabs
-		v-tab Главная
+		v-tab Моя панель
+		v-tab(v-for="item in panels" :key="item.name") {{  item.name  }}
 		v-tab
 			v-icon mdi-plus
-	br
 	v-tabs-items(v-model="tabs")
 		v-tab-item
 			.dash
@@ -29,7 +29,8 @@ export default {
 		return {
 			drag: false,
 			resize: false,
-			tabs: 0
+			tabs: 0,
+			panels: []
 		}
 	},
 	computed: {
@@ -91,5 +92,9 @@ export default {
 	padding: .2rem .5rem;
 	color: #fff;
 	border-radius: 3rem;
+}
+.v-tabs-items {
+	padding: 1rem;
+
 }
 </style>
