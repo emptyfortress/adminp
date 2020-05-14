@@ -12,7 +12,12 @@ v-app
 				v-card(v-show="searchMode").searchbox
 					input(placeholder="Найти" autofocus)
 			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
-				i.icon-search
+				v-icon mdi-home-search-outline
+				//- i.icon-search
+			v-btn( href="" icon  v-show="offsetTop")
+				v-icon mdi-bell-outline
+			v-btn( href="" icon  v-show="offsetTop").mr-3
+				v-icon mdi-brightness-4
 			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple)
 				img(src="@/assets/img/user0.svg" )
 

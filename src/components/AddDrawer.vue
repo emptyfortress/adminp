@@ -1,8 +1,5 @@
 <template lang="pug">
 v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide-overlay)
-	p.text-center
-		v-switch(v-model="$vuetify.theme.dark" color="primary" hide-details inset label="Theme Dark").d-inline-block
-
 	div(v-show="$route.name === 'home'")
 		h4 Выберите виджеты для дашборда
 		v-item-group(multiple v-model="selected").listwrap
