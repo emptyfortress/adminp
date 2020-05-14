@@ -8,6 +8,8 @@ v-app
 				v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
 				span Administration
 			v-spacer
+			.time {{ time }}
+			v-spacer
 			v-scale-transition(origin="center right")
 				v-card(v-show="searchMode").searchbox
 					input(placeholder="Найти" autofocus)
@@ -85,6 +87,9 @@ export default {
 		mini () { return this.$store.getters.mini },
 		searchMode () { return this.$store.getters.searchMode },
 		row () { return this.$router.params.id }
+		// time () {
+		// 	return moment().format()
+		// }
 		// pathback () {
 		// 	let a = this.$route.path.split('/')
 		// 	let last = a[a.length - 1]
@@ -162,15 +167,13 @@ export default {
 @import '@/assets/css/palette.scss';
 
 .lft {
-	font-size: 1.7rem;
-	font-weight: 300;
 	display: flex;
-	.v-responsive.v-image {
-		width: 40px;
+	span {
+		font-weight: 300;
+		font-size: 1.3rem;
+		margin-left: 1rem;
+		text-transform: uppercase;
 	}
-	span { margin-left: 1rem; text-transform: uppercase; }
-
-	/* vertical-align: middle; */
 }
 .v-toolbar.v-toolbar--collapsed {
 	max-width: 260px;
