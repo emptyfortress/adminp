@@ -17,7 +17,7 @@ div
 							v-icon(small v-if="item.smart").smart mdi-lightbulb
 							.hd(v-if="item.text.length") {{ item.text }}
 							.hd(v-else) Widget {{ item.i }}
-							.badge 25
+							.badge(v-if="item.badge") {{ item.badge }}
 							.test
 		v-tab-item(v-for="(item,index) in panelItems" :key="index")
 			.empt
