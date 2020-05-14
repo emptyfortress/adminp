@@ -38,8 +38,8 @@ div
 		v-tab-item(v-for="(item,index) in panelItems" :key="index")
 			.empt
 				img(src="@/assets/img/nothing.svg")
-				.headline Здесь довольно одиноко...
-				.subtitle-1.mt-3 Я бы виджетов добавил :)
+				.headline.blue-grey--text Здесь довольно одиноко...
+				.subtitle-1.blue-grey--text.mt-3 Я бы виджетов добавил :)
 				br
 				v-btn(text color="red darken-4" @click="delPanel(index)").mr-2 Удалить
 		v-tab-item
