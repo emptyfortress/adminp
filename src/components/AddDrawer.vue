@@ -1,7 +1,11 @@
 <template lang="pug">
 v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide-overlay)
 	div(v-show="$route.name === 'home'")
-		h4 Выберите виджеты для дашборда
+		v-list-item(two-line)
+			v-list-item-content
+				.overline.mb-4 Магазин виджетов
+				.headline  Добавить виджет
+			v-icon(size="56") mdi-storefront
 		v-item-group(multiple v-model="selected").listwrap
 			v-item(v-slot:default="{active, toggle}" v-for="item in widget1" :key="item.id")
 				v-card(:color="active ? 'primary' : '' " height="42" @click="mytoggle(item.id)").toggle

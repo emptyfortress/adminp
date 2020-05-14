@@ -19,7 +19,8 @@
 		v-card-actions.mt-5.px-0
 			v-btn(color="primary" @click="login" block) Вход
 		.forget
-			a(href="") Напомнить пароль
+			a(href="#") Напомнить пароль
+		img(src="@/assets/img/houston.svg").houston
 	.dv
 		img(src="@/assets/img/logo-w.svg")
 		.txt admin web interface
@@ -146,6 +147,13 @@ export default {
 		bottom: -1.7rem;
 		right: 0;
 	}
+}
+.houston {
+	position: absolute;
+	top: -70px;
+	left: 0;
+	width: 120px;
+	opacity: .7;
 }
 
 </style>

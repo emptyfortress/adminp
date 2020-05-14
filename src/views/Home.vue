@@ -116,7 +116,7 @@ export default {
 	position: absolute;
 	right: 1rem;
 	top: 1rem;
-	background: $info;
+	background: $link;
 	padding: .2rem .5rem;
 	color: #fff;
 	border-radius: 3rem;

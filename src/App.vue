@@ -16,7 +16,7 @@ v-app
 				//- i.icon-search
 			v-btn( href="" icon  v-show="offsetTop")
 				v-icon mdi-bell-outline
-			v-btn( href="" icon  v-show="offsetTop").mr-3
+			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
 				v-icon mdi-brightness-4
 			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple)
 				img(src="@/assets/img/user0.svg" )
