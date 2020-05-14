@@ -55,6 +55,7 @@ export default new Vuex.Store({
 	},
 	mutations: {
 		login (state) { state.isLogged = true },
+		logout (state) { state.isLogged = false },
 		toggleDrawer (state) { state.drawer = !state.drawer },
 		toggleAdd (state) { state.add = !state.add },
 		toggleDialog (state) { state.dialog = !state.dialog },

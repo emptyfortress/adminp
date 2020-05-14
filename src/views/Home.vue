@@ -14,10 +14,26 @@ div
 				grid-layout(:layout.sync="widget1" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true" )
 					grid-item( v-for="item in widget1" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" @resized="resizedEvent" ).item
 						v-card.cardd
-							v-icon(small v-if="item.smart" color="success").smart mdi-lightbulb
+							v-icon(small v-if="item.smart" color="#fbd067").smart mdi-lightbulb
 							.hd(v-if="item.text.length") {{ item.text }}
 							.hd(v-else) Widget {{ item.i }}
 							.badge(v-if="item.badge") {{ item.badge }}
+							template(v-if="item.smart")
+								.smal(v-show="item.h >= 3 && item.h < 5")
+									i.icon-lookma
+									span look ma!
+								.middl(v-show="item.h >= 5 && item.h < 6")
+									i.icon-coolma
+									span.ml-8 cool
+								.larg(v-show="item.h > 5")
+									i.icon-foo
+									span.display-1(v-show="item.h >=6 && item.w > 2") fun
+									ul
+										li(v-for="n in 30")
+											vac( :start-time="new Date().getTime()" :end-time="new Date().getTime() + 400000000" )
+												template( v-slot:process="{ timeObj }" )
+													span {{ `${timeObj.s}` * n + 138}}
+													span.ml-3 server uptime
 							.test
 		v-tab-item(v-for="(item,index) in panelItems" :key="index")
 			.empt
@@ -25,7 +41,6 @@ div
 				.headline Здесь довольно одиноко...
 				.subtitle-1.mt-3 Я бы виджетов добавил :)
 				br
-				v-btn(text color="primary").mr-2 Переименовать
 				v-btn(text color="red darken-4" @click="delPanel(index)").mr-2 Удалить
 		v-tab-item
 			AddPanel(v-on:create="createPanel")
@@ -114,6 +129,7 @@ export default {
 		border-radius: .4rem;
 		padding: 1rem;
 		position: relative;
+		overflow: hidden;
 	}
 }
 .badge {
@@ -139,6 +155,15 @@ export default {
 	position: absolute;
 	top: 2px;
 	left: 2px;
+}
+.smal i {
+	font-size: 4rem;
+}
+.middl i {
+	font-size: 6rem;
+}
+.larg i {
+	font-size: 10rem;
 }
 
 </style>

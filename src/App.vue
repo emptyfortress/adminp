@@ -19,7 +19,7 @@ v-app
 				v-icon mdi-bell-outline
 			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
 				v-icon mdi-brightness-4
-			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple)
+			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple @click="logout")
 				img(src="@/assets/img/user0.svg" )
 
 		v-content(v-scroll="handleScroll")
@@ -90,6 +90,9 @@ export default {
 		row () { return this.$router.params.id }
 	},
 	methods: {
+		logout () {
+			this.$store.commit('logout')
+		},
 		back () {
 			this.$router.push(this.pathback)
 		},
