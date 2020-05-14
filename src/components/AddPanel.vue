@@ -11,7 +11,7 @@
 			v-text-field(label="Описание")
 		v-card-actions
 			v-spacer
-			v-btn(text) Очистить
+			v-btn(text @click="clean") Очистить
 			v-btn( color="primary" @click="create") Создать
 </template>
 
@@ -26,6 +26,9 @@ export default {
 	methods: {
 		create () {
 			this.$emit('create', this.name)
+		},
+		clean () {
+			this.name = ''
 		}
 	}
 }

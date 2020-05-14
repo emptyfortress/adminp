@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		isLogged: false,
+		isLogged: true,
 		drawer: true,
 		add: false,
 		widget1: [
@@ -14,7 +14,7 @@ export default new Vuex.Store({
 			{ id: 2, smart: true, badge: 10, 'x': 4, 'y': 0, 'w': 2, 'h': 2, 'i': '2', selected: true, text: 'Подключения' },
 			{ id: 3, smart: true, badge: null, 'x': 6, 'y': 0, 'w': 2, 'h': 2, 'i': '3', selected: true, text: 'Обновления' },
 			{ id: 4, smart: true, badge: 4, 'x': 8, 'y': 0, 'w': 2, 'h': 2, 'i': '4', selected: true, text: 'Процессы' },
-			{ id: 5, smart: true, badge: 25, 'x': 10, 'y': 0, 'w': 2, 'h': 2, 'i': '5', selected: true, text: 'Нотификации' },
+			{ id: 5, smart: true, badge: 25, 'x': 10, 'y': 0, 'w': 2, 'h': 2, 'i': '5', selected: true, text: 'Уведомления' },
 
 			{ id: 6, 'x': 0, 'y': 2, 'w': 2, 'h': 2, 'i': '6', selected: false, text: '' },
 			{ id: 7, 'x': 2, 'y': 2, 'w': 2, 'h': 2, 'i': '7', selected: false, text: '' },
@@ -33,7 +33,7 @@ export default new Vuex.Store({
 			{ id: 18, 'x': 0, 'y': 5, 'w': 2, 'h': 2, 'i': '18', selected: false, text: '' },
 			{ id: 19, 'x': 2, 'y': 5, 'w': 2, 'h': 2, 'i': '19', selected: false, text: '' }
 		],
-		mini: false,
+		mini: true,
 		selectMode: false,
 		searchMode: false,
 		dialog: false,

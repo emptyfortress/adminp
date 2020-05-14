@@ -8,11 +8,10 @@ v-app
 				v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
 				span Administration
 			v-spacer
-			.time {{ time }}
-			v-spacer
-			v-scale-transition(origin="center right")
-				v-card(v-show="searchMode").searchbox
+			v-scale-transition(origin="center right" mode="out-in")
+				v-card(v-if="searchMode").searchbox
 					input(placeholder="Найти" autofocus)
+				Countdown(v-else).mr-5
 			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
 				v-icon mdi-home-search-outline
 				//- i.icon-search
@@ -32,11 +31,11 @@ v-app
 				//- 	v-btn(fab outlined color="#ccc" small  @click="forward").forward
 				//- 		v-icon(color="#aaa") mdi-arrow-right
 
-				transition(name="slide-fade" mode="out-in")
-					div(v-if="!searchMode" key="start")
+			transition(name="slide-fade" mode="out-in")
+				div(v-if="!searchMode" key="start")
 						v-slide-x-transition(mode="out-in")
 							router-view
-					SearchPanel(v-else key="search")
+				SearchPanel(v-else key="search")
 
 		Footer
 		Dialog
@@ -55,6 +54,7 @@ v-app
 import Drawer from './components/Drawer'
 import AddDrawer from './components/AddDrawer'
 import Footer from './components/Footer'
+import Countdown from './components/Countdown'
 import SearchPanel from './components/SearchPanel'
 import Login from './views/Login'
 import './assets/css/palette.scss'
@@ -66,7 +66,8 @@ export default {
 		AddDrawer,
 		Footer,
 		SearchPanel,
-		Login
+		Login,
+		Countdown
 	},
 	data: vm => ({
 		initialDark: vm.$vuetify
@@ -87,36 +88,8 @@ export default {
 		mini () { return this.$store.getters.mini },
 		searchMode () { return this.$store.getters.searchMode },
 		row () { return this.$router.params.id }
-		// time () {
-		// 	return moment().format()
-		// }
-		// pathback () {
-		// 	let a = this.$route.path.split('/')
-		// 	let last = a[a.length - 1]
-		// 	let middle = a[a.length - 2]
-		// 	let newpath = ''
-		// 	if (last < 0) { return '/folder' } else {
-		// 		newpath = '/' + middle + '/' + (parseInt(last) - 1).toString()
-		// 	}
-		// 	return newpath
-		// },
-		// pathforward () {
-		// 	let a = this.$route.path.split('/')
-		// 	let last = a[a.length - 1]
-		// 	let middle = a[a.length - 2]
-		// 	let newpath = ''
-		// 	if (last < 0) { return '/folder' } else {
-		// 		newpath = '/' + middle + '/' + (parseInt(last) + 1).toString()
-		// 	}
-		// 	return newpath
-		// }
 	},
 	methods: {
-		// showPreview () {
-		// 	this.$store.commit('setPreviewMode', 1)
-		// 	this.$store.commit('togglePreview')
-		// 	this.$store.commit('setMini', true)
-		// },
 		back () {
 			this.$router.push(this.pathback)
 		},
