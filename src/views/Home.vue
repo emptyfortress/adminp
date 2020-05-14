@@ -14,6 +14,7 @@ div
 				grid-layout(:layout.sync="widget1" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true" )
 					grid-item( v-for="item in widget1" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" ).item
 						v-card.cardd
+							v-icon(small v-if="item.smart").smart mdi-lightbulb
 							.hd(v-if="item.text.length") {{ item.text }}
 							.hd(v-else) Widget {{ item.i }}
 							.badge 25
@@ -130,6 +131,11 @@ export default {
 .empt {
 	margin-top: 2rem;
 	text-align: center;
+}
+.smart {
+	position: absolute;
+	top: 2px;
+	left: 2px;
 }
 
 </style>

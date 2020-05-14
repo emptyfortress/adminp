@@ -5,16 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		isLogged: false,
+		isLogged: true,
 		drawer: true,
 		add: false,
 		widget1: [
-			{ id: 0, 'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '0', selected: true, text: 'Проблемы' },
-			{ id: 1, 'x': 2, 'y': 0, 'w': 2, 'h': 2, 'i': '1', selected: true, text: 'Сервера' },
-			{ id: 2, 'x': 4, 'y': 0, 'w': 2, 'h': 2, 'i': '2', selected: true, text: 'Подключения' },
-			{ id: 3, 'x': 6, 'y': 0, 'w': 2, 'h': 2, 'i': '3', selected: true, text: 'Обновления' },
-			{ id: 4, 'x': 8, 'y': 0, 'w': 2, 'h': 2, 'i': '4', selected: true, text: 'Процессы' },
-			{ id: 5, 'x': 10, 'y': 0, 'w': 2, 'h': 2, 'i': '5', selected: false, text: 'Нотификации' },
+			{ id: 0, smart: true, 'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '0', selected: true, text: 'Проблемы' },
+			{ id: 1, smart: true, 'x': 2, 'y': 0, 'w': 2, 'h': 2, 'i': '1', selected: true, text: 'Сервера' },
+			{ id: 2, smart: true, 'x': 4, 'y': 0, 'w': 2, 'h': 2, 'i': '2', selected: true, text: 'Подключения' },
+			{ id: 3, smart: true, 'x': 6, 'y': 0, 'w': 2, 'h': 2, 'i': '3', selected: true, text: 'Обновления' },
+			{ id: 4, smart: true, 'x': 8, 'y': 0, 'w': 2, 'h': 2, 'i': '4', selected: true, text: 'Процессы' },
+			{ id: 5, smart: true, 'x': 10, 'y': 0, 'w': 2, 'h': 2, 'i': '5', selected: false, text: 'Нотификации' },
 
 			{ id: 6, 'x': 0, 'y': 2, 'w': 2, 'h': 2, 'i': '6', selected: false, text: '' },
 			{ id: 7, 'x': 2, 'y': 2, 'w': 2, 'h': 2, 'i': '7', selected: false, text: '' },

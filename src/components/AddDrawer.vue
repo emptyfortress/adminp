@@ -6,9 +6,11 @@ v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide
 				.overline.mb-4 Магазин виджетов
 				.headline  Добавить виджет
 			v-icon(size="56") mdi-storefront
-		v-item-group(multiple v-model="selected").listwrap
+		hr
+		v-item-group(multiple v-model="selected").listwrap.pa-3
 			v-item(v-slot:default="{active, toggle}" v-for="item in widget1" :key="item.id")
 				v-card(:color="active ? 'primary' : '' " height="42" @click="mytoggle(item.id)").toggle
+					v-icon(x-small v-if="item.smart" dark).smart mdi-lightbulb
 					.txt(v-if="item.text.length") {{ item.text }}
 					.txt(v-else) Widget {{ item.i }}
 					v-scroll-y-transition(mode="out-in")
@@ -89,14 +91,14 @@ export default {
 .theme--light.v-item--active .txt {
 	color: #fff;
 }
-
 .txt {
 	line-height: 42px;
 	margin-left: 1rem;
 	margin-right: 3rem;
 }
-h4 {
-	text-align: center;
-	font-weight: 400;
+.smart {
+	position: absolute;
+	top: 2px;
+	left: 2px;
 }
-</style>k
+</style>
