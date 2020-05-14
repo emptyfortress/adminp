@@ -5,7 +5,7 @@
 	.card.elevation-3
 		.logo
 			img(src="@/assets/img/user0.svg")
-		h2 Привет, kmg01!
+		.title.text-center.he Привет, kmg01!
 		.mail(contenteditable="true")
 			i.icon-mail
 			span kmg01@docsvision.com
@@ -21,6 +21,7 @@
 		.forget
 			a(href="#") Напомнить пароль
 		img(src="@/assets/img/houston.svg").houston
+		.problem решаем проблемы
 	.dv
 		img(src="@/assets/img/logo-w.svg")
 		.txt admin web interface
@@ -86,7 +87,7 @@ export default {
 .card {
 	margin-top: -3rem;
 	box-sizing: border-box;
-	width: 500px;
+	width: 450px;
 	background: #fff;
 	padding: 2rem;
 	padding-top: 3rem;
@@ -105,14 +106,14 @@ export default {
 		left: 50%;
 		background: #fff;
 		padding: 1rem;
-		border-radius: 4rem;
+		border-radius: 6rem;
 		margin-left: -3rem;
 		img {
 			width: 4rem;
 		}
 	}
 	form {
-		margin-top: 2rem;
+		margin-top: .5rem;
 		.pass {
 			width: 100%;
 			height: 2.5rem;
@@ -154,6 +155,16 @@ export default {
 	left: 0;
 	width: 120px;
 	opacity: .7;
+}
+.problem {
+	position: absolute;
+	top: -25px;
+	right: 7px;
+	font-weight: 300;
+	font-size: .8rem;
+}
+.he {
+	transform: translateY(-15px);
 }
 
 </style>
