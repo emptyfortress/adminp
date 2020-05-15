@@ -11,8 +11,8 @@ div
 					v-icon mdi-tune
 				v-btn(icon)
 					v-icon mdi-pencil
-				grid-layout(:layout.sync="widget1" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true" )
-					grid-item( v-for="item in widget1" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" @resized="resizedEvent" ).item
+				grid-layout(:layout.sync="selected" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true" )
+					grid-item( v-for="item in selected" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" @resized="resizedEvent" ).item
 						v-card.cardd
 							v-icon(small v-if="item.smart" color="#fbd067").smart mdi-lightbulb
 							.hd(v-if="item.text.length") {{ item.text }}
@@ -34,6 +34,8 @@ div
 												template( v-slot:process="{ timeObj }" )
 													span {{ `${timeObj.s}` * n + 138}}
 													span.ml-3 server uptime
+							v-btn(icon small v-show="closeWidget" @click="removeWidget(item.id)").close
+								v-icon(x-small) mdi-close
 							.test
 		v-tab-item(v-for="(item,index) in panelItems" :key="index")
 			.empt
@@ -55,6 +57,7 @@ export default {
 		return {
 			drag: false,
 			resize: false,
+			closeWidget: false,
 			tabs: 0,
 			panels: [
 				{ name: 'Моя панель' }
@@ -63,8 +66,12 @@ export default {
 		}
 	},
 	computed: {
+		selected () {
+			return this.widget1
+				.filter(item => item.selected === true)
+		},
 		widget1 () {
-			return this.$store.getters.widget1.filter((item) => item.selected === true)
+			return this.$store.getters.widget1
 		}
 	},
 	components: {
@@ -75,6 +82,7 @@ export default {
 	mounted () {
 		window.addEventListener('keydown', this.setOn)
 		window.addEventListener('keyup', this.setOff)
+		this.filteredWidget = this.widget1
 	},
 	beforeDestroy () {
 		window.removeEventListener('keydown', this.setOn)
@@ -85,13 +93,31 @@ export default {
 			if (event.keyCode === 18) {
 				this.drag = true
 				this.resize = true
+				this.closeWidget = true
 			}
 		},
 		setOff (event) {
 			if (event.keyCode === 18) {
 				this.drag = false
 				this.resize = false
+				this.closeWidget = false
 			}
+		},
+		removeWidget (e) {
+			this.drag = false
+			this.resize = false
+			this.closeWidget = false
+			const temp = []
+			this.widget1.map((item) => {
+				if (item.id === e) {
+					item.selected = !item.selected
+					temp.push(item)
+				} else {
+					temp.push(item)
+				}
+			})
+			this.$store.commit('updateWidget1', temp)
+			console.log(e)
 		},
 		createPanel (e) {
 			this.panels.push({
@@ -164,6 +190,11 @@ export default {
 }
 .larg i {
 	font-size: 10rem;
+}
+.close {
+	position: absolute;
+	top: -5px;
+	right: -5px;
 }
 
 </style>
