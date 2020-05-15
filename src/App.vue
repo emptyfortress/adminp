@@ -228,10 +228,10 @@ export default {
 	border: 1px solid #ccc;
 	overflow: hidden;
 }
-.theme--dark.fab.v-btn[data-v-7ba5bd90]:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+.theme--dark.fab.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
 	background: $link;
 }
-.theme--light.fab.v-btn[data-v-7ba5bd90]:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+.theme--light.fab.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
 	background: $blue-grey;
 }
 
