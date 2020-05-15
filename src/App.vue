@@ -5,16 +5,15 @@ v-app
 		AddDrawer
 		v-app-bar(app collapse-on-scroll clipped-left :class="calcWidth()").pr-2
 			.lft
-				v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" v-show="logo" )
-				span Administration
+				v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" )
+				span(v-show="logo") Administration
 			v-spacer
 			v-scale-transition(origin="center right" mode="out-in")
-				v-card(v-if="searchMode").searchbox
+				v-card(v-show="searchMode").searchbox
 					input(placeholder="Найти" autofocus)
-				Countdown(v-else).mr-5
 			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
 				v-icon mdi-home-search-outline
-				//- i.icon-search
+			Countdown(v-if="offsetTop").mr-3
 			v-btn( href="" icon  v-show="offsetTop")
 				v-icon mdi-bell-outline
 			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
@@ -113,19 +112,13 @@ export default {
 				return 'mid'
 			} else return 'sm'
 		},
-		toggle () {
-			this.$store.commit('toggleDrawer')
-		},
 		handleScroll () {
 			if (window.pageYOffset > 300) {
 				this.scroll = true
-			} else if (window.pageYOffset > 0 && !this.drawer) {
+			} else if (window.pageYOffset > 0 && this.mini) {
 				this.offsetTop = false
 				this.logo = false
-			} else if (window.pageYOffset > 0 && !this.drawer && !this.mini) {
-				this.offsetTop = false
-				this.logo = false
-			} else if (window.pageYOffset > 0 && this.drawer) {
+			} else if (window.pageYOffset > 0) {
 				this.offsetTop = false
 				this.logo = true
 			} else {

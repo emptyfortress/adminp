@@ -2,7 +2,7 @@
 .time
 	vac( :start-time="new Date().getTime()" :end-time="new Date().getTime() + 400000000" )
 		template( v-slot:process="{ timeObj }" )
-			v-icon mdi-timer-outline
+			//- v-icon mdi-timer-outline
 			span.days {{ `${timeObj.d} дня, ${timeObj.h}:${timeObj.m}:${timeObj.s}` }}
 		template(v-slot:finish)
 			span Done!
@@ -16,6 +16,9 @@
 }
 .v-icon {
 	color: $error;
+}
+.time {
+	white-space: nowrap;
 }
 .days {
 	color: $error;
