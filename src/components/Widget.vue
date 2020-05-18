@@ -4,7 +4,7 @@ v-card.cardd
 	.hd(v-if="item.text.length") {{ item.text }}
 	.hd(v-else) Widget {{ item.i }}
 	.badge(v-if="item.badge") {{ item.badge }}
-	v-btn(text small @click="goTo(item.id)") go
+	//- v-btn(text small @click="goTo(item)") go
 	template(v-if="item.smart")
 		.smal(v-show="item.h >= 3 && item.h < 5")
 			i.icon-lookma
@@ -30,17 +30,19 @@ v-card.cardd
 
 export default {
 	props: ['item', 'close'],
-	data () {
+	data() {
 		return {
-
-		}
+		};
 	},
 	methods: {
-		remove (e) {
-			this.$emit('remove', e)
-		}
-	}
-}
+		remove(e) {
+			this.$emit('remove', e);
+		},
+		goTo(e) {
+			this.$router.push(e.url);
+		},
+	},
+};
 
 </script>
 

@@ -31,18 +31,18 @@
 <script>
 
 export default {
-	data () {
-		return {
+  data() {
+    return {
 
-		}
-	},
-	methods: {
-		login () {
-			this.$store.commit('login')
-			this.$router.push('/', () => {})
-		}
-	}
-}
+    };
+  },
+  methods: {
+    login() {
+      this.$store.commit('login');
+      this.$router.push('/', () => {});
+    },
+  },
+};
 
 </script>
 

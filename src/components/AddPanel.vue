@@ -18,20 +18,20 @@
 <script>
 
 export default {
-	data () {
-		return {
-			name: 'Новая панель'
-		}
-	},
-	methods: {
-		create () {
-			this.$emit('create', this.name)
-		},
-		clean () {
-			this.name = ''
-		}
-	}
-}
+  data() {
+    return {
+      name: 'Новая панель',
+    };
+  },
+  methods: {
+    create() {
+      this.$emit('create', this.name);
+    },
+    clean() {
+      this.name = '';
+    },
+  },
+};
 
 </script>
 

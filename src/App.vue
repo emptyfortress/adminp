@@ -50,85 +50,85 @@ v-app
 </template>
 
 <script>
-import Drawer from './components/Drawer'
-import AddDrawer from './components/AddDrawer'
-import Footer from './components/Footer'
-import Countdown from './components/Countdown'
-import SearchPanel from './components/SearchPanel'
-import Login from './views/Login'
-import './assets/css/palette.scss'
+import Drawer from './components/Drawer';
+import AddDrawer from './components/AddDrawer';
+import Footer from './components/Footer';
+import Countdown from './components/Countdown';
+import SearchPanel from './components/SearchPanel';
+import Login from './views/Login';
+import './assets/css/palette.scss';
 
 export default {
-	name: 'App',
-	components: {
-		Drawer,
-		AddDrawer,
-		Footer,
-		SearchPanel,
-		Login,
-		Countdown
-	},
-	data: vm => ({
-		initialDark: vm.$vuetify
-			? vm.$vuetify.theme.dark
-			: false,
-		offsetTop: true,
-		scroll: false,
-		logo: true
-	}),
-	beforeDestroy () {
-		if (!this.$vuetify) return
-		this.$vuetify.theme.dark = this.initialDark
-	},
-	computed: {
-		isLogged () { return this.$store.getters.isLogged },
-		add () { return this.$store.getters.add },
-		drawer () { return this.$store.getters.drawer },
-		mini () { return this.$store.getters.mini },
-		searchMode () { return this.$store.getters.searchMode },
-		row () { return this.$router.params.id }
-	},
-	methods: {
-		logout () {
-			this.$store.commit('logout')
-		},
-		back () {
-			this.$router.push(this.pathback)
-		},
-		forward () {
-			this.$router.push(this.pathforward)
-		},
-		toggleAdd () {
-			this.$store.commit('toggleAdd')
-		},
-		toggleSearch () {
-			this.$store.commit('toggleSearchMode')
-		},
-		calcWidth () {
-			let po = window.pageYOffset
-			if (this.drawer && !this.mini && po > 0) {
-				return 'drawer'
-			} else if (this.drawer && this.mini && po > 0) {
-				return 'mid'
-			} else return 'sm'
-		},
-		handleScroll () {
-			if (window.pageYOffset > 300) {
-				this.scroll = true
-			} else if (window.pageYOffset > 0 && this.mini) {
-				this.offsetTop = false
-				this.logo = false
-			} else if (window.pageYOffset > 0) {
-				this.offsetTop = false
-				this.logo = true
-			} else {
-				this.offsetTop = true
-				this.scroll = false
-				this.logo = true
-			}
-		}
-	}
-}
+  name: 'App',
+  components: {
+    Drawer,
+    AddDrawer,
+    Footer,
+    SearchPanel,
+    Login,
+    Countdown,
+  },
+  data: (vm) => ({
+    initialDark: vm.$vuetify
+      ? vm.$vuetify.theme.dark
+      : false,
+    offsetTop: true,
+    scroll: false,
+    logo: true,
+  }),
+  beforeDestroy() {
+    if (!this.$vuetify) return;
+    this.$vuetify.theme.dark = this.initialDark;
+  },
+  computed: {
+    isLogged() { return this.$store.getters.isLogged; },
+    add() { return this.$store.getters.add; },
+    drawer() { return this.$store.getters.drawer; },
+    mini() { return this.$store.getters.mini; },
+    searchMode() { return this.$store.getters.searchMode; },
+    row() { return this.$router.params.id; },
+  },
+  methods: {
+    logout() {
+      this.$store.commit('logout');
+    },
+    back() {
+      this.$router.push(this.pathback);
+    },
+    forward() {
+      this.$router.push(this.pathforward);
+    },
+    toggleAdd() {
+      this.$store.commit('toggleAdd');
+    },
+    toggleSearch() {
+      this.$store.commit('toggleSearchMode');
+    },
+    calcWidth() {
+      const po = window.pageYOffset;
+      if (this.drawer && !this.mini && po > 0) {
+        return 'drawer';
+      } if (this.drawer && this.mini && po > 0) {
+        return 'mid';
+      } return 'sm';
+    },
+    handleScroll() {
+      if (window.pageYOffset > 300) {
+        this.scroll = true;
+      } else if (window.pageYOffset > 0 && this.mini) {
+        this.offsetTop = false;
+        this.logo = false;
+      } else if (window.pageYOffset > 0) {
+        this.offsetTop = false;
+        this.logo = true;
+      } else {
+        this.offsetTop = true;
+        this.scroll = false;
+        this.logo = true;
+      }
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

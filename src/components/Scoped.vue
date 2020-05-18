@@ -10,19 +10,19 @@ div
 <script>
 
 export default {
-	data () {
-		return {
-			users: [
-				{ first: 'one', last: 'two' },
-				{ first: 'one', last: 'two' },
-				{ first: 'one', last: 'two' },
-				{ first: 'one', last: 'two' },
-				{ first: 'one', last: 'two' },
-				{ first: 'one', last: 'two' }
-			]
-		}
-	}
-}
+  data() {
+    return {
+      users: [
+        { first: 'one', last: 'two' },
+        { first: 'one', last: 'two' },
+        { first: 'one', last: 'two' },
+        { first: 'one', last: 'two' },
+        { first: 'one', last: 'two' },
+        { first: 'one', last: 'two' },
+      ],
+    };
+  },
+};
 
 </script>
 

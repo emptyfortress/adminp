@@ -26,97 +26,96 @@ div
 </template>
 
 <script>
-import VueGridLayout from 'vue-grid-layout'
-import AddPanel from '@/components/AddPanel'
-import Widget from '@/components/Widget'
+import VueGridLayout from 'vue-grid-layout';
+import AddPanel from '@/components/AddPanel';
+import Widget from '@/components/Widget';
 
 export default {
-	data () {
-		return {
-			drag: false,
-			resize: false,
-			closeWidget: false,
-			tabs: 0,
-			panels: [
-				{ name: 'Моя панель' }
-			],
-			panelItems: []
-		}
-	},
-	computed: {
-		selected () {
-			return this.widget1
-				.filter(item => item.selected === true)
-		},
-		widget1 () {
-			return this.$store.getters.widget1
-		}
-	},
-	components: {
-		GridLayout: VueGridLayout.GridLayout,
-		GridItem: VueGridLayout.GridItem,
-		AddPanel,
-		Widget
-	},
-	mounted () {
-		window.addEventListener('keydown', this.setOn)
-		window.addEventListener('keyup', this.setOff)
-		this.filteredWidget = this.widget1
-	},
-	beforeDestroy () {
-		window.removeEventListener('keydown', this.setOn)
-		window.removeEventListener('keyup', this.setOff)
-	},
-	methods: {
-		setOn (event) {
-			if (event.keyCode === 18) {
-				this.drag = true
-				this.resize = true
-				this.closeWidget = true
-			}
-		},
-		setOff (event) {
-			if (event.keyCode === 18) {
-				this.drag = false
-				this.resize = false
-				this.closeWidget = false
-			}
-		},
-		removeWidget (e) {
-			this.drag = false
-			this.resize = false
-			this.closeWidget = false
-			const temp = []
-			this.widget1.map((item) => {
-				if (item.id === e) {
-					item.selected = !item.selected
-					temp.push(item)
-				} else {
-					temp.push(item)
-				}
-			})
-			this.$store.commit('updateWidget1', temp)
-			console.log(e)
-		},
-		createPanel (e) {
-			this.panels.push({
-				name: e
-			})
-			this.tabs = this.panels.length
-			this.panelItems.push({
-				name: e
-			})
-		},
-		delPanel (e) {
-			let t = e + 1
-			this.panels.splice(t, 1)
-			this.panelItems.splice(e, 1)
-		},
-		resizedEvent (i, newH, newW, newHPx, newWPx) {
-			console.log('RESIZED i=' + i + ', H=' + newH + ', W=' + newW + ', H(px)=' + newHPx + ', W(px)=' + newWPx)
-		}
-	}
-}
+  data() {
+    return {
+      drag: false,
+      resize: false,
+      closeWidget: false,
+      tabs: 0,
+      panels: [
+        { name: 'Моя панель' },
+      ],
+      panelItems: [],
+    };
+  },
+  computed: {
+    selected() {
+      return this.widget1
+        .filter((item) => item.selected === true);
+    },
+    widget1() {
+      return this.$store.getters.widget1;
+    },
+  },
+  components: {
+    GridLayout: VueGridLayout.GridLayout,
+    GridItem: VueGridLayout.GridItem,
+    AddPanel,
+    Widget,
+  },
+  mounted() {
+    window.addEventListener('keydown', this.setOn);
+    window.addEventListener('keyup', this.setOff);
+    this.filteredWidget = this.widget1;
+  },
+  beforeDestroy() {
+    window.removeEventListener('keydown', this.setOn);
+    window.removeEventListener('keyup', this.setOff);
+  },
+  methods: {
+    setOn(event) {
+      if (event.keyCode === 18) {
+        this.drag = true;
+        this.resize = true;
+        this.closeWidget = true;
+      }
+    },
+    setOff(event) {
+      if (event.keyCode === 18) {
+        this.drag = false;
+        this.resize = false;
+        this.closeWidget = false;
+      }
+    },
+    removeWidget(e) {
+      this.drag = false;
+      this.resize = false;
+      this.closeWidget = false;
+      const temp = [];
+      this.widget1.map((item) => {
+        if (item.id === e) {
+          item.selected = !item.selected;
+          temp.push(item);
+        } else {
+          temp.push(item);
+        }
+      });
+      this.$store.commit('updateWidget1', temp);
+    },
+    createPanel(e) {
+      this.panels.push({
+        name: e,
+      });
+      this.tabs = this.panels.length;
+      this.panelItems.push({
+        name: e,
+      });
+    },
+    delPanel(e) {
+      const t = e + 1;
+      this.panels.splice(t, 1);
+      this.panelItems.splice(e, 1);
+    },
+    resizedEvent(i, newH, newW, newHPx, newWPx) {
+      console.log(`RESIZED i=${i}, H=${newH}, W=${newW}, H(px)=${newHPx}, W(px)=${newWPx}`);
+    },
+  },
+};
 
 </script>
 

@@ -22,44 +22,44 @@ v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide
 <script>
 
 export default {
-	data () {
-		return {
-			order: 1
-		}
-	},
-	computed: {
-		add: {
-			get () {
-				return this.$store.getters.add
-			},
-			set () {}
-		},
-		widget1 () {
-			return this.$store.getters.widget1
-		},
-		selected () {
-			return this.widget1
-				.filter(item => item.selected === true)
-				.map(item => item.id)
-		}
-	},
-	components: {
-	},
-	methods: {
-		mytoggle (e) {
-			const temp = []
-			this.widget1.map((item) => {
-				if (item.id === e) {
-					item.selected = !item.selected
-					temp.push(item)
-				} else {
-					temp.push(item)
-				}
-			})
-			this.$store.commit('updateWidget1', temp)
-		}
-	}
-}
+  data() {
+    return {
+      order: 1,
+    };
+  },
+  computed: {
+    add: {
+      get() {
+        return this.$store.getters.add;
+      },
+      set() {},
+    },
+    widget1() {
+      return this.$store.getters.widget1;
+    },
+    selected() {
+      return this.widget1
+        .filter((item) => item.selected === true)
+        .map((item) => item.id);
+    },
+  },
+  components: {
+  },
+  methods: {
+    mytoggle(e) {
+      const temp = [];
+      this.widget1.map((item) => {
+        if (item.id === e) {
+          item.selected = !item.selected;
+          temp.push(item);
+        } else {
+          temp.push(item);
+        }
+      });
+      this.$store.commit('updateWidget1', temp);
+    },
+  },
+};
 
 </script>
 

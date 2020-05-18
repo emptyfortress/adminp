@@ -9,17 +9,17 @@
 </template>
 
 <script>
-import Scoped from '@/components/Scoped'
+import Scoped from '@/components/Scoped';
 
 export default {
-	data () {
-		return {
-		}
-	},
-	components: {
-		Scoped
-	}
-}
+  data() {
+    return {
+    };
+  },
+  components: {
+    Scoped,
+  },
+};
 
 </script>
 
