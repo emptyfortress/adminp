@@ -1,0 +1,29 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:vue/essential"
+	],
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly"
+	},
+	"parserOptions": {
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	},
+	"plugins": [
+		"vue"
+	],
+	"rules": {
+		"indent": [ "error", "tab" ],
+		"no-tabs": 0,
+		"no-mixed-spaces-and-tabs": [ "error", "smart-tabs" ],
+		"semi": [ 1, "never" ],
+		"comma-dangle": [2, "always-multiline"]
+	}
+}
