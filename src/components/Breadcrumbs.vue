@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-breadcrumbs(:items="breadcr")
+v-breadcrumbs(:items="breadcrumbs")
 </template>
 
 <script>
@@ -7,11 +7,12 @@
 export default {
 	data () {
 		return {
-			breadcr: [
-				{ text: 'Главная', disabled: false, href: '/' },
-				{ text: 'Notifications', disabled: true, href: '' },
-			],
 		}
+	},
+	computed: {
+		breadcrumbs () {
+			return this.$route.meta.breadcrumbs
+		},
 	},
 }
 

@@ -12,16 +12,34 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: Home,
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: true},
+			],
+		},
 	},
 	{
 		path: '/notifications',
 		name: 'notifications',
 		component: Notifications,
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Уведомления', href: '/notifications', disabled: true },
+			],
+		},
 	},
 	{
 		path: '/notifications/errorlist',
 		name: 'errorlist',
 		component: Errorlist,
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: false},
+				{text: 'Уведомления', href: '/#/notifications', disabled: false},
+				{text: 'Ошибки', href: '/#/notifications/errorlist', disabled: true},
+			],
+		},
 	},
 	{
 		path: '/vuetest',

@@ -11,11 +11,6 @@ v-app
 			v-scale-transition(origin="center right" mode="out-in")
 				v-card(v-show="searchMode").searchbox
 					input(placeholder="Найти" autofocus)
-			//- v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
-			//- 	v-icon mdi-home-search-outline
-			//- Countdown(v-if="offsetTop").mr-3
-			//- v-btn( href="" icon  v-show="offsetTop")
-			//- 	v-icon mdi-bell-outline
 			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
 				v-icon mdi-brightness-4
 			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple @click="logout")
@@ -23,15 +18,8 @@ v-app
 
 		v-content(v-scroll="handleScroll")
 			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
-				//- transition(name="fade" mode="out-in")
-				//- 	v-btn(fab outlined color="#ccc" small  @click="back").back
-				//- 		v-icon(color="#aaa") mdi-arrow-left
-				//- transition(name="fade" mode="out-in")
-				//- 	v-btn(fab outlined color="#ccc" small  @click="forward").forward
-				//- 		v-icon(color="#aaa") mdi-arrow-right
 
-			transition(name="slide-fade" mode="out-in")
-				Breadcrumbs(v-show="$route.name !== 'home'")
+			Breadcrumbs
 			transition(name="slide-fade" mode="out-in")
 				div(v-if="!searchMode" key="start")
 						v-slide-x-transition(mode="out-in")
