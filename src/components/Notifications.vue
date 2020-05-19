@@ -1,12 +1,11 @@
 <template lang="pug">
 .notific
-	v-breadcrumbs(:items="breadcr")
 	.zag.mb-5 Уведомления
 	.wrap
 		v-card(width="400").note
 			v-list(two-lines subheader)
 				v-subheader.high Errors
-				v-list-item(v-for="item in errors" :key="item.title" @click="")
+				v-list-item(v-for="item in errors" :key="item.id" @click="")
 					v-list-item-avatar
 						v-icon(:class="[item.iconClass]" v-text="item.icon")
 					v-list-item-content
@@ -17,7 +16,7 @@
 		v-card(width="400").note
 			v-list(two-lines subheader)
 				v-subheader.high Warnings
-				v-list-item(v-for="item in warinings" :key="item.title" @click="")
+				v-list-item(v-for="item in warinings" :key="item.id" @click="")
 					v-list-item-avatar
 						v-icon(:class="[item.iconClass]" v-text="item.icon")
 					v-list-item-content
@@ -28,7 +27,7 @@
 		v-card(width="400").note
 			v-list(two-lines subheader)
 				v-subheader.high Notifications
-				v-list-item(v-for="item in notific" :key="item.title" @click="")
+				v-list-item(v-for="item in notific" :key="item.id" @click="")
 					v-list-item-avatar
 						v-icon(:class="[item.iconClass]" v-text="item.icon")
 					v-list-item-content
@@ -43,40 +42,36 @@
 </template>
 
 <script>
-import Data from '@/components/Data'
-import {headers, notifications} from '@/notifications.js'
+// import Data from '@/components/Data'
+// import {headers, notifications} from '@/notifications.js'
 
 export default {
 	data() {
 		return {
-			headers,
-			notifications,
-			breadcr: [
-				{ text: 'Главная', disabled: false, href: '/' },
-				{ text: 'Notifications', disabled: true, href: '' },
-			],
+			// headers,
+			// notifications,
 			warinings: [
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Все предупреждения', subtitle: 'суэк' },
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Общие предупреждения', subtitle: 'суэк' },
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 18, title: 'Серверные предупреждения', subtitle: 'суэк' },
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 24, title: 'Серверные предупреждения', subtitle: 'суэк' },
+				{ id: 0, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Все предупреждения', subtitle: 'суэк' },
+				{ id: 1, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Общие предупреждения', subtitle: 'суэк' },
+				{ id: 2, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 18, title: 'Серверные предупреждения', subtitle: 'суэк' },
+				{ id: 3, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 24, title: 'Клиентские предупреждения', subtitle: 'суэк' },
 			],
 			errors: [
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Все ошибки', subtitle: 'суэк' },
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Общие ошибки', subtitle: 'суэк' },
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 18, title: 'Ошибки на сервере', subtitle: 'суэк' },
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 24, title: 'Ошибки на клиенте', subtitle: 'суэк' },
+				{ id: 0, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Все ошибки', subtitle: 'суэк' },
+				{ id: 1, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Общие ошибки', subtitle: 'суэк' },
+				{ id: 2, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 18, title: 'Ошибки на сервере', subtitle: 'суэк' },
+				{ id: 3, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 24, title: 'Ошибки на клиенте', subtitle: 'суэк' },
 			],
 			notific: [
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Все уведомления', subtitle: 'суэк' },
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Общие уведомления', subtitle: 'суэк' },
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 18, title: 'Серверные уведомления', subtitle: 'суэк' },
-				{ icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 24, title: 'Серверные уведомления', subtitle: 'суэк' },
+				{ id: 0, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Все уведомления', subtitle: 'суэк' },
+				{ id: 1, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Общие уведомления', subtitle: 'суэк' },
+				{ id: 2, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 18, title: 'Серверные уведомления', subtitle: 'суэк' },
+				{ id: 3, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 24, title: 'Клиентские уведомления', subtitle: 'суэк' },
 			],
 		}
 	},
 	components: {
-		Data,
+		// Data,
 	},
 }
 

@@ -31,6 +31,8 @@ v-app
 				//- 		v-icon(color="#aaa") mdi-arrow-right
 
 			transition(name="slide-fade" mode="out-in")
+				v-breadcrumbs(:items="breadcr" v-show="$route.name !== 'home'")
+			transition(name="slide-fade" mode="out-in")
 				div(v-if="!searchMode" key="start")
 						v-slide-x-transition(mode="out-in")
 							router-view
@@ -38,7 +40,7 @@ v-app
 
 		Footer
 		Dialog
-		v-alert(transition="scale-transition").plus
+		v-alert(transition="scale-transition" v-show="$route.name === 'home'").plus
 			v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
 				v-icon mdi-plus
 
@@ -53,7 +55,6 @@ v-app
 import Drawer from './components/Drawer'
 import AddDrawer from './components/AddDrawer'
 import Footer from './components/Footer'
-// import Countdown from './components/Countdown'
 import SearchPanel from './components/SearchPanel'
 import Login from './views/Login'
 import './assets/css/palette.scss'
@@ -66,7 +67,6 @@ export default {
 		Footer,
 		SearchPanel,
 		Login,
-		// Countdown,
 	},
 	data: (vm) => ({
 		initialDark: vm.$vuetify
@@ -75,6 +75,10 @@ export default {
 		offsetTop: true,
 		scroll: false,
 		logo: true,
+		breadcr: [
+			{ text: 'Главная', disabled: false, href: '/' },
+			{ text: 'Notifications', disabled: true, href: '' },
+		],
 	}),
 	beforeDestroy() {
 		if (!this.$vuetify) return
