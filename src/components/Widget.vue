@@ -32,17 +32,17 @@ export default {
 	props: ['item', 'close'],
 	data() {
 		return {
-		};
+		}
 	},
 	methods: {
 		remove(e) {
-			this.$emit('remove', e);
+			this.$emit('remove', e)
 		},
 		goTo(e) {
-			this.$router.push(e.url);
+			this.$router.push(e.url)
 		},
 	},
-};
+}
 
 </script>
 

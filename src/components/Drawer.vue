@@ -14,58 +14,59 @@ v-navigation-drawer(v-model="drawer" clipped app :mini-variant.sync="mini" )
 </template>
 
 <script>
-import icons from '@/components/svg.vue';
+import icons from '@/components/svg.vue'
 
 export default {
-  data() {
-    return {
-      color: '#2C4159',
-      size: {
-        width: 50,
-        height: 24,
-      },
-      menu: [
-        { url: '/', icon: 'mdi-monitor-dashboard', text: 'Dashboard' },
-        { url: '/setup', icon: 'mdi-hammer-wrench', text: 'Настройка' },
-        { url: '/new', icon: 'mdi-cloud-download-outline', text: 'Обновления' },
-        { url: '/backup', icon: 'mdi-database-check', text: 'Бэкап' },
-        { url: '/problems', icon: 'mdi-alert', text: 'Проблемы' },
-        { url: '/logs', icon: 'mdi-script-text-outline', text: 'Логи' },
-      ],
-    };
-  },
-  methods: {
-    goTo(e) {
-      this.$router.push(e);
-      this.$store.commit('setSearchMode', false);
-    },
-    toggleMini() {
-      if (this.mini === true) {
-        this.$store.commit('setMini', false);
-      } else this.$store.commit('setMini', true);
-    },
-  },
-  computed: {
-    path() {
-      return this.$route.path;
-    },
-    drawer: {
-      get() {
-        return this.$store.getters.drawer;
-      },
-      set() {},
-    },
-    mini: {
-      get() {
-        return this.$store.getters.mini;
-      },
-      set() {},
-    },
-  },
-  components: {
-    icons,
-  },
-};
+	data() {
+		return {
+			color: '#2C4159',
+			size: {
+				width: 50,
+				height: 24,
+			},
+			menu: [
+				{ url: '/', icon: 'mdi-monitor-dashboard', text: 'Dashboard' },
+				{ url: '/notifications', icon: 'mdi-bell-outline', text: 'Уведомления' },
+				// { url: '/setup', icon: 'mdi-hammer-wrench', text: 'Настройка' },
+				// { url: '/new', icon: 'mdi-cloud-download-outline', text: 'Обновления' },
+				// { url: '/backup', icon: 'mdi-database-check', text: 'Бэкап' },
+				// { url: '/problems', icon: 'mdi-alert', text: 'Проблемы' },
+				// { url: '/logs', icon: 'mdi-script-text-outline', text: 'Логи' },
+			],
+		}
+	},
+	methods: {
+		goTo(e) {
+			this.$router.push(e)
+			this.$store.commit('setSearchMode', false)
+		},
+		toggleMini() {
+			if (this.mini === true) {
+				this.$store.commit('setMini', false)
+			} else this.$store.commit('setMini', true)
+		},
+	},
+	computed: {
+		path() {
+			return this.$route.path
+		},
+		drawer: {
+			get() {
+				return this.$store.getters.drawer
+			},
+			set() {},
+		},
+		mini: {
+			get() {
+				return this.$store.getters.mini
+			},
+			set() {},
+		},
+	},
+	components: {
+		icons,
+	},
+}
 
 </script>
 

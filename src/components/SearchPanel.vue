@@ -45,26 +45,26 @@
 <script>
 
 export default {
-  data() {
-    return {
-      advanced: false,
-      model: null,
-    };
-  },
-  methods: {
-    test() {
-      this.advanced = !this.advanced;
-      switch (this.model) {
-        case null:
-          this.model = 0;
-          break;
-        case 0:
-          this.model = null;
-          break;
-      }
-    },
-  },
-};
+	data() {
+		return {
+			advanced: false,
+			model: null,
+		}
+	},
+	methods: {
+		test() {
+			this.advanced = !this.advanced
+			switch (this.model) {
+			case null:
+				this.model = 0
+				break
+			case 0:
+				this.model = null
+				break
+			}
+		},
+	},
+}
 
 </script>
 

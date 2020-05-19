@@ -10,9 +10,9 @@ export default {
 	data() {
 		return {
 
-		};
+		}
 	},
-};
+}
 
 </script>
 
@@ -21,6 +21,5 @@ export default {
 
 .tabs {
 	border: 1px solid #ccc;
-	/* border-radius: 10px; */
 }
 </style>
