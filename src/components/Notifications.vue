@@ -5,7 +5,7 @@
 		v-card(width="400").note
 			v-list(two-lines subheader)
 				v-subheader.high Errors
-				v-list-item(v-for="item in errors" :key="item.id" @click="$router.push('/errorlist')")
+				v-list-item(v-for="item in errors" :key="item.id" @click="$router.push('/notifications/errorlist')")
 					v-list-item-avatar
 						v-icon(:class="[item.iconClass]" v-text="item.icon")
 					v-list-item-content
@@ -16,7 +16,7 @@
 		v-card(width="400").note
 			v-list(two-lines subheader)
 				v-subheader.high Warnings
-				v-list-item(v-for="item in warinings" :key="item.id" @click="")
+				v-list-item(v-for="item in warinings" :key="item.id" @click="$router.push('/notifications/errorlist')")
 					v-list-item-avatar
 						v-icon(:class="[item.iconClass]" v-text="item.icon")
 					v-list-item-content
@@ -27,7 +27,7 @@
 		v-card(width="400").note
 			v-list(two-lines subheader)
 				v-subheader.high Notifications
-				v-list-item(v-for="item in notific" :key="item.id" @click="")
+				v-list-item(v-for="item in notific" :key="item.id" @click="$router.push('/notifications/errorlist')")
 					v-list-item-avatar
 						v-icon(:class="[item.iconClass]" v-text="item.icon")
 					v-list-item-content
@@ -35,19 +35,14 @@
 						v-list-item-subtitle(v-text="item.subtitle")
 					v-list-item-action
 						.badge {{ item.badge }}
-	//- Data(:headers="headers" :items="notifications")
 
 </template>
 
 <script>
-// import Data from '@/components/Data'
-// import {headers, notifications} from '@/notifications.js'
 
 export default {
 	data() {
 		return {
-			// headers,
-			// notifications,
 			warinings: [
 				{ id: 0, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Все предупреждения', subtitle: 'суэк' },
 				{ id: 1, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 32, title: 'Общие предупреждения', subtitle: 'суэк' },
@@ -67,9 +62,6 @@ export default {
 				{ id: 3, icon: 'mdi-folder', iconClass: 'grey lighten-1 white--text', badge: 24, title: 'Клиентские уведомления', subtitle: 'суэк' },
 			],
 		}
-	},
-	components: {
-		// Data,
 	},
 }
 

@@ -31,7 +31,7 @@ v-app
 				//- 		v-icon(color="#aaa") mdi-arrow-right
 
 			transition(name="slide-fade" mode="out-in")
-				v-breadcrumbs(:items="breadcr" v-show="$route.name !== 'home'")
+				Breadcrumbs(v-show="$route.name !== 'home'")
 			transition(name="slide-fade" mode="out-in")
 				div(v-if="!searchMode" key="start")
 						v-slide-x-transition(mode="out-in")
@@ -56,6 +56,7 @@ import Drawer from './components/Drawer'
 import AddDrawer from './components/AddDrawer'
 import Footer from './components/Footer'
 import SearchPanel from './components/SearchPanel'
+import Breadcrumbs from './components/Breadcrumbs'
 import Login from './views/Login'
 import './assets/css/palette.scss'
 
@@ -67,6 +68,7 @@ export default {
 		Footer,
 		SearchPanel,
 		Login,
+		Breadcrumbs,
 	},
 	data: (vm) => ({
 		initialDark: vm.$vuetify
@@ -75,10 +77,6 @@ export default {
 		offsetTop: true,
 		scroll: false,
 		logo: true,
-		breadcr: [
-			{ text: 'Главная', disabled: false, href: '/' },
-			{ text: 'Notifications', disabled: true, href: '' },
-		],
 	}),
 	beforeDestroy() {
 		if (!this.$vuetify) return

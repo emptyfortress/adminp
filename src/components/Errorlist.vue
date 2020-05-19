@@ -3,7 +3,6 @@
 	.zag.mb-5 Ошибки
 	Datatable(:headers="headers" :items="notifications")
 
-
 </template>
 
 <script>
@@ -25,7 +24,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/assets/css/colors.scss';
-
+/* @import '@/assets/css/colors.scss'; */
 
 </style>
