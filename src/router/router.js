@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Vuetest from '../components/Vuetest.vue'
 import Notifications from '../components/Notifications.vue'
+import Errorlist from '../components/Errorlist.vue'
 
 Vue.use(VueRouter)
 
@@ -16,7 +17,11 @@ const routes = [
 		path: '/notifications',
 		name: 'notifications',
 		component: Notifications,
-
+	},
+	{
+		path: '/errorlist',
+		name: 'errorlist',
+		component: Errorlist,
 	},
 	{
 		path: '/vuetest',
@@ -30,7 +35,7 @@ const routes = [
 		// route level code-splitting
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
-		component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+		// component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
 	},
 ]
 

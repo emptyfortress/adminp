@@ -5,7 +5,7 @@
 		v-card(width="400").note
 			v-list(two-lines subheader)
 				v-subheader.high Errors
-				v-list-item(v-for="item in errors" :key="item.id" @click="")
+				v-list-item(v-for="item in errors" :key="item.id" @click="$router.push('/errorlist')")
 					v-list-item-avatar
 						v-icon(:class="[item.iconClass]" v-text="item.icon")
 					v-list-item-content
@@ -35,8 +35,6 @@
 						v-list-item-subtitle(v-text="item.subtitle")
 					v-list-item-action
 						.badge {{ item.badge }}
-					//- v-btn(icon)
-					//- 	v-icon(color="grey lighten-1") mdi-information
 	//- Data(:headers="headers" :items="notifications")
 
 </template>
