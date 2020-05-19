@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Dash from '../views/Dash.vue'
 import Vuetest from '../components/Vuetest.vue'
 import Notifications from '../components/Notifications.vue'
 import Errorlist from '../components/Errorlist.vue'
@@ -10,8 +10,8 @@ Vue.use(VueRouter)
 const routes = [
 	{
 		path: '/',
-		name: 'home',
-		component: Home,
+		name: 'dash',
+		component: Dash,
 		meta: {
 			breadcrumbs: [
 				{text: 'Главная', href: '/', disabled: true},

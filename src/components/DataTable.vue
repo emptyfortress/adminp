@@ -1,6 +1,6 @@
 <template lang="pug">
 .table
-	v-data-table(:headers="headers" :items="items").tabs
+	v-data-table(:headers="headers" :items="items" disable-pagination).tabs
 </template>
 
 <script>

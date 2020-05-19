@@ -1,46 +1,36 @@
 <template lang="pug">
 .dash
-	v-btn(icon)
-		v-icon mdi-tune
-	v-btn(icon)
-		v-icon mdi-pencil
-	grid-layout(:layout.sync="selected" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="true" :margin="[10, 10]" :use-css-transforms="true" )
-		grid-item( v-for="item in notifications/errorlistlected" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" @resized="resizedEvent" ).item
-			Widget(:item="item" :close="closeWidget" @remove="removeWidget")
+	grid-layout(:layout.sync="firstWidgets" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="false" :margin="[10, 10]" :use-css-transforms="true" )
+		grid-item( v-for="item in firstWidgets" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" @resized="resizedEvent" ).item
+			v-card.cardd
+				.tit(@click="$router.push(item.url)") {{ item.text }}
+				.badge(v-if="item.badge") {{ item.badge }}
+				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").close
+					v-icon(x-small) mdi-close
+
+
 </template>
 
 <script>
 import VueGridLayout from 'vue-grid-layout'
-import AddPanel from '@/components/AddPanel'
-import Widget from '@/components/Widget'
 
 export default {
-	data() {
+	data () {
 		return {
 			drag: false,
 			resize: false,
 			closeWidget: false,
-			tabs: 0,
-			panels: [
-				{ name: 'Моя панель' },
+			firstWidgets: [
+				{ id: 0, url: '/notifications/errorlist', badge: 5, 'x': 1, 'y': 0, 'w': 4, 'h': 4, 'i': '0', selected: true, text: 'Widget' },
+				{ id: 0, url: '/notifications/errorlist', badge: 9, 'x': 5, 'y': 0, 'w': 4, 'h': 4, 'i': '0', selected: true, text: 'Widget' },
 			],
-			panelItems: [],
 		}
 	},
 	computed: {
-		selected() {
-			return this.widget1
-				.filter((item) => item.selected === true)
-		},
-		widget1() {
-			return this.$store.getters.widget1
-		},
 	},
 	components: {
 		GridLayout: VueGridLayout.GridLayout,
 		GridItem: VueGridLayout.GridItem,
-		AddPanel,
-		Widget,
 	},
 	mounted() {
 		window.addEventListener('keydown', this.setOn)
@@ -81,20 +71,6 @@ export default {
 			})
 			this.$store.commit('updateWidget1', temp)
 		},
-		createPanel(e) {
-			this.panels.push({
-				name: e,
-			})
-			this.tabs = this.panels.length
-			this.panelItems.push({
-				name: e,
-			})
-		},
-		delPanel(e) {
-			const t = e + 1
-			this.panels.splice(t, 1)
-			this.panelItems.splice(e, 1)
-		},
 		resizedEvent(i, newH, newW, newHPx, newWPx) {
 			console.log(`RESIZED i=${i}, H=${newH}, W=${newW}, H(px)=${newHPx}, W(px)=${newWPx}`)
 		},
@@ -102,24 +78,43 @@ export default {
 }
 
 </script>
-
 <style scoped lang="scss">
 @import '@/assets/css/colors.scss';
-@import '@/assets/css/palette.scss';
+
 
 .dash {
 	padding: 2rem;
+	padding-top: 0;
+	/* background: #ccc; */
 }
-.vue-grid-item {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.v-tabs-items {
+.cardd {
+	width: 100%;
+	height: 100%;
+	border-radius: .4rem;
 	padding: 1rem;
+	position: relative;
+	overflow: hidden;
 }
-.theme--dark.v-tabs-items {
-	background: transparent;
+.badge {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	background: $link;
+	padding: .2rem .5rem;
+	color: #fff;
+	border-radius: 3rem;
 }
-
+.close {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}
+.tit {
+	cursor: pointer;
+	font-size: 1.1rem;
+	&:hover {
+		text-decoration: underline;
+		
+	}
+}
 </style>
