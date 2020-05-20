@@ -21,12 +21,17 @@
 			tr(v-for="item in items").ro
 				td
 					v-checkbox.check
-				//- td {{ item.number }}
 				td {{ item.date }}
 				td {{ item.level }}
 				td {{ item.module }}
 				td error: Your local changes to the following files would be overwritten by checkout
-				td {{ item.settle }}
+				td 
+					span {{ item.settle }}
+					span.action
+						i.icon-star-empty
+						i.icon-check
+						i.icon-trash-line
+
 </template>
 
 <script>
@@ -58,6 +63,10 @@ export default {
 	}
 	.ro:hover {
 		background: #3a3a3a;
+	}
+	td {
+		border-bottom: 1px solid #666;
+		color: #ccc;
 	}
 }
 
@@ -96,9 +105,11 @@ export default {
 	}
 	.ro {
 		height: 3rem;
+		position: relative;
 	}
 	td {
 		padding: 0 1rem;
+		position: relative;
 	}
 }
 .check {
@@ -118,7 +129,7 @@ export default {
 	height: 100%;
 	text-align: right;
 	margin-right: 0.5rem;
-	background: rgba(255, 255, 255, 0.6);
+	background: #eee;
 	line-height: 41px;
 	i {
 		margin-right: 4px;
@@ -127,6 +138,26 @@ export default {
 			color: black;
 		}
 	}
+}
+span.action {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	right: 0px;
+	top: 0;
+	background: #eee;
+	text-align: right;
+	padding-right: 1rem;
+	line-height: 45px;
+	font-size: 1.2rem;
+	cursor: pointer;
+	i {
+		margin-left: .5rem;
+	}
+}
+tr:hover span.action {
+	display: block;
 }
 
 </style>
