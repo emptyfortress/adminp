@@ -33,7 +33,7 @@ v-app
 				v-icon mdi-plus
 
 		v-alert(v-show="scroll" transition="scale-transition").up
-			v-btn(fab color="white" @click="$vuetify.goTo(0)")
+			v-btn(fab @click="$vuetify.goTo(0)")
 				v-icon(dark) mdi-arrow-up
 	template(v-else)
 		Login
@@ -220,6 +220,12 @@ export default {
 }
 .theme--dark.fab.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
 	background: $link;
+}
+.up .theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+	background: #cecece;
+}
+.up .theme--dark.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+	background: #666;
 }
 .theme--light.fab.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
 	background: $blue-grey;
