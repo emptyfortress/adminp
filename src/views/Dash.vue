@@ -22,7 +22,7 @@ export default {
 			closeWidget: false,
 			firstWidgets: [
 				{ id: 0, url: '/notifications/errorlist', badge: 5, 'x': 1, 'y': 0, 'w': 4, 'h': 4, 'i': '0', selected: true, text: 'Widget' },
-				{ id: 0, url: '/notifications/errorlist', badge: 9, 'x': 5, 'y': 0, 'w': 4, 'h': 4, 'i': '0', selected: true, text: 'Widget' },
+				{ id: 1, url: '/notifications/errorlist', badge: 9, 'x': 5, 'y': 0, 'w': 4, 'h': 4, 'i': '1', selected: true, text: 'Widget' },
 			],
 		}
 	},

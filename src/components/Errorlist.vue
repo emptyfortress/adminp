@@ -1,6 +1,6 @@
 <template lang="pug">
 .pa-5
-	.zag.mb-5 Ошибки
+	.zag Ошибки
 	Datatable(:headers="headers" :items="notifications")
 
 </template>

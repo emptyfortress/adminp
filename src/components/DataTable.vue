@@ -1,6 +1,9 @@
 <template lang="pug">
 .table
 	//- Toolbar( :current="current" :group="group" @groupped="setGroup")
+	v-row(justify="end")
+		v-col(cols="12" sm="3")
+			v-text-field(v-model="filter" label="Фильтр" prepend-inner-icon="mdi-filter-outline" clearable single-line)
 	table.tabs
 		thead
 			tr
@@ -13,12 +16,19 @@
 					span {{ header.text }}
 					.over(v-show="showByIndex === index")
 						v-icon(@click="sortByIndex = index") mdi-arrow-down
-						v-icon(v-show="smallFilter === index" @click="smallFilter = null" color="#8B0000") mdi-filter-remove-outline
-						v-icon(@click="filterByIndex = index") mdi-filter-outline
-						v-icon(@click="filterByIndex = null") mdi-pin-outline
-						v-icon(@click="filterByIndex = null") mdi-eye-off
+						//- v-icon(v-show="smallFilter === index" @click="smallFilter = null" color="#8B0000") mdi-filter-remove-outline
+						v-icon(@click="setFilter(index)") mdi-filter-outline
+						//- v-icon(@click="filterByIndex = null") mdi-pin-outline
+						//- v-icon(@click="filterByIndex = null") mdi-eye-off
+					v-slide-y-transition
+						v-card.quick.elevation-3(v-show="filterByIndex === index")
+							v-text-field(autofocus clearable :key="index" v-model="colfilter[index]")
+							//- v-card-actions
+							//- 	v-btn(text color="primary" @click="filterByIndex = null; smallFilter = null") Отмена
+							//- 	v-spacer
+							//- 	v-btn(text color="primary" @click="filterByIndex = null; smallFilter = index") Применить
 		tbody
-			tr(v-for="item in items").ro
+			tr(v-for="item in filteredItems").ro
 				td
 					v-checkbox.check
 				td {{ item.date }}
@@ -31,6 +41,10 @@
 						i.icon-star-empty
 						i.icon-check
 						i.icon-trash-line
+			tr(v-show="filteredItems.length === 0")
+				td(colspan="6")
+					v-img(src="@/assets/img/nothing.svg" width="130").mx-auto.my-3
+					p.text-center.blue-grey--text Ничего не найдено
 
 </template>
 
@@ -42,10 +56,36 @@ export default {
 	data() {
 		return {
 			showByIndex: null,
+			smallFilter: null,
+			filterByIndex: null,
+			all: this.items,
+			colfilter: [],
+			filter: '',
 		}
 	},
-	components: {
-		// Toolbar,
+	computed: {
+		filteredItems () {
+			let result = this.items
+			if (!this.filter) {
+				return result
+			} else {
+				const filterValue = this.filter.toLowerCase()
+				const filt = function (item) {
+					return item.level.toLowerCase().includes(filterValue) ||
+						item.module.toLowerCase().includes(filterValue) ||
+						item.date.toLowerCase().includes(filterValue) ||
+						item.descr.toLowerCase().includes(filterValue)
+				}
+				return result.filter(filt)
+			}
+		},
+	},
+	methods: {
+		setFilter (e) {
+			if (!this.filterByIndex) {
+				this.filterByIndex = e
+			} else this.filterByIndex = null
+		},
 	},
 }
 
@@ -158,6 +198,15 @@ span.action {
 }
 tr:hover span.action {
 	display: block;
+}
+.quick {
+	position: absolute;
+	top: 40px;
+	left: 0;
+	width: 100%;
+	min-width: 200px;
+	max-width: 400px;
+	padding: 0 1rem;
 }
 
 </style>
