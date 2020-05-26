@@ -30,6 +30,7 @@ v-app
 				//- 	v-btn(fab outlined color="#ccc" small  @click="forward").forward
 				//- 		v-icon(color="#aaa") mdi-arrow-right
 
+			Breadcrumbs
 			transition(name="slide-fade" mode="out-in")
 				div(v-if="!searchMode" key="start")
 						v-slide-x-transition(mode="out-in")
@@ -55,6 +56,7 @@ import AddDrawer from './components/AddDrawer'
 import Footer from './components/Footer'
 import Countdown from './components/Countdown'
 import SearchPanel from './components/SearchPanel'
+import Breadcrumbs from './components/Breadcrumbs'
 import Login from './views/Login'
 import './assets/css/palette.scss'
 
@@ -67,6 +69,7 @@ export default {
 		SearchPanel,
 		Login,
 		Countdown,
+		Breadcrumbs,
 	},
 	data: (vm) => ({
 		initialDark: vm.$vuetify
