@@ -17,11 +17,23 @@ const routes = [
 		path: '/servers',
 		name: 'servers',
 		component: Servers,
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Сервера', href: '/servers', disabled: true },
+			],
+		},
 	},
 	{
 		path: '/notifications',
 		name: 'notifications',
 		component: Notifications,
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Уведомления', href: '/notifications', disabled: true },
+			],
+		},
 	},
 	{
 		path: '/vuetest',
