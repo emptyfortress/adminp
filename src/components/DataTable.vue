@@ -63,6 +63,9 @@ export default {
 			filter: '',
 		}
 	},
+	mounted () {
+		this.colfilter.length = this.headers.length
+	},
 	computed: {
 		filteredItems () {
 			let result = this.items

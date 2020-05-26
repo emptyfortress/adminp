@@ -4,9 +4,13 @@
 		grid-item( v-for="item in firstWidgets" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" @resized="resizedEvent" ).item
 			v-card.cardd
 				.tit(@click="$router.push(item.url)") {{ item.text }}
-				.badge(v-if="item.badge") {{ item.badge }}
+				//- .badge(v-if="item.badge") {{ item.badge }}
+				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").reload
+					v-icon(small) mdi-reload
+				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").setup
+					v-icon(small) mdi-nut
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").close
-					v-icon(x-small) mdi-close
+					v-icon(small) mdi-close
 
 
 </template>
@@ -22,7 +26,7 @@ export default {
 			closeWidget: false,
 			firstWidgets: [
 				{ id: 0, url: '/notifications/errorlist', badge: 5, 'x': 1, 'y': 0, 'w': 4, 'h': 4, 'i': '0', selected: true, text: 'Widget' },
-				{ id: 1, url: '/notifications/errorlist', badge: 9, 'x': 5, 'y': 0, 'w': 4, 'h': 4, 'i': '1', selected: true, text: 'Widget' },
+				{ id: 1, url: '/notifications/errorlist', badge: 9, 'x': 5, 'y': 0, 'w': 4, 'h': 4, 'i': '0', selected: true, text: 'Widget' },
 			],
 		}
 	},
@@ -97,7 +101,7 @@ export default {
 }
 .badge {
 	position: absolute;
-	right: 1rem;
+	left: 1rem;
 	top: 1rem;
 	background: $link;
 	padding: .2rem .5rem;
@@ -116,5 +120,15 @@ export default {
 		text-decoration: underline;
 		
 	}
+}
+.reload {
+	position: absolute;
+	top: -5px;
+	right: 2.5rem;
+}
+.setup {
+	position: absolute;
+	top: -5px;
+	right: 1rem;
 }
 </style>
