@@ -1,12 +1,12 @@
 <template lang="pug">
 .pa-5
 	.zag Ошибки
-	Datatable(:headers="headers" :items="notifications")
+	DataTable(:headers="headers" :items="notifications")
 
 </template>
 
 <script>
-import Datatable from '@/components/Datatable'
+import DataTable from '@/components/DataTable'
 import {headers, notifications} from '@/notifications.js'
 
 export default {
@@ -17,7 +17,7 @@ export default {
 		}
 	},
 	components: {
-		Datatable,
+		DataTable,
 	},
 }
 

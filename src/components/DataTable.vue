@@ -35,7 +35,7 @@
 				td {{ item.level }}
 				td {{ item.module }}
 				td error: Your local changes to the following files would be overwritten by checkout
-				td 
+				td
 					span {{ item.settle }}
 					span.action
 						i.icon-star-empty
@@ -184,7 +184,7 @@ export default {
 }
 span.action {
 	display: none;
-	width: 100%;
+	width: 150px;
 	height: 100%;
 	position: absolute;
 	right: 0px;
