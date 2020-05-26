@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Vuetest from '../components/Vuetest.vue'
 import Notifications from '../components/Notifications.vue'
+import Servers from '../components/Servers.vue'
 
 Vue.use(VueRouter)
 
@@ -13,10 +14,14 @@ const routes = [
 		component: Home,
 	},
 	{
+		path: '/servers',
+		name: 'servers',
+		component: Servers,
+	},
+	{
 		path: '/notifications',
 		name: 'notifications',
 		component: Notifications,
-
 	},
 	{
 		path: '/vuetest',
