@@ -6,10 +6,10 @@
 			v-card(outlined)
 				v-list-item-group(v-model="item")
 					v-list(three-line)
-						template(v-for="(item, index) in errors")
+						template(v-for="item in errors")
 							v-subheader(v-if="item.header" :key="item.header" v-text="item.header").overline
 							v-divider(v-else-if="item.divider" :key="index" :inset="item.inset")
-							v-list-item(v-else :key="item.title")
+							v-list-item(v-else :key="item.title" @click="setError(item.id)")
 								v-list-item-avatar
 									v-icon {{ item.icon }}
 								v-list-item-content
@@ -29,7 +29,7 @@
 
 <script>
 import { dragZone, dragHandle, dragContent } from 'vue-drag-zone'
-import { hue1 } from '@/components/sample.js'
+import { hue1, hue3, sample, sample2, sample3 } from '@/components/sample.js'
 
 export default {
 	data () {
@@ -39,41 +39,62 @@ export default {
 			errors: [
 				{ header: 'Сегодня' },
 				{
+					id: 0,
 					icon: 'mdi-alert',
-					title: 'Brunch this weekend?',
-					subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
+					title: 'Ошибка 1',
+					subtitle: "<span class='text--primary'>14:05</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
 				},
 				{ divider: true, inset: false },
 				{
+					id: 1,
 					icon: 'mdi-alert-octagon',
-					title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-					subtitle: "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.",
+					title: 'Ошибка 2',
+					subtitle: "<span class='text--primary'>13:11</span> &mdash; Wish I could come, but I'm out of town this weekend.",
 				},
 				{ divider: true, inset: false },
 				{
+					id: 2,
 					icon: 'mdi-alien-outline',
-					title: 'Oui oui',
-					subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?",
+					title: 'Ошибка 3',
+					subtitle: "<span class='text--primary'>13:03</span> &mdash; Do you have Paris recommendations? Have you ever been?",
 				},
 				{ divider: true, inset: false },
 				{
+					id: 3,
 					icon: 'mdi-hand-left',
 					title: 'Birthday gift',
-					subtitle: "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",
+					subtitle: "<span class='text--primary'>12:47</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",
 				},
 				{ divider: true, inset: false },
 				{
+					id: 4,
 					icon: 'mdi-alert-octagon',
-					title: 'Recipe to try',
-					subtitle: "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
+					title: 'Ошибка 4',
+					subtitle: "<span class='text--primary'>11:54</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
 				},
 			],
 		}
 	},
 	components: {
-		dragZone, 
-		dragHandle, 
+		dragZone,
+		dragHandle,
 		dragContent,
+	},
+	methods: {
+		setError (e) {
+			switch (e) {
+			case 0:
+				return this.items = hue1.nodes
+			case 1:
+				return this.items = sample2.nodes
+			case 2:
+				return this.items = hue3.nodes
+			case 3:
+				return this.items = sample3.nodes
+			default:
+				return this.items = sample.nodes
+			}
+		},
 	},
 }
 
@@ -104,14 +125,14 @@ export default {
 	overflow: hidden;
 }
 .one {
-	width: 20%;
+	width: 30%;
 	padding: 1rem;
 }
 .two {
-	width: 40%;
+	width: 50%;
 }
 .three {
-	width: 30%;
+	width: 20%;
 }
 .problems {
 	height: calc(100vh - 205px);

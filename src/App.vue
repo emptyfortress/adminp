@@ -40,7 +40,7 @@ v-app
 		Footer
 		Dialog
 		v-alert(transition="scale-transition").plus
-			v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
+			v-btn(v-show="$route.name === 'home'" fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
 				v-icon mdi-plus
 
 		v-alert(v-show="scroll" transition="scale-transition").up

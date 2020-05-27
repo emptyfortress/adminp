@@ -102,7 +102,7 @@ const hue2 = {
 		{ name: "Family In", hint: '2m23s', status: 'failure', next: [7] },
 		{ name: "Education Info", hint: '2m23s', status: 'success', next: [7] },
 		{ name: "Degree Info", hint: '2m23s', status: 'paused', next: [8] },
-		{ name: "End", hint: '2m23s', status: 'failure' },
+		{ name: "End", hint: '2m23s', status: 'failure', next: [] },
 	],
 }
 
@@ -123,12 +123,12 @@ const sample = {
 		{ name: "test8 2344", hint: '2m23s', status: 'paused', next: [{ index: 14 }, { index: 15 }] },//8
 		{ name: "test9", hint: '2m23s', status: 'failure', next: [{ index: 16 }] },
 		{ name: "test10", hint: '2m23s', status: 'failure', next: [{ index: 11 }] }, //10
-		{ name: "test11", hint: '2m23s', status: 'failure' },
-		{ name: "test12", hint: '2m23s', status: 'failure' },
-		{ name: "test13", hint: '2m23s', status: 'failure' },
-		{ name: "test14", hint: '2m23s', status: 'failure' },
-		{ name: "test15", hint: '2m23s', status: 'failure' },
-		{ name: "test16", hint: '2m23s', status: 'failure' },
+		{ name: "test11", hint: '2m23s', status: 'failure', next: [] },
+		{ name: "test12", hint: '2m23s', status: 'failure', next: [] },
+		{ name: "test13", hint: '2m23s', status: 'failure', next: [] },
+		{ name: "test14", hint: '2m23s', status: 'failure', next: [] },
+		{ name: "test15", hint: '2m23s', status: 'failure', next: [] },
+		{ name: "test16", hint: '2m23s', status: 'failure', next: [] },
 	],
 }
 
