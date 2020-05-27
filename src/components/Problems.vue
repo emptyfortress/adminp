@@ -3,7 +3,8 @@
 	.zag Проблемы
 	drag-zone.zone.pa-5
 		drag-content.content.one
-			v-card(outlined)
+			.sub Список
+			v-card(outlined).li
 				v-list-item-group(v-model="item")
 					v-list(three-line)
 						template(v-for="item in errors")
@@ -19,12 +20,21 @@
 		drag-handle.handle
 			div
 		drag-content.content.two
-			vue-pipeline(:data="items").pipe
+			.sub Локализация
+			vue-pipeline(:data="items" @select="handleSelect").pipe
 		drag-handle.handle
 			div
 		drag-content.content.three
-			v-card
-				p laksjdla laskjd laksjd lakjs lk
+			.sub Информация
+			v-card.pa-5.mx-3
+				v-icon mdi-information
+				br
+				h3 {{ msg }}
+				br
+				.body-2 Здесь будет информация по выбранному узлу.
+				.body-2 Здесь будет информация по выбранному узлу.
+				.body-2 Здесь будет информация по выбранному узлу.
+				.body-2 Здесь будет информация по выбранному узлу.
 </template>
 
 <script>
@@ -36,6 +46,7 @@ export default {
 		return {
 			items: hue1.nodes,
 			item: 0,
+			msg: 'Выберите узел',
 			errors: [
 				{ header: 'Сегодня' },
 				{
@@ -62,14 +73,14 @@ export default {
 				{
 					id: 3,
 					icon: 'mdi-hand-left',
-					title: 'Birthday gift',
+					title: 'Ошибка 4',
 					subtitle: "<span class='text--primary'>12:47</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",
 				},
 				{ divider: true, inset: false },
 				{
 					id: 4,
 					icon: 'mdi-alert-octagon',
-					title: 'Ошибка 4',
+					title: 'Ошибка 5',
 					subtitle: "<span class='text--primary'>11:54</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
 				},
 			],
@@ -94,6 +105,9 @@ export default {
 			default:
 				return this.items = sample.nodes
 			}
+		},
+		handleSelect(node) {
+			this.msg = `{ ${node.name} }`
 		},
 	},
 }
@@ -126,7 +140,6 @@ export default {
 }
 .one {
 	width: 30%;
-	padding: 1rem;
 }
 .two {
 	width: 50%;
@@ -139,5 +152,12 @@ export default {
 }
 .v-list-item-group .v-list-item--active {
 	color: red;
+}
+.sub {
+	/* margin-bottom: 1rem; */
+	font-size: .95rem;
+	font-weight: 600;
+	padding: 5px 15px;
+	padding-left: 0;
 }
 </style>
