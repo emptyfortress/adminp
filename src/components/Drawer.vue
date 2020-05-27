@@ -26,11 +26,11 @@ export default {
 			},
 			menu: [
 				{ url: '/', icon: 'mdi-monitor-dashboard', text: 'Dashboard' },
+				{ url: '/problems', icon: 'mdi-alert', text: 'Проблемы' },
 				{ url: '/servers', icon: 'mdi-server-network', text: 'Серверы' },
 				{ url: '/setup', icon: 'mdi-hammer-wrench', text: 'Настройка' },
 				{ url: '/new', icon: 'mdi-cloud-download-outline', text: 'Обновления' },
 				{ url: '/backup', icon: 'mdi-database-check', text: 'Бэкап' },
-				{ url: '/problems', icon: 'mdi-alert', text: 'Проблемы' },
 				{ url: '/logs', icon: 'mdi-script-text-outline', text: 'Логи' },
 			],
 		}

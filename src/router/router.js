@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Vuetest from '../components/Vuetest.vue'
 import Notifications from '../components/Notifications.vue'
 import Servers from '../components/Servers.vue'
+import Problems from '../components/Problems.vue'
 
 Vue.use(VueRouter)
 
@@ -12,6 +13,17 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: Home,
+	},
+	{
+		path: '/problems',
+		name: 'problems',
+		component: Problems,
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Проблемы', href: '/problems', disabled: true },
+			],
+		},
 	},
 	{
 		path: '/servers',

@@ -34,12 +34,12 @@ const hue1 = {
 			],
 		},
 		{
-			name: "Ammouncement Import", hint: '1m23s', status: 'success', next: [
+			name: "Инициатор", hint: '1m23s', status: 'success', next: [
 				{ index: 2, weight: 2 },
 			],
 		},
 		{
-			name: "Employee ID to Onboarding", hint: '2m23s', status: 'success', next: [
+			name: "Автор документа", hint: '2m23s', status: 'success', next: [
 				{ index: 3, weight: 2 },
 				{ index: 4, weight: 2 },
 				{ index: 5, weight: 2 },
@@ -50,37 +50,37 @@ const hue1 = {
 			],
 		},
 		{
-			name: "Personal Basic Info", hint: '2m23s', status: 'unstable', next: [
+			name: "Бухгалтерия", hint: '2m23s', status: 'unstable', next: [
 				{ index: 10, weight: 2 },
 			],
 		},
 		{
-			name: "地址信息", hint: '2m23s', status: 'success', next: [
+			name: "Юристы", hint: '2m23s', status: 'success', next: [
 				{ index: 10, weight: 0 },
 			],
 		},
 		{
-			name: "Family Info", hint: '2m23s', status: 'failure', next: [
+			name: "Производство", hint: '2m23s', status: 'failure', next: [
 				{ index: 10, weight: 0 },
 			],
 		},
 		{
-			name: "Education Info", hint: '2m23s', status: 'running', next: [
+			name: "Кадры", hint: '2m23s', status: 'running', next: [
 				{ index: 10, weight: 0 },
 			],
 		},
 		{
-			name: "Degree Info", hint: '2m23s', status: 'failure', next: [
+			name: "Руководство", hint: '2m23s', status: 'failure', next: [
 				{ index: 10, weight: 0 },
 			],
 		},
 		{
-			name: "Career Info", hint: '2m23s', status: 'failure', next: [
+			name: "Контрагенты", hint: '2m23s', status: 'failure', next: [
 				{ index: 10, weight: 0 },
 			],
 		},
 		{
-			name: "Qualification Info", hint: '2m23s', status: 'failure', next: [
+			name: "Отдел продаж", hint: '2m23s', status: 'failure', next: [
 				{ index: 10, weight: 0 },
 			],
 		},

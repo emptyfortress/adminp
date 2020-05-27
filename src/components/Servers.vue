@@ -2,7 +2,7 @@
 .servers
 	.zag Servers
 	div
-		vue-pipeline(:data="items")
+		//- vue-pipeline(:data="items")
 </template>
 
 <script>
