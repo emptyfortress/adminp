@@ -6,12 +6,12 @@
 </template>
 
 <script>
-// import { hue1 } from 'sample.js'
+import { hue1 } from '@/components/sample.js'
 
 export default {
 	data () {
 		return {
-			// items: hue,
+			items: hue1.nodes,
 		}
 	},
 	components: {
@@ -19,3 +19,8 @@ export default {
 }
 
 </script>
+
+<style scoped lang="scss">
+@import '@/assets/css/colors.scss';
+
+</style>
