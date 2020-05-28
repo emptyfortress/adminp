@@ -4,26 +4,14 @@ v-card.cardd
 	.hd(v-if="item.text.length") {{ item.text }}
 	.hd(v-else) Widget {{ item.i }}
 	.badge(v-if="item.badge") {{ item.badge }}
-	//- v-btn(text small @click="goTo(item)") go
 	template
-		//- .smal(v-if="item.h >= 3")
 		.smal(v-show="item.h >= 3 && item.h <= 5")
 			v-sheet(color="rgba(0,0,0,.12)").mt-5
 				v-sparkline(:value="value" color="#fff" height="100" padding="24" auto-draw)
 					template( v-slot:label="item" ) ${{ item.value }}
 			.font-weight-thin Инциденты за неделю
-		.middl(v-show="item.h > 5 && item.h < 8")
-			i.icon-coolma
-			span.ml-8 cool
-		//- .larg(v-show="item.h > 5")
-		//- 	i.icon-foo
-		//- 	span.display-1(v-show="item.h >=6 && item.w > 2") fun
-		//- 	ul
-		//- 		li(v-for="n in 30")
-		//- 			vac( :start-time="new Date().getTime()" :end-time="new Date().getTime() + 400000000" )
-		//- 				template( v-slot:process="{ timeObj }" )
-		//- 					span {{ `${timeObj.s}` * n + 138}}
-		//- 					span.ml-3 server uptime
+		.middl(v-show="item.h > 5 && item.id !== 5").pt-5
+			apexchart(width="100%" type="bar" :options="chartOptions" :series="series")
 	template(v-if="item.id === 5")
 		br
 		Scroll
@@ -34,6 +22,7 @@ v-card.cardd
 
 <script>
 import Scroll from '@/components/Scroll'
+import VueApexCharts from 'vue-apexcharts'
 
 export default {
 	props: ['item', 'close'],
@@ -48,6 +37,18 @@ export default {
 				610,
 				760,
 			],
+			chartOptions: {
+				chart: {
+					id: 'vuechart-example',
+				},
+				xaxis: {
+					categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+				},
+			},
+			series: [{
+				name: 'series-1',
+				data: [30, 40, 35, 50, 49, 60, 70, 91],
+			}],
 		}
 	},
 	methods: {
@@ -60,6 +61,7 @@ export default {
 	},
 	components: {
 		Scroll,
+		apexchart: VueApexCharts,
 	},
 }
 
