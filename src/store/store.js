@@ -14,7 +14,7 @@ export default new Vuex.Store({
 			{ id: 2, smart: true, url: '/', badge: 10, 'x': 4, 'y': 0, 'w': 2, 'h': 2, 'i': '2', selected: true, text: 'Подключения' },
 			{ id: 3, smart: true, url: '/', badge: null, 'x': 6, 'y': 0, 'w': 2, 'h': 2, 'i': '3', selected: true, text: 'Обновления' },
 			{ id: 4, smart: true, url: '/', badge: 4, 'x': 8, 'y': 0, 'w': 2, 'h': 2, 'i': '4', selected: true, text: 'Процессы' },
-			{ id: 5, smart: true, url: '/', badge: 25, 'x': 10, 'y': 0, 'w': 2, 'h': 2, 'i': '5', selected: true, text: 'Уведомления' },
+			{ id: 5, smart: false, url: '/', badge: null, 'x': 10, 'y': 0, 'w': 2, 'h': 8, 'i': '5', selected: true, text: 'Уведомления' },
 
 			{ id: 6, 'x': 0, 'y': 2, 'w': 2, 'h': 2, 'i': '6', selected: false, text: '' },
 			{ id: 7, 'x': 2, 'y': 2, 'w': 2, 'h': 2, 'i': '7', selected: false, text: '' },

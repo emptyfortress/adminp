@@ -17,6 +17,7 @@
     "vue-drag-drop": "^1.1.4",
     "vue-drag-zone": "^2.0.0-rc1",
     "vue-draggable-resizable": "^2.1.0",
+    "vue-dynamic-marquee": "^0.1.6",
     "vue-grid-layout": "^2.3.7",
     "vue-moment": "^4.1.0",
     "vue-pipeline": "^1.0.8",

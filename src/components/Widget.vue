@@ -5,33 +5,49 @@ v-card.cardd
 	.hd(v-else) Widget {{ item.i }}
 	.badge(v-if="item.badge") {{ item.badge }}
 	//- v-btn(text small @click="goTo(item)") go
-	template(v-if="item.smart")
-		.smal(v-show="item.h >= 3 && item.h < 5")
-			i.icon-lookma
-			span look ma!
-		.middl(v-show="item.h >= 5 && item.h < 6")
+	template
+		//- .smal(v-if="item.h >= 3")
+		.smal(v-show="item.h >= 3 && item.h <= 5")
+			v-sheet(color="rgba(0,0,0,.12)").mt-5
+				v-sparkline(:value="value" color="#fff" height="100" padding="24" auto-draw)
+					template( v-slot:label="item" ) ${{ item.value }}
+			.font-weight-thin Инциденты за неделю
+		.middl(v-show="item.h > 5 && item.h < 8")
 			i.icon-coolma
 			span.ml-8 cool
-		.larg(v-show="item.h > 5")
-			i.icon-foo
-			span.display-1(v-show="item.h >=6 && item.w > 2") fun
-			ul
-				li(v-for="n in 30")
-					vac( :start-time="new Date().getTime()" :end-time="new Date().getTime() + 400000000" )
-						template( v-slot:process="{ timeObj }" )
-							span {{ `${timeObj.s}` * n + 138}}
-							span.ml-3 server uptime
+		//- .larg(v-show="item.h > 5")
+		//- 	i.icon-foo
+		//- 	span.display-1(v-show="item.h >=6 && item.w > 2") fun
+		//- 	ul
+		//- 		li(v-for="n in 30")
+		//- 			vac( :start-time="new Date().getTime()" :end-time="new Date().getTime() + 400000000" )
+		//- 				template( v-slot:process="{ timeObj }" )
+		//- 					span {{ `${timeObj.s}` * n + 138}}
+		//- 					span.ml-3 server uptime
+	template(v-if="item.id === 5")
+		br
+		Scroll
 	v-btn(icon small v-show="close" @click="remove(item.id)").close
 		v-icon(x-small) mdi-close
 	.test
 </template>
 
 <script>
+import Scroll from '@/components/Scroll'
 
 export default {
 	props: ['item', 'close'],
 	data() {
 		return {
+			value: [
+				423,
+				446,
+				675,
+				510,
+				590,
+				610,
+				760,
+			],
 		}
 	},
 	methods: {
@@ -41,6 +57,9 @@ export default {
 		goTo(e) {
 			this.$router.push(e.url)
 		},
+	},
+	components: {
+		Scroll,
 	},
 }
 
