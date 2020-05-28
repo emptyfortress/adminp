@@ -13,6 +13,11 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: Home,
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: true },
+			],
+		},
 	},
 	{
 		path: '/problems',
