@@ -9,7 +9,7 @@
 					v-list(three-line)
 						template(v-for="item in errors")
 							v-subheader(v-if="item.header" :key="item.header" v-text="item.header").overline
-							v-divider(v-else-if="item.divider" :key="index" :inset="item.inset")
+							v-divider(v-else-if="item.divider" :key="item.id" :inset="item.inset")
 							v-list-item(v-else :key="item.title" @click="setError(item.id)")
 								v-list-item-avatar
 									v-icon {{ item.icon }}
