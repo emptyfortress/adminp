@@ -5,6 +5,7 @@ import Vuetest from '../components/Vuetest.vue'
 import Notifications from '../components/Notifications.vue'
 import Servers from '../components/Servers.vue'
 import Problems from '../components/Problems.vue'
+import Logs from '../components/Logs.vue'
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,17 @@ const routes = [
 			breadcrumbs: [
 				{text: 'Главная', href: '/', disabled: false },
 				{text: 'Сервера', href: '/servers', disabled: true },
+			],
+		},
+	},
+	{
+		path: '/logs',
+		name: 'logs',
+		component: Logs,
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Логи', href: '/logs', disabled: true },
 			],
 		},
 	},

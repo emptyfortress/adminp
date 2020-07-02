@@ -1,7 +1,7 @@
 <template lang="pug">
 .myrow
 	video( autoplay loop playsinline muted ).vid
-		source(src="@/assets/img/autumn.mp4" type="video/mp4")
+		source(src="@/assets/img/rain.mp4" type="video/mp4")
 	.card.elevation-3
 		.logo
 			img(src="@/assets/img/user0.svg")
@@ -62,6 +62,7 @@ export default {
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
+		/* background: rgba(22,148,179,.42); */
 		background: rgba(0,0,0,.4);
 		padding: 0 2rem;
 		img {

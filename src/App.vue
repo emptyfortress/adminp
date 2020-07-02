@@ -13,7 +13,7 @@ v-app
 					input(placeholder="Найти" autofocus)
 			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
 				v-icon mdi-home-search-outline
-			Countdown(v-if="offsetTop").mr-3
+			//- Countdown(v-if="offsetTop").mr-3
 			v-btn( href="" icon  v-show="offsetTop")
 				v-icon mdi-bell-outline
 			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
@@ -54,7 +54,7 @@ v-app
 import Drawer from './components/Drawer'
 import AddDrawer from './components/AddDrawer'
 import Footer from './components/Footer'
-import Countdown from './components/Countdown'
+// import Countdown from './components/Countdown'
 import SearchPanel from './components/SearchPanel'
 import Breadcrumbs from './components/Breadcrumbs'
 import Login from './views/Login'
@@ -68,7 +68,7 @@ export default {
 		Footer,
 		SearchPanel,
 		Login,
-		Countdown,
+		// Countdown,
 		Breadcrumbs,
 	},
 	data: (vm) => ({
