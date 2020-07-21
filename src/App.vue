@@ -19,7 +19,7 @@ v-app
 			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
 				v-icon mdi-brightness-4
 			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple @click="logout")
-				img(src="@/assets/img/user0.svg" )
+				img(src="@/assets/img/user-profile.svg" )
 
 		v-content(v-scroll="handleScroll")
 			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
@@ -41,7 +41,7 @@ v-app
 		Dialog
 		v-alert(transition="scale-transition").plus
 			v-btn(v-show="$route.name === 'home'" fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
-				v-icon mdi-plus
+				v-icon(color="white") mdi-plus
 
 		v-alert(v-show="scroll" transition="scale-transition").up
 			v-btn(fab color="white" @click="$vuetify.goTo(0)")

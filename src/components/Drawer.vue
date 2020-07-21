@@ -4,22 +4,19 @@ v-navigation-drawer(v-model="drawer" clipped app :mini-variant.sync="mini" )
 		v-list-item(link @click="goTo(item.url)" v-for="item in menu" :key="item.text"
 			:class="path === item.url ? 'active' : ''")
 			v-list-item-icon
-				v-icon.big {{ item.icon }}
+				v-icon {{ item.icon }}
 			v-list-item-content
 				v-list-item-title {{ item.text }}
 
 	.mini(@click="toggleMini")
 		v-app-bar-nav-icon
-	icons
 </template>
 
 <script>
-import icons from '@/components/svg.vue'
 
 export default {
 	data() {
 		return {
-			color: '#2C4159',
 			size: {
 				width: 50,
 				height: 24,
@@ -64,7 +61,6 @@ export default {
 		},
 	},
 	components: {
-		icons,
 	},
 }
 
@@ -93,9 +89,6 @@ export default {
 .v-navigation-drawer--mini-variant .v-list-item > *:first-child {
 	margin-left: 0;
 	margin-right: 0;
-}
-.big {
-	font-size: 2.2rem;
 }
 .theme--light .active {
 	background: rgba(0,0,0,.1);
