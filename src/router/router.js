@@ -10,7 +10,7 @@ Vue.use(VueRouter)
 const routes = [
 	{
 		path: '/',
-		name: 'dash',
+		name: 'home',
 		component: Dash,
 		meta: {
 			breadcrumbs: [
