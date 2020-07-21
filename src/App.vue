@@ -19,8 +19,6 @@ v-app
 				v-icon mdi-brightness-4
 			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple @click="logout")
 				img(src="@/assets/img/user-profile.svg" )
-			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple @click="logout")
-				img(src="@/assets/img/user-profile.svg" )
 
 		v-content(v-scroll="handleScroll")
 			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
