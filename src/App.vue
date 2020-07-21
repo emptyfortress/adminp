@@ -234,5 +234,8 @@ export default {
 .theme--light.fab.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
 	background: $blue-grey;
 }
+.v-avatar {
+	cursor: pointer;
+}
 
 </style>
