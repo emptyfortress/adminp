@@ -23,7 +23,6 @@ v-card.cardd
 							span.ml-3 server uptime
 	v-btn(icon small v-show="close" @click="remove(item.id)").close
 		v-icon(x-small) mdi-close
-	.test
 </template>
 
 <script>
