@@ -1,7 +1,7 @@
 <template lang="pug">
 .myrow
 	video( autoplay loop playsinline muted ).vid
-		source(src="@/assets/img/autumn.mp4" type="video/mp4")
+		source(src="@/assets/img/brain.mp4" type="video/mp4")
 	.card.elevation-3
 		.logo
 			img(src="@/assets/img/user0.svg")
