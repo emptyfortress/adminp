@@ -1,5 +1,5 @@
 <template lang="pug">
-dynamic-marquee(repeatMargin="100" :speed="speed")
+dynamic-marquee(:speed="speed" :repeatMargin="margin")
 	.one(v-for="item in items" ) 
 		v-icon {{ item.icon }}
 		span.time {{ item.time }}
@@ -16,6 +16,7 @@ export default {
 				type: 'pps',
 				number: 50,
 			},
+			margin: 100,
 			items: [
 				{ time: '12:15', icon: 'mdi-bell-outline', text: 'Задача организации, в особенности же реализация намеченных плановых заданий'},
 				{ time: '10:46', icon: 'mdi-reload', text: 'позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач'},

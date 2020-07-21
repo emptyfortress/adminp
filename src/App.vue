@@ -75,7 +75,6 @@ export default {
 		offsetTop: true,
 		scroll: false,
 		logo: true,
-		isLogged: true,
 	}),
 	beforeDestroy() {
 		if (!this.$vuetify) return
