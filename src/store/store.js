@@ -31,13 +31,13 @@ export default new Vuex.Store({
 			{ id: 17, 'x': 10, 'y': 4, 'w': 2, 'h': 2, 'i': '17', selected: false, text: '' },
 
 			{ id: 18, 'x': 0, 'y': 5, 'w': 2, 'h': 2, 'i': '18', selected: false, text: '' },
-			{ id: 19, 'x': 2, 'y': 5, 'w': 2, 'h': 2, 'i': '19', selected: false, text: '' }
+			{ id: 19, 'x': 2, 'y': 5, 'w': 2, 'h': 2, 'i': '19', selected: false, text: '' },
 		],
 		mini: false,
 		selectMode: false,
 		searchMode: false,
 		dialog: false,
-		overlay: false
+		overlay: false,
 	},
 	getters: {
 		lo: state => { return state.lo },
@@ -54,7 +54,7 @@ export default new Vuex.Store({
 		file: state => { return state.file },
 		chat: state => { return state.chat },
 		widget1: state => { return state.widget1 },
-		widget2: state => { return state.widget2 }
+		widget2: state => { return state.widget2 },
 	},
 	mutations: {
 		toggleFullWindow (state) { state.fullWindow = !state.fullWindow },
@@ -72,8 +72,8 @@ export default new Vuex.Store({
 		setFile (state, payload) { state.file = payload },
 		setOverlay (state, payload) { state.overlay = payload },
 		toggleChat (state) { state.chat = !state.chat },
-		updateWidget1 (state, payload) { state.widget1 = payload }
+		updateWidget1 (state, payload) { state.widget1 = payload },
 	},
 	actions: {},
-	modules: {}
+	modules: {},
 })

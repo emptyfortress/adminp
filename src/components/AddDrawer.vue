@@ -21,7 +21,7 @@ v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide
 export default {
 	data () {
 		return {
-			order: 1
+			order: 1,
 		}
 	},
 	computed: {
@@ -29,7 +29,7 @@ export default {
 			get () {
 				return this.$store.getters.add
 			},
-			set () {}
+			set () {},
 		},
 		widget1 () {
 			return this.$store.getters.widget1
@@ -38,7 +38,7 @@ export default {
 			return this.widget1
 				.filter(item => item.selected === true)
 				.map(item => item.id)
-		}
+		},
 	},
 	components: {
 	},
@@ -54,8 +54,8 @@ export default {
 				}
 			})
 			this.$store.commit('updateWidget1', temp)
-		}
-	}
+		},
+	},
 }
 
 </script>

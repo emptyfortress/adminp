@@ -61,7 +61,7 @@ export default {
 		AddDrawer,
 		Footer,
 		SearchPanel,
-		Login
+		Login,
 	},
 	data: vm => ({
 		initialDark: vm.$vuetify
@@ -70,7 +70,7 @@ export default {
 		offsetTop: true,
 		scroll: false,
 		logo: true,
-		isLogged: true
+		isLogged: true,
 	}),
 	beforeDestroy () {
 		if (!this.$vuetify) return
@@ -81,7 +81,7 @@ export default {
 		drawer () { return this.$store.getters.drawer },
 		mini () { return this.$store.getters.mini },
 		searchMode () { return this.$store.getters.searchMode },
-		row () { return this.$router.params.id }
+		row () { return this.$router.params.id },
 		// pathback () {
 		// 	let a = this.$route.path.split('/')
 		// 	let last = a[a.length - 1]
@@ -149,8 +149,8 @@ export default {
 				this.scroll = false
 				this.logo = true
 			}
-		}
-	}
+		},
+	},
 }
 </script>
 

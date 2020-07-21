@@ -17,8 +17,8 @@ export default {
 		}
 	},
 	components: {
-		Scoped
-	}
+		Scoped,
+	},
 }
 
 </script>

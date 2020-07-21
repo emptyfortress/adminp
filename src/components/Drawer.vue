@@ -21,7 +21,7 @@ export default {
 			color: '#2C4159',
 			size: {
 				width: 50,
-				height: 24
+				height: 24,
 			},
 			menu: [
 				{ url: '/', icon: 'mdi-monitor-dashboard', text: 'Dashboard' },
@@ -29,8 +29,8 @@ export default {
 				{ url: '/new', icon: 'mdi-cloud-download-outline', text: 'Обновления' },
 				{ url: '/backup', icon: 'mdi-database-check', text: 'Бэкап' },
 				{ url: '/problems', icon: 'mdi-alert', text: 'Проблемы' },
-				{ url: '/logs', icon: 'mdi-script-text-outline', text: 'Логи' }
-			]
+				{ url: '/logs', icon: 'mdi-script-text-outline', text: 'Логи' },
+			],
 		}
 	},
 	methods: {
@@ -42,25 +42,25 @@ export default {
 			if (this.mini === true) {
 				this.$store.commit('setMini', false)
 			} else this.$store.commit('setMini', true)
-		}
+		},
 	},
 	computed: {
 		drawer: {
 			get () {
 				return this.$store.getters.drawer
 			},
-			set () {}
+			set () {},
 		},
 		mini: {
 			get () {
 				return this.$store.getters.mini
 			},
-			set () {}
-		}
+			set () {},
+		},
 	},
 	components: {
-		icons
-	}
+		icons,
+	},
 }
 
 </script>

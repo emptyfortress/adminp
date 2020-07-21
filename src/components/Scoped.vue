@@ -18,10 +18,10 @@ export default {
 				{ first: 'one', last: 'two' },
 				{ first: 'one', last: 'two' },
 				{ first: 'one', last: 'two' },
-				{ first: 'one', last: 'two' }
-			]
+				{ first: 'one', last: 'two' },
+			],
 		}
-	}
+	},
 }
 
 </script>

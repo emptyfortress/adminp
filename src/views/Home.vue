@@ -20,17 +20,17 @@ export default {
 	data () {
 		return {
 			drag: false,
-			resize: false
+			resize: false,
 		}
 	},
 	computed: {
 		widget1 () {
 			return this.$store.getters.widget1.filter((item) => item.selected === true)
-		}
+		},
 	},
 	components: {
 		GridLayout: VueGridLayout.GridLayout,
-		GridItem: VueGridLayout.GridItem
+		GridItem: VueGridLayout.GridItem,
 	},
 	mounted () {
 		window.addEventListener('keydown', this.setOn)
@@ -52,8 +52,8 @@ export default {
 				this.drag = false
 				this.resize = false
 			}
-		}
-	}
+		},
+	},
 }
 
 </script>

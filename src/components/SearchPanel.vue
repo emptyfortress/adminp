@@ -48,7 +48,7 @@ export default {
 	data () {
 		return {
 			advanced: false,
-			model: null
+			model: null,
 		}
 	},
 	methods: {
@@ -62,8 +62,8 @@ export default {
 				this.model = null
 				break
 			}
-		}
-	}
+		},
+	},
 }
 
 </script>
