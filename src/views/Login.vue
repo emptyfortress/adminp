@@ -62,7 +62,7 @@ export default {
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
-		background: rgba(82,154,162,.4);
+		background: rgba(0,0,0,.4);
 		padding: 0 2rem;
 		img {
 			vertical-align: bottom;
