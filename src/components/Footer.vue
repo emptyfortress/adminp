@@ -9,7 +9,7 @@ v-footer(app inset).justify-space-between
 <script>
 
 export default {
-	data () {
+	data() {
 		return {
 
 		}

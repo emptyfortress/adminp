@@ -20,4 +20,9 @@ yarn-error.log*
 *.sln
 *.sw?
 /.markdown-preview.html
+<<<<<<< HEAD
 /.now/
+=======
+
+.now
+>>>>>>> wservice

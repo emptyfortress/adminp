@@ -1,13 +1,16 @@
 <template lang="pug">
 v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide-overlay)
-	p.text-center
-		v-switch(v-model="$vuetify.theme.dark" color="primary" hide-details inset label="Theme Dark").d-inline-block
-
 	div(v-show="$route.name === 'home'")
-		h4 Выберите виджеты для дашборда
-		v-item-group(multiple v-model="selected").listwrap
+		v-list-item(two-line)
+			v-list-item-content
+				.overline.mb-4 Магазин виджетов
+				.headline  Добавить виджет
+			v-icon(size="56") mdi-storefront
+		hr
+		v-item-group(multiple v-model="selected").listwrap.pa-3
 			v-item(v-slot:default="{active, toggle}" v-for="item in widget1" :key="item.id")
 				v-card(:color="active ? 'primary' : '' " height="42" @click="mytoggle(item.id)").toggle
+					v-icon(x-small v-if="item.smart" dark).smart mdi-lightbulb
 					.txt(v-if="item.text.length") {{ item.text }}
 					.txt(v-else) Widget {{ item.i }}
 					v-scroll-y-transition(mode="out-in")
@@ -19,31 +22,31 @@ v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide
 <script>
 
 export default {
-	data () {
+	data() {
 		return {
 			order: 1,
 		}
 	},
 	computed: {
 		add: {
-			get () {
+			get() {
 				return this.$store.getters.add
 			},
-			set () {},
+			set() {},
 		},
-		widget1 () {
+		widget1() {
 			return this.$store.getters.widget1
 		},
-		selected () {
+		selected() {
 			return this.widget1
-				.filter(item => item.selected === true)
-				.map(item => item.id)
+				.filter((item) => item.selected === true)
+				.map((item) => item.id)
 		},
 	},
 	components: {
 	},
 	methods: {
-		mytoggle (e) {
+		mytoggle(e) {
 			const temp = []
 			this.widget1.map((item) => {
 				if (item.id === e) {
@@ -88,14 +91,14 @@ export default {
 .theme--light.v-item--active .txt {
 	color: #fff;
 }
-
 .txt {
 	line-height: 42px;
 	margin-left: 1rem;
 	margin-right: 3rem;
 }
-h4 {
-	text-align: center;
-	font-weight: 400;
+.smart {
+	position: absolute;
+	top: 2px;
+	left: 2px;
 }
-</style>k
+</style>

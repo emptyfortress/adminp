@@ -1,5 +1,5 @@
 # Admin panel DV
-Прототип web панели настройки и управления ДВ.
+Прототип web панели настройки и управления ДВ. Локальная папка - houston. Git repo - admimp. Так получилось %)
 * vue
 * vuetify
 * mdi icon

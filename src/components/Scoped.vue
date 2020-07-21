@@ -10,7 +10,7 @@ div
 <script>
 
 export default {
-	data () {
+	data() {
 		return {
 			users: [
 				{ first: 'one', last: 'two' },

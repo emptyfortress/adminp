@@ -45,14 +45,14 @@
 <script>
 
 export default {
-	data () {
+	data() {
 		return {
 			advanced: false,
 			model: null,
 		}
 	},
 	methods: {
-		test () {
+		test() {
 			this.advanced = !this.advanced
 			switch (this.model) {
 			case null:

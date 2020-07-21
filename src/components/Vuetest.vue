@@ -12,7 +12,7 @@
 import Scoped from '@/components/Scoped'
 
 export default {
-	data () {
+	data() {
 		return {
 		}
 	},
