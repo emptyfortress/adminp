@@ -23,8 +23,8 @@ export default {
 			},
 			menu: [
 				{ url: '/', icon: 'mdi-monitor-dashboard', text: 'Dashboard' },
-				{ url: '/notifications', icon: 'mdi-bell-outline', text: 'Уведомления' },
-				// { url: '/setup', icon: 'mdi-hammer-wrench', text: 'Настройка' },
+				{ url: '/setup', icon: 'mdi-hammer-wrench', text: 'Настройка' },
+				// { url: '/notifications', icon: 'mdi-bell-outline', text: 'Уведомления' },
 				// { url: '/new', icon: 'mdi-cloud-download-outline', text: 'Обновления' },
 				// { url: '/backup', icon: 'mdi-database-check', text: 'Бэкап' },
 				// { url: '/problems', icon: 'mdi-alert', text: 'Проблемы' },
