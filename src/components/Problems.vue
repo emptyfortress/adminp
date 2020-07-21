@@ -44,6 +44,7 @@ import { hue1, hue3, sample, sample2, sample3 } from '@/components/sample.js'
 export default {
 	data () {
 		return {
+			test: false,
 			items: hue1.nodes,
 			item: 0,
 			msg: 'Выберите узел',

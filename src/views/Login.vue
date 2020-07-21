@@ -1,11 +1,11 @@
 <template lang="pug">
 .myrow
 	video( autoplay loop playsinline muted ).vid
-		source(src="@/assets/img/rain.mp4" type="video/mp4")
+		source(src="@/assets/img/brain.mp4" type="video/mp4")
 	.card.elevation-3
 		.logo
-			img(src="@/assets/img/user0.svg")
-		.title.text-center.he Привет, kmg01!
+			img(src="@/assets/img/houston1.svg")
+		.he Привет, kmg01!
 		.mail(contenteditable="true")
 			i.icon-mail
 			span kmg01@docsvision.com
@@ -20,8 +20,8 @@
 			v-btn(color="primary" @click="login" block) Вход
 		.forget
 			a(href="#") Напомнить пароль
-		img(src="@/assets/img/houston.svg").houston
-		.problem решаем проблемы
+		<!-- img(src="@/assets/img/houston.svg").houston -->
+		<!-- .problem решаем проблемы -->
 	.dv
 		img(src="@/assets/img/logo-w.svg")
 		.txt admin web interface
@@ -63,7 +63,7 @@ export default {
 		justify-content: space-between;
 		width: 100%;
 		/* background: rgba(22,148,179,.42); */
-		background: rgba(0,0,0,.4);
+		background: rgba(82,154,162,.4);
 		padding: 0 2rem;
 		img {
 			vertical-align: bottom;
@@ -165,6 +165,7 @@ export default {
 	font-size: .8rem;
 }
 .he {
+	font-size: 1.1rem;
 	transform: translateY(-15px);
 }
 
