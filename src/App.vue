@@ -13,8 +13,16 @@ v-app
 					input(placeholder="Найти" autofocus)
 			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
 				v-icon mdi-brightness-4
-			v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple @click="logout")
-				img(src="@/assets/img/user-profile.svg" )
+			v-menu(bottom transition="slide-y-transition")
+				template(v-slot:activator="{on}")
+					v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple v-on="on" )
+						img(src="@/assets/img/user-profile.svg" )
+				v-list
+					.name Щербаков С.В.
+					v-list-item(@click="")
+						v-list-item-title О программе
+					v-list-item(@click="logout")
+						v-list-item-title Выход
 
 		v-content(v-scroll="handleScroll")
 			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
@@ -232,6 +240,20 @@ export default {
 }
 .v-avatar {
 	cursor: pointer;
+}
+.name {
+	font-size: 0.9rem;
+	padding: 0 1rem;
+	margin-bottom: 1rem;
+	&::before {
+		content: "";
+		width: 8px;
+		height: 8px;
+		border-radius: 8px;
+		background: teal;
+		display: inline-block;
+		margin-right: .5rem;
+	}
 }
 
 </style>
