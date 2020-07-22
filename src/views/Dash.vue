@@ -88,8 +88,6 @@ export default {
 
 .dash {
 	padding: 2rem;
-	padding-top: 0;
-	/* background: #ccc; */
 }
 .cardd {
 	width: 100%;
