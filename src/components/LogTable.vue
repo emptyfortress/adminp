@@ -1,21 +1,28 @@
 <template lang="pug">
 .table
-	//- Toolbar( :current="current" :group="group" @groupped="setGroup")
 	v-row(justify="space-between" align="center")
-		v-col(cols="12" sm="9")
-			v-row
+		v-col(cols="12" sm="3")
+			v-text-field(v-model="filter" label="Поиск" prepend-inner-icon="mdi-magnify" clearable single-line)
+
+		v-col
+			v-row(justify="space-around")
 				v-chip-group(active-class="tt").mr-8
 					v-chip.mr-2 Сегодня
 					v-chip.mr-2 Вчера
 					v-chip.mr-2 Эта неделя
-				v-chip-group(active-class="tt").mr-5
+				v-chip-group(active-class="tt")
 					v-chip.mr-2 Параметр
 					v-chip.mr-2 Параметр
 					v-chip.mr-2 Параметр
 					v-chip.mr-2 Параметр
 
-		v-col(cols="12" sm="3")
-			v-text-field(v-model="filter" label="Поиск" prepend-inner-icon="mdi-filter-outline" clearable single-line)
+		v-col(cols="12" sm="2").tool
+			template(v-for="(item, index) in buttons")
+				v-tooltip(bottom)
+					template(v-slot:activator="{ on }")
+						v-btn(icon v-on="on")
+							i(:class="item.icon")
+					span {{item.text}}
 	table.tabs
 		thead
 			tr
@@ -54,7 +61,6 @@
 </template>
 
 <script>
-// import Toolbar from '@/components/Toolbar'
 
 export default {
 	props: ['headers', 'items'],
@@ -66,6 +72,16 @@ export default {
 			all: this.items,
 			colfilter: [],
 			filter: '',
+			buttons: [
+				// { text: 'Выбрать', icon: 'icon-select', click: '' },
+				// { text: 'Прочитать все', icon: 'icon-read', click: '' },
+				// { text: 'Группировка', icon: 'icon-multi', click: 'groupped' },
+				// { text: 'Поиск', icon: 'icon-search', click: '' },
+				{ text: 'Обновить', icon: 'icon-refresh', click: '' },
+				{ text: 'Reset', icon: 'icon-empty', click: '' },
+				{ text: 'Экспорт', icon: 'icon-xls', click: '' },
+				{ text: 'Удалить выбранные', icon: 'icon-trash-line', click: '' },
+			],
 		}
 	},
 	mounted () {
@@ -221,4 +237,15 @@ tr:hover span.action {
 	color: #fff;
 }
 
+.tool {
+	display: flex;
+	justify-content: flex-end;
+	.v-btn {
+		margin-right: .7rem;
+	}
+	i {
+		font-size: 1.2rem;
+		margin-left: -3px;
+	}
+}
 </style>
