@@ -11,8 +11,16 @@ v-app
 			v-scale-transition(origin="center right" mode="out-in")
 				v-card(v-show="searchMode").searchbox
 					input(placeholder="Найти" autofocus)
-			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
+
+			v-btn(icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
 				v-icon mdi-brightness-4
+
+			svg-transition(ref="transition").mini
+				svg(slot="initial")
+					use(href="#ru")
+				svg
+					use(href="#us")
+
 			v-menu(bottom transition="slide-y-transition")
 				template(v-slot:activator="{on}")
 					v-avatar(color="#cdcdcd" size="35" v-show="offsetTop" v-ripple v-on="on" )
@@ -30,8 +38,8 @@ v-app
 			Breadcrumbs
 			transition(name="slide-fade" mode="out-in")
 				div(v-if="!searchMode" key="start")
-						v-slide-x-transition(mode="out-in")
-							router-view
+					v-slide-x-transition(mode="out-in")
+						router-view
 				SearchPanel(v-else key="search")
 
 		Footer
@@ -45,6 +53,7 @@ v-app
 				v-icon(dark) mdi-arrow-up
 	template(v-else)
 		Login
+	lang //- это импорт флагов для переключения языка
 </template>
 
 <script>
@@ -55,6 +64,7 @@ import SearchPanel from './components/SearchPanel'
 import Breadcrumbs from './components/Breadcrumbs'
 import Login from './views/Login'
 import './assets/css/palette.scss'
+import lang from './components/lang.vue'
 
 export default {
 	name: 'App',
@@ -65,6 +75,7 @@ export default {
 		SearchPanel,
 		Login,
 		Breadcrumbs,
+		lang,
 	},
 	data: (vm) => ({
 		initialDark: vm.$vuetify
@@ -73,6 +84,7 @@ export default {
 		offsetTop: true,
 		scroll: false,
 		logo: true,
+		russia: true,
 	}),
 	beforeDestroy() {
 		if (!this.$vuetify) return
@@ -142,6 +154,7 @@ export default {
 		text-transform: uppercase;
 	}
 }
+
 .v-toolbar.v-toolbar--collapsed {
 	max-width: 260px;
 	&.sm {
@@ -255,5 +268,19 @@ export default {
 		margin-right: .5rem;
 	}
 }
-
+.sel {
+	&::before {
+		content: "";
+		width: 8px;
+		height: 8px;
+		border-radius: 8px;
+		background: teal;
+		display: inline-block;
+		margin-right: .5rem;
+	}
+}
+.mini {
+	margin-right: 2rem;
+	cursor: pointer;
+}
 </style>
