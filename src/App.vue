@@ -12,7 +12,7 @@ v-app
 				v-card(v-show="searchMode").searchbox
 					input(placeholder="Найти" autofocus)
 
-			v-btn(icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
+			v-btn(icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-1
 				v-icon mdi-brightness-4
 
 			svg-transition(ref="transition").mini
@@ -283,7 +283,7 @@ export default {
 	}
 }
 .mini {
-	margin-right: 2rem;
+	margin-right: 1rem;
 	cursor: pointer;
 }
 </style>
