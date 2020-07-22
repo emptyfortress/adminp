@@ -4,6 +4,7 @@ import Dash from '../views/Dash.vue'
 import Notifications from '../components/Notifications.vue'
 import Logs from '../components/Logs.vue'
 import Errorlist from '../components/Errorlist.vue'
+import Setup from '../components/Setup.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,17 @@ const routes = [
 			breadcrumbs: [
 				{text: 'Главная', href: '/', disabled: false },
 				{text: 'Логи', href: '/logs', disabled: true },
+			],
+		},
+	},
+	{
+		path: '/setup',
+		name: 'setup',
+		component: Setup,
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Настройки', href: '/setup', disabled: true },
 			],
 		},
 	},
@@ -55,6 +67,12 @@ const routes = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+		meta: {
+			breadcrumbs: [
+				{text: 'Главная', href: '/', disabled: false },
+				{text: 'О программе', href: '/about', disabled: true },
+			],
+		},
 	},
 ]
 
