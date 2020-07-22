@@ -20,8 +20,8 @@
 			v-btn(color="primary" @click="login" block) Вход
 		.forget
 			a(href="#") Напомнить пароль
-		img(src="@/assets/img/houston.svg").houston
-		.problem решаем проблемы
+		//- img(src="@/assets/img/houston.svg").houston
+		//- .problem решаем проблемы
 	.dv
 		img(src="@/assets/img/logo-w.svg")
 		.txt admin web interface
@@ -62,7 +62,8 @@ export default {
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
-		background: rgba(0,0,0,.4);
+		/* background: rgba(0,0,0,.4); */
+		background: rgba(82,154,162,.4);
 		padding: 0 2rem;
 		img {
 			vertical-align: bottom;
