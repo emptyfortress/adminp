@@ -1,6 +1,6 @@
 <template lang="pug">
 .pa-5
-	h2 Logs
+	.zag Logs
 	br
 	br
 	.mygrid
