@@ -1,4 +1,4 @@
 <template lang="pug">
-  .about
-    h2 This is about page
+.pa-5
+	.zag This is about page
 </template>
