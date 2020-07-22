@@ -35,7 +35,8 @@ v-app
 		v-content(v-scroll="handleScroll")
 			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
 
-			Breadcrumbs
+			transition(name="slide-fade" mode="out-in")
+				Breadcrumbs(v-if="$route.name !== 'home'")
 			transition(name="slide-fade" mode="out-in")
 				div(v-if="!searchMode" key="start")
 					v-slide-x-transition(mode="out-in")
