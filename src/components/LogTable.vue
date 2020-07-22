@@ -15,10 +15,12 @@
 					v-chip.mr-2 Параметр
 
 		v-col(cols="12" sm="3")
-			v-text-field(v-model="filter" label="Фильтр" prepend-inner-icon="mdi-filter-outline" clearable single-line)
+			v-text-field(v-model="filter" label="Поиск" prepend-inner-icon="mdi-filter-outline" clearable single-line)
 	table.tabs
 		thead
 			tr
+				th.sm
+					v-checkbox.check
 				th(v-for="(header, index) in headers"
 					@mouseover="showByIndex = index"
 					@mouseout="showByIndex = null"
@@ -32,6 +34,8 @@
 							v-text-field(autofocus clearable :key="index" v-model="colfilter[index]")
 		tbody
 			tr(v-for="item in filteredItems").ro
+				td
+					v-checkbox.check
 				td {{ item.date }}
 				td {{ item.level }}
 				td {{ item.module }}
