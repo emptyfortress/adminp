@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dash from '../views/Dash.vue'
-import Vuetest from '../components/Vuetest.vue'
 import Notifications from '../components/Notifications.vue'
+import Logs from '../components/Logs.vue'
 import Errorlist from '../components/Errorlist.vue'
 
 Vue.use(VueRouter)
@@ -12,9 +12,15 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: Dash,
+	},
+	{
+		path: '/logs',
+		name: 'logs',
+		component: Logs,
 		meta: {
 			breadcrumbs: [
-				{text: 'Главная', href: '/', disabled: true},
+				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Логи', href: '/logs', disabled: true },
 			],
 		},
 	},
@@ -40,11 +46,6 @@ const routes = [
 				{text: 'Ошибки', href: '/#/notifications/errorlist', disabled: true},
 			],
 		},
-	},
-	{
-		path: '/vuetest',
-		name: 'vuetest',
-		component: Vuetest,
 	},
 	{
 		path: '/about',

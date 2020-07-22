@@ -27,7 +27,7 @@ v-app
 						img(src="@/assets/img/user-profile.svg" )
 				v-list
 					.name Щербаков С.В.
-					v-list-item(@click="")
+					v-list-item(@click="about")
 						v-list-item-title О программе
 					v-list-item(@click="logout")
 						v-list-item-title Выход
@@ -101,6 +101,9 @@ export default {
 	methods: {
 		logout() {
 			this.$store.commit('logout')
+		},
+		about() {
+			this.$router.push('/about')
 		},
 		back() {
 			this.$router.push(this.pathback)
