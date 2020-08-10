@@ -11,8 +11,11 @@ v-app
 			v-scale-transition(origin="center right" mode="out-in")
 				v-card(v-show="searchMode").searchbox
 					input(placeholder="Найти" autofocus)
-
-			v-btn(icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-1
+			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
+				v-icon mdi-home-search-outline
+			v-btn( href="" icon  v-show="offsetTop")
+				v-icon mdi-bell-outline
+			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
 				v-icon mdi-brightness-4
 
 			svg-transition(ref="transition").mini
@@ -34,6 +37,12 @@ v-app
 
 		v-content(v-scroll="handleScroll")
 			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
+				//- transition(name="fade" mode="out-in")
+				//- 	v-btn(fab outlined color="#ccc" small  @click="back").back
+				//- 		v-icon(color="#aaa") mdi-arrow-left
+				//- transition(name="fade" mode="out-in")
+				//- 	v-btn(fab outlined color="#ccc" small  @click="forward").forward
+				//- 		v-icon(color="#aaa") mdi-arrow-right
 
 			transition(name="slide-fade" mode="out-in")
 				Breadcrumbs(v-if="$route.name !== 'home'")
@@ -45,12 +54,12 @@ v-app
 
 		Footer
 		Dialog
-		v-alert(transition="scale-transition" v-show="$route.name === 'home'").plus
-			v-btn(fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
+		v-alert(transition="scale-transition").plus
+			v-btn(v-show="$route.name === 'home'" fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
 				v-icon(color="white") mdi-plus
 
 		v-alert(v-show="scroll" transition="scale-transition").up
-			v-btn(fab @click="$vuetify.goTo(0)")
+			v-btn(fab color="white" @click="$vuetify.goTo(0)")
 				v-icon(dark) mdi-arrow-up
 	template(v-else)
 		Login
@@ -115,9 +124,9 @@ export default {
 		toggleAdd() {
 			this.$store.commit('toggleAdd')
 		},
-		// toggleSearch() {
-		// 	this.$store.commit('toggleSearchMode')
-		// },
+		toggleSearch() {
+			this.$store.commit('toggleSearchMode')
+		},
 		calcWidth() {
 			const po = window.pageYOffset
 			if (this.drawer && !this.mini && po > 0) {
@@ -246,12 +255,6 @@ export default {
 .theme--dark.fab.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
 	background: $link;
 }
-.up .theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-	background: #cecece;
-}
-.up .theme--dark.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-	background: #666;
-}
 .theme--light.fab.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
 	background: $blue-grey;
 }
@@ -272,6 +275,7 @@ export default {
 		margin-right: .5rem;
 	}
 }
+
 .sel {
 	&::before {
 		content: "";
@@ -284,7 +288,7 @@ export default {
 	}
 }
 .mini {
-	margin-right: 1rem;
+	margin-right: 2rem;
 	cursor: pointer;
 }
 </style>
