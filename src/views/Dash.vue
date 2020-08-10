@@ -12,7 +12,7 @@
 					v-icon(small) mdi-nut
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").close
 					v-icon(small) mdi-close
-				WidgGraph(:database='database').dtb
+				WidgGraph(:database='database' :num="item.id").dtb
 
 
 </template>
@@ -137,6 +137,6 @@ export default {
 	right: 1rem;
 }
 .dtb {
-	width: 200px;
+	width: 220px;
 }
 </style>
