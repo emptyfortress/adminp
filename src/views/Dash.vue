@@ -11,6 +11,8 @@
 					v-icon(small) mdi-nut
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").close
 					v-icon(small) mdi-close
+				v-col(cols="3" col="1")
+					v-select(:items="sele" prepend-icon="mdi-map")
 
 
 </template>
@@ -25,9 +27,11 @@ export default {
 			resize: false,
 			closeWidget: false,
 			firstWidgets: [
-				{ id: 0, url: '/notifications/errorlist', badge: 5, 'x': 1, 'y': 0, 'w': 4, 'h': 4, 'i': '0', selected: true, text: 'Widget' },
-				{ id: 1, url: '/notifications/errorlist', badge: 9, 'x': 5, 'y': 0, 'w': 4, 'h': 4, 'i': '1', selected: true, text: 'Widget' },
+				{ id: 0, url: '/notifications/errorlist', badge: 5, 'x': 1, 'y': 0, 'w': 3, 'h': 4, 'i': '0', selected: true, text: 'Очередь сообщений' },
+				{ id: 1, url: '/notifications/errorlist', badge: 9, 'x': 4, 'y': 0, 'w': 3, 'h': 4, 'i': '1', selected: true, text: 'Поиск сообщений' },
+				{ id: 2, url: '/notifications/errorlist', badge: 9, 'x': 7, 'y': 0, 'w': 3, 'h': 4, 'i': '1', selected: true, text: 'Загрузка процессов' },
 			],
+			sele: ['one', 'laksjd'],
 		}
 	},
 	computed: {
