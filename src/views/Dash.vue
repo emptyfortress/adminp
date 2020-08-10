@@ -1,9 +1,10 @@
 <template lang="pug">
 .dash
 	grid-layout(:layout.sync="firstWidgets" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="false" :margin="[10, 10]" :use-css-transforms="true" )
-		grid-item( v-for="item in firstWidgets" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" @resized="resizedEvent" ).item
+		grid-item( v-for="item in firstWidgets" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.id" @resized="resizedEvent" ).item
 			v-card.cardd
-				.tit(@click="$router.push(item.url)") {{ item.text }}
+				.text--primary.text-uppercase(@click="$router.push(item.url)") {{ item.text }}
+				// .tit(@click="$router.push(item.url)") {{ item.text }}
 				//- .badge(v-if="item.badge") {{ item.badge }}
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").reload
 					v-icon(small) mdi-reload
@@ -11,14 +12,14 @@
 					v-icon(small) mdi-nut
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").close
 					v-icon(small) mdi-close
-				v-col(cols="3" col="1")
-					v-select(:items="sele" prepend-icon="mdi-map")
+				WidgGraph(:database='database').dtb
 
 
 </template>
 
 <script>
 import VueGridLayout from 'vue-grid-layout'
+import WidgGraph from '@/components/WidgGraph'
 
 export default {
 	data () {
@@ -31,7 +32,8 @@ export default {
 				{ id: 1, url: '/notifications/errorlist', badge: 9, 'x': 4, 'y': 0, 'w': 3, 'h': 4, 'i': '1', selected: true, text: 'Поиск сообщений' },
 				{ id: 2, url: '/notifications/errorlist', badge: 9, 'x': 7, 'y': 0, 'w': 3, 'h': 4, 'i': '1', selected: true, text: 'Загрузка процессов' },
 			],
-			sele: ['one', 'laksjd'],
+			database: ['DVM тестовая', 'База 1', 'База 2','SQL big','Postgress'],
+			d1: [],
 		}
 	},
 	computed: {
@@ -39,6 +41,7 @@ export default {
 	components: {
 		GridLayout: VueGridLayout.GridLayout,
 		GridItem: VueGridLayout.GridItem,
+		WidgGraph,
 	},
 	mounted() {
 		window.addEventListener('keydown', this.setOn)
@@ -95,7 +98,7 @@ export default {
 }
 .cardd {
 	width: 100%;
-	height: 100%;
+	// height: 100%;
 	border-radius: .4rem;
 	padding: 1rem;
 	position: relative;
@@ -132,5 +135,8 @@ export default {
 	position: absolute;
 	top: -5px;
 	right: 1rem;
+}
+.dtb {
+	width: 200px;
 }
 </style>
