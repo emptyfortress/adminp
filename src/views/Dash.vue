@@ -31,7 +31,7 @@ export default {
 			closeWidget: false,
 			firstWidgets: [
 				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', selected: true, text: 'Очередь сообщений' },
-				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', selected: true, text: 'Загрузка процессов' },
+				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', selected: true, text: 'Загрузка Worker Services' },
 				{ id: 2, url: '/notifications/errorlist', mod: [], 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', selected: true, text: 'Поиск сообщений' },
 			],
 			database: ['DVM тестовая', 'База 1', 'База 2','SQL big','Postgress'],
