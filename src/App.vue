@@ -8,13 +8,13 @@ v-app
 				v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" )
 				span(v-show="logo") Administration
 			v-spacer
-			v-scale-transition(origin="center right" mode="out-in")
-				v-card(v-show="searchMode").searchbox
-					input(placeholder="Найти" autofocus)
-			v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
-				v-icon mdi-home-search-outline
-			v-btn( href="" icon  v-show="offsetTop")
-				v-icon mdi-bell-outline
+			//- v-scale-transition(origin="center right" mode="out-in")
+			//- 	v-card(v-show="searchMode").searchbox
+			//- 		input(placeholder="Найти" autofocus)
+			//- v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
+			//- 	v-icon mdi-home-search-outline
+			//- v-btn( href="" icon  v-show="offsetTop")
+			//- 	v-icon mdi-bell-outline
 			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
 				v-icon mdi-brightness-4
 

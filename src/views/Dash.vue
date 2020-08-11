@@ -3,16 +3,18 @@
 	grid-layout(:layout.sync="firstWidgets" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="false" :margin="[10, 10]" :use-css-transforms="true" )
 		grid-item( v-for="item in firstWidgets" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.id" @resized="resizedEvent" ).item
 			v-card.cardd
-				.text--primary.text-uppercase(@click="$router.push(item.url)") {{ item.text }}
-				// .tit(@click="$router.push(item.url)") {{ item.text }}
-				//- .badge(v-if="item.badge") {{ item.badge }}
+				.myrow
+					.tit {{ item.text }}
+					.dtb
+						v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database")
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").reload
 					v-icon(small) mdi-reload
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").setup
 					v-icon(small) mdi-nut
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").close
 					v-icon(small) mdi-close
-				WidgGraph(:database='database' :num="item.id").dtb
+				img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
+				WidgGraph(:database='database' :num="item.id" v-else).gra
 
 
 </template>
@@ -28,9 +30,9 @@ export default {
 			resize: false,
 			closeWidget: false,
 			firstWidgets: [
-				{ id: 0, url: '/notifications/errorlist', badge: 5, 'x': 1, 'y': 0, 'w': 3, 'h': 4, 'i': '0', selected: true, text: 'Очередь сообщений' },
-				{ id: 1, url: '/notifications/errorlist', badge: 9, 'x': 4, 'y': 0, 'w': 3, 'h': 4, 'i': '1', selected: true, text: 'Поиск сообщений' },
-				{ id: 2, url: '/notifications/errorlist', badge: 9, 'x': 7, 'y': 0, 'w': 3, 'h': 4, 'i': '1', selected: true, text: 'Загрузка процессов' },
+				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', selected: true, text: 'Очередь сообщений' },
+				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', selected: true, text: 'Загрузка процессов' },
+				{ id: 2, url: '/notifications/errorlist', mod: [], 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', selected: true, text: 'Поиск сообщений' },
 			],
 			database: ['DVM тестовая', 'База 1', 'База 2','SQL big','Postgress'],
 			d1: [],
@@ -98,20 +100,8 @@ export default {
 }
 .cardd {
 	width: 100%;
-	// height: 100%;
-	border-radius: .4rem;
+	height: 100%;
 	padding: 1rem;
-	position: relative;
-	overflow: hidden;
-}
-.badge {
-	position: absolute;
-	left: 1rem;
-	top: 1rem;
-	background: $link;
-	padding: .2rem .5rem;
-	color: #fff;
-	border-radius: 3rem;
 }
 .close {
 	position: absolute;
@@ -119,12 +109,7 @@ export default {
 	right: -5px;
 }
 .tit {
-	cursor: pointer;
-	font-size: 1.1rem;
-	&:hover {
-		text-decoration: underline;
-		
-	}
+	text-transform: uppercase;
 }
 .reload {
 	position: absolute;
@@ -136,7 +121,23 @@ export default {
 	top: -5px;
 	right: 1rem;
 }
+.myrow {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .dtb {
-	width: 220px;
+	width: 210px;
+	transform: translate(30px, -10px);
+	z-index: 5;
+}
+.discon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.gra {
+	margin-top: -2rem;
 }
 </style>
