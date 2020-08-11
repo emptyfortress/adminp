@@ -1,12 +1,21 @@
 <template lang="pug">
 .cardd
 	.clas
-		#chart(v-show="num === 0")
-			apexchart(width="100%" type="bar" height="300" :options="chartOptions" :series="series")
+		#chart(v-show="num === 0 && !setup1")
+			apexchart(width="100%" type="bar" height="280" :options="chartOptions" :series="series")
 
 		#chart1(v-show="num === 1")
-			apexchart(width="100%" type="bar" height="300" :options="chartOptions1" :series="series1")
-		div(v-show="num === 2") three
+			apexchart(width="100%" type="bar" height="280" :options="chartOptions1" :series="series1")
+		div(v-show="num === 2").mt-3
+			.fle
+				v-text-field(label="ID карточки" clearable hint="Поиск по текущей базе" counter="16" dense v-model="card").mt-3
+				v-btn(icon @click="setSearch").ml-4
+					v-icon mdi-magnify
+			v-slide-x-transition(mode="out-in")
+				#chart2(v-if="search")
+					apexchart(v-if="search" width="100%" type="bar" height="300" :options="chartOptions2" :series="series2")
+
+
 </template>
 
 <script>
@@ -17,6 +26,30 @@ export default {
 	data () {
 		let that = this
 		return {
+			card: '',
+			search: false,
+			setup: false,
+			series2: [{
+				data: [124, 71, 23, 35],
+			}],
+			chartOptions2: {
+				colors: [ '#336087', '#666', '#D82121'],
+				chart: {
+					type: 'bar',
+					height: 350,
+				},
+				plotOptions: {
+					bar: {
+						horizontal: true,
+					},
+				},
+				dataLabels: {
+					enabled: false,
+				},
+				xaxis: {
+					categories: ['Обработано', 'В очереди', 'Ошибка', 'Блокировано'],
+				},
+			},
 			series1: [{
 				name: 'Процесс 1',
 				data: [44, 55, 41, 67, 22, 43],
@@ -31,6 +64,7 @@ export default {
 				data: [21, 7, 25, 13, 22, 8],
 			}],
 			chartOptions1: {
+				// colors: [ '#DB3D54','#2696F7', '#E4B692', '#D82121'],
 				chart: {
 					type: 'bar',
 					height: 300,
@@ -42,8 +76,15 @@ export default {
 						enabled: true,
 					},
 				},
+				// colors: ['#265526', '#684B2B', '#D82121', '#263F63'],
 				theme: {
-					palette: 'palette3',
+					monochrome: {
+						enabled: true,
+						color: '#2696F7',
+						shadeTo: 'dark',
+						shadeIntensity: 0.65,
+					},
+					// palette: 'palette7',
 				},
 				responsive: [{
 					breakpoint: 480,
@@ -62,29 +103,31 @@ export default {
 				},
 				xaxis: {
 					type: 'category',
-					categories: ['WS1', 'WS2', 'WS3', 'WS3',
-											 'WS4', 'WS5',
+					categories: ['SW1', 'SW2', 'SW3', 'SW3',
+											 'SW4', 'SW5',
 					],
 				},
 				legend: {
 					position: 'left',
 					offsetY: 40,
 				},
-				fill: {
-					opacity: 1,
-				},
 			},
-			series: [{
-				name: 'В работе',
-				data: [44, 55, 57, 61, 58, 60],
-			}, {
-				name: 'Блокировано',
-				data: [76, 85, 101, 98, 114, 94],
-			}, {
-				name: 'Ошибка',
-				data: [35, 41, 48, 52, 53, 41],
-			}],
+			series: [
+				{
+					name: 'Ошибка',
+					data: [44, 55, 57, 61, 58, 60],
+				},
+				{
+					name: 'В работе',
+					data: [76, 85, 101, 98, 114, 94],
+				},
+				{
+					name: 'Блокировано',
+					data: [35, 41, 48, 52, 53, 41],
+				},
+			],
 			chartOptions: {
+				colors: [ '#A2333A','#336087', '#666', '#D82121'],
 				chart: {
 					toolbar: {
 						show: true,
@@ -100,7 +143,7 @@ export default {
 					},
 				},
 				theme: {
-					palette: 'palette3',
+					// palette: 'palette7',
 				},
 				plotOptions: {
 					bar: {
@@ -129,6 +172,9 @@ export default {
 			console.log(e)
 			this.$router.push('/logs')
 		},
+		setSearch() {
+			this.search = true
+		},
 	},
 }
 
@@ -141,8 +187,13 @@ export default {
 .clas {
 	margin-left: -1rem;
 }
-.apexcharts-toolbar {
-	display: none !important;
+.fle {
+	display: flex;
+	align-items: center;
 }
+#chart2 {
+	margin-top: 2rem;
+}
+
 
 </style>

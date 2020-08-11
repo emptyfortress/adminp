@@ -1,20 +1,21 @@
 <template lang="pug">
 .dash
-	grid-layout(:layout.sync="firstWidgets" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="false" :margin="[10, 10]" :use-css-transforms="true" )
-		grid-item( v-for="item in firstWidgets" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.id" @resized="resizedEvent" ).item
+	grid-layout(:layout.sync="widgets" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="false" :margin="[10, 10]" :use-css-transforms="true" )
+		grid-item( v-for="item in widgets" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.id" @resized="resizedEvent" ).item
 			v-card.cardd
 				.myrow
 					.tit {{ item.text }}
 					.dtb
 						v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database")
+				img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
+				WidgGraph(:database='database' :num="item.id" v-else).gra
+				.date(v-show="closeWidget") 3 мин назад
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").reload
 					v-icon(small) mdi-reload
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").setup
 					v-icon(small) mdi-nut
-				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").close
+				v-btn(icon small v-show="closeWidget" @click="removeWidget(item.id)").close
 					v-icon(small) mdi-close
-				img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
-				WidgGraph(:database='database' :num="item.id" v-else).gra
 
 
 </template>
@@ -29,12 +30,13 @@ export default {
 			drag: false,
 			resize: false,
 			closeWidget: false,
-			firstWidgets: [
+			widgets: [
 				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', selected: true, text: 'Очередь сообщений' },
-				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', selected: true, text: 'Загрузка Worker Services' },
+				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', selected: true, text: 'Загрузка Service Workers' },
 				{ id: 2, url: '/notifications/errorlist', mod: [], 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', selected: true, text: 'Поиск сообщений' },
 			],
-			database: ['DVM тестовая', 'База 1', 'База 2','SQL big','Postgress'],
+			filteredWidget: [],
+			database: ['DVM тестовая', 'База 1', 'База 2', 'SQL big','Postgress'],
 			d1: [],
 		}
 	},
@@ -48,7 +50,7 @@ export default {
 	mounted() {
 		window.addEventListener('keydown', this.setOn)
 		window.addEventListener('keyup', this.setOff)
-		this.filteredWidget = this.widget1
+		this.filteredWidget = this.widgets
 	},
 	beforeDestroy() {
 		window.removeEventListener('keydown', this.setOn)
@@ -73,16 +75,20 @@ export default {
 			this.drag = false
 			this.resize = false
 			this.closeWidget = false
-			const temp = []
-			this.widget1.map((item) => {
-				if (item.id === e) {
-					item.selected = !item.selected
-					temp.push(item)
-				} else {
-					temp.push(item)
-				}
+			this.widgets.filter((item) => {
+				return item.id === 0
 			})
-			this.$store.commit('updateWidget1', temp)
+			console.log(e)
+			console.log(this.widgets)
+				
+			// this.widgets.map((item) => {
+			// 	if (item.id === e) {
+			// 		temp.push(item)
+			// 	} else {
+			// 		temp.push(item)
+			// 	}
+			// })
+			// this.$store.commit('updateWidget1', temp)
 		},
 		resizedEvent(i, newH, newW, newHPx, newWPx) {
 			console.log(`RESIZED i=${i}, H=${newH}, W=${newW}, H(px)=${newHPx}, W(px)=${newWPx}`)
@@ -102,6 +108,7 @@ export default {
 	width: 100%;
 	height: 100%;
 	padding: 1rem;
+	padding-top: 1.5rem;
 }
 .close {
 	position: absolute;
@@ -139,5 +146,12 @@ export default {
 }
 .gra {
 	margin-top: -2rem;
+}
+.date {
+	position: absolute;
+	top: 0;
+	right: 5rem;
+	font-size: 0.8rem;
+	color: #666;
 }
 </style>
