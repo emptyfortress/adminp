@@ -75,20 +75,13 @@ export default {
 			this.drag = false
 			this.resize = false
 			this.closeWidget = false
-			this.widgets.filter((item) => {
-				return item.id === 0
+			let temp = []
+			this.widgets.map((item) => {
+				if (item.id !== e) {
+					temp.push(item)
+				}
+				this.widgets = temp
 			})
-			console.log(e)
-			console.log(this.widgets)
-				
-			// this.widgets.map((item) => {
-			// 	if (item.id === e) {
-			// 		temp.push(item)
-			// 	} else {
-			// 		temp.push(item)
-			// 	}
-			// })
-			// this.$store.commit('updateWidget1', temp)
 		},
 		resizedEvent(i, newH, newW, newHPx, newWPx) {
 			console.log(`RESIZED i=${i}, H=${newH}, W=${newW}, H(px)=${newHPx}, W(px)=${newWPx}`)
