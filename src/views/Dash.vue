@@ -4,9 +4,9 @@
 		grid-item( v-for="item in widgets" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.id" @resized="resizedEvent" ).item
 			v-card.cardd
 				.date(v-show="closeWidget") 3 мин назад
-				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").reload
+				v-btn(icon small v-show="closeWidget" ).reload
 					v-icon(small) mdi-reload
-				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").setup
+				v-btn(icon small v-show="closeWidget" @click="item.setup = !item.setup").setup
 					v-icon(small) mdi-nut
 				v-btn(icon small v-show="closeWidget" @click="removeWidget(item.id)").close
 					v-icon(small) mdi-close
@@ -14,19 +14,19 @@
 					.myrow
 						.tit {{ item.text }}
 						.dtb
-							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database")
+							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database" v-if="item.showDb")
 					img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
 					WidgGraph(:database='database' :num="item.id" v-else).gra
 				div(v-else)
 					.tit
 						v-icon mdi-nut
 						span Настройки
-					v-form(v-model="valid")
+					v-form
 						v-row
 							v-col(cols="6").px-5
 								v-text-field(label="Название" v-model="item.text")
 								v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database по умолчанию")
-								v-checkbox(v-model="showDb" label="Разрешить выбор db")
+								v-checkbox(v-model="item.showDb" label="Разрешить выбор db")
 							v-col(cols="6").px-5
 								v-checkbox(v-model="refresh" label="Автообновление данных")
 								v-slider(label="Интервал, сек" v-model="slider" min="5" max="300")
@@ -37,8 +37,8 @@
 									v-text-field(hide-details label="Высота" type="number"  dense)
 						v-card-actions
 							v-spacer
-							v-btn(depressed small) Reset
-							v-btn(depressed color="primary" small) Сохранить
+							v-btn(depressed small @click="item.setup = !item.setup") Reset
+							v-btn(depressed color="primary" small @click="item.setup = !item.setup") Сохранить
 							v-spacer
 
 </template>
@@ -53,15 +53,14 @@ export default {
 			drag: false,
 			resize: false,
 			closeWidget: false,
-			showDb: true,
+			// showDb: true,
 			refresh: true,
 			slider: 120,
 			widgets: [
-				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', setup: true, text: 'Очередь сообщений' },
-				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', setup: false, text: 'Загрузка Service Workers' },
-				{ id: 2, url: '/notifications/errorlist', mod: [], 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', setup: true, text: 'Поиск сообщений' },
+				{ id: 0, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', setup: false, text: 'Очередь сообщений' },
+				{ id: 1, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', setup: false, text: 'Загрузка Service Workers' },
+				{ id: 2, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', setup: false, text: 'Поиск сообщений' },
 			],
-			filteredWidget: [],
 			database: ['DVM тестовая', 'База 1', 'База 2', 'SQL big','Postgress'],
 			d1: [],
 		}
@@ -156,18 +155,18 @@ export default {
 }
 
 .dtb {
-	width: 210px;
-	transform: translate(30px, -10px);
+	width: 200px;
 	z-index: 5;
+	margin-top: -.6rem;
+	margin-bottom: -3rem;
+	margin-left: 2rem;
+	margin-right: 0;
 }
 .discon {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}
-.gra {
-	margin-top: -2rem;
 }
 .date {
 	position: absolute;
@@ -178,7 +177,6 @@ export default {
 }
 .v-form {
 	margin: 0 4rem;
-	/* background: #ccc; */
 }
 .sec {
 	margin-top: -.5rem;
