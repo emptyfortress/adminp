@@ -111,11 +111,11 @@ export default {
 			}
 			switch (chip2) {
 			case 0:
-				return result.filter( item => { return item.service.toLowerCase().includes('почта гз')})
+				return result.filter( item => { return item.state.toLowerCase().includes('ошибка')})
 			case 1:
-				return result.filter( item => { return item.service.toLowerCase().includes('заданий')})
+				return result.filter( item => { return item.state.toLowerCase().includes('работе')})
 			case 2:
-				return result.filter( item => { return item.service.toLowerCase().includes('согласований')})
+				return result.filter( item => { return item.state.toLowerCase().includes('блокир')})
 			}
 			if (!this.filter) {
 				return result
