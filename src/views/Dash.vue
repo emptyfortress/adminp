@@ -10,7 +10,7 @@
 					v-icon(small) mdi-nut
 				v-btn(icon small v-show="closeWidget" @click="removeWidget(item.id)").close
 					v-icon(small) mdi-close
-				div(v-if="item.setup")
+				div(v-if="!item.setup || item.id == 2")
 					.myrow
 						.tit {{ item.text }}
 						.dtb
@@ -23,12 +23,23 @@
 						span Настройки
 					v-form(v-model="valid")
 						v-row
-							v-col(cols="4")
+							v-col(cols="6").px-5
 								v-text-field(label="Название" v-model="item.text")
 								v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database по умолчанию")
 								v-checkbox(v-model="showDb" label="Разрешить выбор db")
-							v-col(cols="4")
-								v-text-field(label="Название" v-model="item.text")
+							v-col(cols="6").px-5
+								v-checkbox(v-model="refresh" label="Автообновление данных")
+								v-slider(label="Интервал, сек" v-model="slider" min="5" max="300")
+									template(v-slot:append)
+										v-text-field(v-model="slider"  hide-details single-line type="number" style="width: 45px" dense).sec
+								.d-flex
+									v-text-field(hide-details label="Ширина" type="number"  dense).mr-8
+									v-text-field(hide-details label="Высота" type="number"  dense)
+						v-card-actions
+							v-spacer
+							v-btn(depressed small) Reset
+							v-btn(depressed color="primary" small) Сохранить
+							v-spacer
 
 </template>
 
@@ -42,9 +53,12 @@ export default {
 			drag: false,
 			resize: false,
 			closeWidget: false,
+			showDb: true,
+			refresh: true,
+			slider: 120,
 			widgets: [
-				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', setup: false, text: 'Очередь сообщений' },
-				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', setup: true, text: 'Загрузка Service Workers' },
+				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', setup: true, text: 'Очередь сообщений' },
+				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', setup: false, text: 'Загрузка Service Workers' },
 				{ id: 2, url: '/notifications/errorlist', mod: [], 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', setup: true, text: 'Поиск сообщений' },
 			],
 			filteredWidget: [],
@@ -163,7 +177,10 @@ export default {
 	color: #666;
 }
 .v-form {
-	margin: 0 auto;
+	margin: 0 4rem;
 	/* background: #ccc; */
+}
+.sec {
+	margin-top: -.5rem;
 }
 </style>
