@@ -1,7 +1,7 @@
 <template lang="pug">
 .cardd
 	.clas
-		#chart(v-show="num === 0 && !setup1")
+		#chart(v-show="num === 0")
 			apexchart(width="100%" type="bar" height="280" :options="chartOptions" :series="series")
 
 		#chart1(v-show="num === 1")
@@ -28,7 +28,6 @@ export default {
 		return {
 			card: '',
 			search: false,
-			setup: false,
 			series2: [{
 				data: [124, 71, 23, 35],
 			}],

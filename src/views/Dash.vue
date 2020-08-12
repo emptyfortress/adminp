@@ -3,12 +3,6 @@
 	grid-layout(:layout.sync="widgets" :col-num="12" :row-height="30" :is-draggable="drag" :is-resizable="resize" :is-mirrored="false" :vertical-compact="false" :margin="[10, 10]" :use-css-transforms="true" )
 		grid-item( v-for="item in widgets" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.id" @resized="resizedEvent" ).item
 			v-card.cardd
-				.myrow
-					.tit {{ item.text }}
-					.dtb
-						v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database")
-				img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
-				WidgGraph(:database='database' :num="item.id" v-else).gra
 				.date(v-show="closeWidget") 3 мин назад
 				v-btn(icon small v-show="closeWidget" @click="remove(item.id)").reload
 					v-icon(small) mdi-reload
@@ -16,7 +10,15 @@
 					v-icon(small) mdi-nut
 				v-btn(icon small v-show="closeWidget" @click="removeWidget(item.id)").close
 					v-icon(small) mdi-close
-
+				div(v-if="item.setup")
+					.myrow
+						.tit {{ item.text }}
+						.dtb
+							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database")
+					img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
+					WidgGraph(:database='database' :num="item.id" v-else).gra
+				div(v-else)
+					p laksjd
 
 </template>
 
@@ -31,9 +33,9 @@ export default {
 			resize: false,
 			closeWidget: false,
 			widgets: [
-				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', selected: true, text: 'Очередь сообщений' },
-				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', selected: true, text: 'Загрузка Service Workers' },
-				{ id: 2, url: '/notifications/errorlist', mod: [], 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', selected: true, text: 'Поиск сообщений' },
+				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', setup: true, text: 'Очередь сообщений' },
+				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', setup: false, text: 'Загрузка Service Workers' },
+				{ id: 2, url: '/notifications/errorlist', mod: [], 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', setup: false, text: 'Поиск сообщений' },
 			],
 			filteredWidget: [],
 			database: ['DVM тестовая', 'База 1', 'База 2', 'SQL big','Postgress'],
