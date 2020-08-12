@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Dash from '../views/Dash.vue'
 import Notifications from '../components/Notifications.vue'
 import Logs from '../components/Logs.vue'
+import MessageLogs from '../components/MessageLogs.vue'
 import Errorlist from '../components/Errorlist.vue'
 import Setup from '../components/Setup.vue'
 
@@ -15,12 +16,25 @@ const routes = [
 		component: Dash,
 	},
 	{
+		path: '/messagelogs',
+		name: 'messagelogs',
+		component: MessageLogs,
+		props: true,
+		meta: {
+			breadcrumbs: [
+				{text: 'Dashboard', href: '/', disabled: false },
+				{text: 'Widget: Очередь сообщений', href: '/', disabled: false },
+				{text: 'Очередь сообщений', href: '/messagelogs', disabled: true },
+			],
+		},
+	},
+	{
 		path: '/logs',
 		name: 'logs',
 		component: Logs,
 		meta: {
 			breadcrumbs: [
-				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Dashboard', href: '/', disabled: false },
 				{text: 'Логи', href: '/logs', disabled: true },
 			],
 		},
@@ -31,7 +45,7 @@ const routes = [
 		component: Setup,
 		meta: {
 			breadcrumbs: [
-				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Dashboard', href: '/', disabled: false },
 				{text: 'Настройки', href: '/setup', disabled: true },
 			],
 		},
@@ -42,7 +56,7 @@ const routes = [
 		component: Notifications,
 		meta: {
 			breadcrumbs: [
-				{text: 'Главная', href: '/', disabled: false },
+				{text: 'Dashboard', href: '/', disabled: false },
 				{text: 'Уведомления', href: '/notifications', disabled: true },
 			],
 		},
@@ -53,7 +67,7 @@ const routes = [
 		component: Errorlist,
 		meta: {
 			breadcrumbs: [
-				{text: 'Главная', href: '/', disabled: false},
+				{text: 'Dashboard', href: '/', disabled: false},
 				{text: 'Уведомления', href: '/#/notifications', disabled: false},
 				{text: 'Ошибки', href: '/#/notifications/errorlist', disabled: true},
 			],

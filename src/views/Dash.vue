@@ -7,7 +7,7 @@
 				v-btn(icon small v-show="closeWidget" ).reload
 					v-icon(small) mdi-reload
 				v-btn(icon small v-show="closeWidget" @click="item.setup = !item.setup").setup
-					v-icon(small) mdi-nut
+					v-icon(small) mdi-cog
 				v-btn(icon small v-show="closeWidget" @click="removeWidget(item.id)").close
 					v-icon(small) mdi-close
 				div(v-if="!item.setup || item.id == 2")
@@ -18,9 +18,7 @@
 					img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
 					WidgGraph(:database='database' :num="item.id" v-else).gra
 				div(v-else)
-					.tit
-						v-icon mdi-nut
-						span Настройки
+					.tit Настройки
 					v-form
 						v-row
 							v-col(cols="6").px-5
@@ -53,7 +51,6 @@ export default {
 			drag: false,
 			resize: false,
 			closeWidget: false,
-			// showDb: true,
 			refresh: true,
 			slider: 120,
 			widgets: [

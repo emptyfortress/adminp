@@ -22,7 +22,7 @@
 import VueApexCharts from 'vue-apexcharts'
 
 export default {
-	props: ['database', 'num', 'd1'],
+	props: ['database', 'num'],
 	data () {
 		let that = this
 		return {
@@ -126,7 +126,7 @@ export default {
 				},
 			],
 			chartOptions: {
-				colors: [ '#A2333A','#336087', '#666', '#D82121'],
+				colors: [ '#A2333A','#336087', '#F0831E', '#D82121'],
 				chart: {
 					toolbar: {
 						show: true,
@@ -135,9 +135,11 @@ export default {
 						},
 					},
 					events: {
-						click: function(event, chartContext) {
-							console.log(event)
-							that.goTo(chartContext)
+						dataPointSelection: function(event,context,config) {
+							let category = that.series[config.seriesIndex].name
+							let series = that.chartOptions.xaxis.categories[config.dataPointIndex]
+							console.log(series, category)
+							that.goTo(series, category)
 						},
 					},
 				},
@@ -167,9 +169,8 @@ export default {
 		apexchart: VueApexCharts,
 	},
 	methods: {
-		goTo(e) {
-			console.log(e)
-			this.$router.push('/logs')
+		goTo(e, b) {
+			this.$router.push({name: 'messagelogs', params: {category: e, item: b}})
 		},
 		setSearch() {
 			this.search = true
