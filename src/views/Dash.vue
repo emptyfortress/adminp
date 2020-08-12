@@ -18,7 +18,17 @@
 					img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
 					WidgGraph(:database='database' :num="item.id" v-else).gra
 				div(v-else)
-					p laksjd
+					.tit
+						v-icon mdi-nut
+						span Настройки
+					v-form(v-model="valid")
+						v-row
+							v-col(cols="4")
+								v-text-field(label="Название" v-model="item.text")
+								v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database по умолчанию")
+								v-checkbox(v-model="showDb" label="Разрешить выбор db")
+							v-col(cols="4")
+								v-text-field(label="Название" v-model="item.text")
 
 </template>
 
@@ -33,9 +43,9 @@ export default {
 			resize: false,
 			closeWidget: false,
 			widgets: [
-				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', setup: true, text: 'Очередь сообщений' },
-				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', setup: false, text: 'Загрузка Service Workers' },
-				{ id: 2, url: '/notifications/errorlist', mod: [], 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', setup: false, text: 'Поиск сообщений' },
+				{ id: 0, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 0, 'w': 7, 'h': 9, 'i': '0', setup: false, text: 'Очередь сообщений' },
+				{ id: 1, url: '/notifications/errorlist', mod: [], 'x': 1, 'y': 8, 'w': 7, 'h': 9, 'i': '1', setup: true, text: 'Загрузка Service Workers' },
+				{ id: 2, url: '/notifications/errorlist', mod: [], 'x': 8, 'y': 0, 'w': 3, 'h': 18, 'i': '2', setup: true, text: 'Поиск сообщений' },
 			],
 			filteredWidget: [],
 			database: ['DVM тестовая', 'База 1', 'База 2', 'SQL big','Postgress'],
@@ -112,6 +122,9 @@ export default {
 }
 .tit {
 	text-transform: uppercase;
+	span {
+		margin-left: .5rem;
+	}
 }
 .reload {
 	position: absolute;
@@ -148,5 +161,9 @@ export default {
 	right: 5rem;
 	font-size: 0.8rem;
 	color: #666;
+}
+.v-form {
+	margin: 0 auto;
+	/* background: #ccc; */
 }
 </style>
