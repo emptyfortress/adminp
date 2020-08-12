@@ -12,7 +12,6 @@ const headers = [
 ]
 
 const messages = [
-	{ id: 0, date: '01.12.19 -- 10:15:35', digest: 'Напишите отчет', state: 'ошибка', gservice: 'Backoffice', service: 'Backoffice', type: 'lorem ipsum some text', info: 'отправлено исполнителям', database: 'DB 1' },
 	{ id: 0, date: '01.12.19 -- 10:15:35', digest: 'Напишите отчет', state: 'обработано', gservice: 'Backoffice', service: 'Задания', type: 'lorem ipsum some text', info: 'отправлено исполнителям', database: 'DB 1' },
 	{ id: 1, date: '01.12.19 -- 10:15:35', digest: 'Напишите отчет', state: 'обработано', gservice: 'Backoffice', service: 'ГЗ ', type: 'lorem ipsum some text', info: 'отправлено исполнителям', database: 'DB 1' },
 	{ id: 2, date: '01.12.19 -- 10:15:35', digest: 'Напишите отчет', state: 'обработано', gservice: 'Backoffice', service: 'Backoffice', type: 'lorem ipsum some text', info: 'отправлено исполнителям', database: 'DVM рабочая' },

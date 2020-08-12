@@ -1,7 +1,7 @@
 <template lang="pug">
 .table
 	v-row(justify="space-between" align="center")
-		v-col(cols="12" sm="3")
+		v-col(cols="12" sm="2")
 			v-text-field(v-model="filter" label="Поиск" prepend-inner-icon="mdi-magnify" clearable single-line)
 
 		v-col
@@ -47,7 +47,10 @@
 					v-checkbox.check
 				td {{ item.date }}
 				td {{ item.digest }}
-				td {{ item.state }}
+				td(:class="item.state === 'ошибка' ? 'tder' : '' || item.state === 'блокировано' ? 'tdbl' : ''")
+					v-icon(color="red" v-if="item.state === 'ошибка'").mr-2 mdi-alert-circle
+					v-icon(color="orange" v-if="item.state === 'блокировано'").mr-2 mdi-minus-circle-outline
+					span {{ item.state }}
 				td {{ item.gservice }}
 				td {{ item.service }}
 				td {{ item.type }}
@@ -136,6 +139,11 @@ export default {
 		},
 	},
 	methods: {
+		tdclass (e) {
+			if (e === 'Ошибка') return '.tder'
+			else if (e === 'Блокировано') return ''
+			else return ''
+		},
 		setFilter (e) {
 			if (!this.filterByIndex) {
 				this.filterByIndex = e
@@ -278,5 +286,11 @@ tr:hover span.action {
 		font-size: 1.2rem;
 		margin-left: -3px;
 	}
+}
+.tder {
+	background: #FFCDD2;
+}
+.tdbl {
+	background: #FFE57F;
 }
 </style>
