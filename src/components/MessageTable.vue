@@ -6,15 +6,14 @@
 
 		v-col
 			v-row(justify="space-around")
-				v-chip-group(active-class="tt").mr-8
+				v-chip-group(active-class="tt" v-model="type1" ).mr-8
 					v-chip.mr-2 ГЗ
 					v-chip.mr-2 Задания
 					v-chip.mr-2 Согласования
-				v-chip-group(active-class="tt")
 					v-chip.mr-2 Почта ГЗ
 					v-chip.mr-2 Почта заданий
 					v-chip.mr-2 Почта согласований
-				v-chip-group(active-class="tt")
+				v-chip-group(active-class="tt" v-model="type2" )
 					v-chip.mr-2 Ошибка
 					v-chip.mr-2 В работе
 					v-chip.mr-2 Блокировано
@@ -76,13 +75,11 @@ export default {
 			smallFilter: null,
 			filterByIndex: null,
 			all: this.items,
+			type1: '',
+			type2: '',
 			colfilter: [],
 			filter: '',
 			buttons: [
-				// { text: 'Выбрать', icon: 'icon-select', click: '' },
-				// { text: 'Прочитать все', icon: 'icon-read', click: '' },
-				// { text: 'Группировка', icon: 'icon-multi', click: 'groupped' },
-				// { text: 'Поиск', icon: 'icon-search', click: '' },
 				{ text: 'Обновить', icon: 'icon-refresh', click: '' },
 				{ text: 'Reset', icon: 'icon-empty', click: '' },
 				{ text: 'Экспорт', icon: 'icon-xls', click: '' },
@@ -96,6 +93,30 @@ export default {
 	computed: {
 		filteredItems () {
 			let result = this.items
+			let chip1 = this.type1
+			let chip2 = this.type2
+			switch (chip1) {
+			case 0:
+				return result.filter( item => { return item.service.toLowerCase().includes('гз ')})
+			case 1:
+				return result.filter( item => { return item.service.toLowerCase().includes('задания')})
+			case 2:
+				return result.filter( item => { return item.service.toLowerCase().includes('согласования')})
+			case 3:
+				return result.filter( item => { return item.service.toLowerCase().includes('почта гз')})
+			case 4:
+				return result.filter( item => { return item.service.toLowerCase().includes('заданий')})
+			case 5:
+				return result.filter( item => { return item.service.toLowerCase().includes('согласований')})
+			}
+			switch (chip2) {
+			case 0:
+				return result.filter( item => { return item.service.toLowerCase().includes('почта гз')})
+			case 1:
+				return result.filter( item => { return item.service.toLowerCase().includes('заданий')})
+			case 2:
+				return result.filter( item => { return item.service.toLowerCase().includes('согласований')})
+			}
 			if (!this.filter) {
 				return result
 			} else {
