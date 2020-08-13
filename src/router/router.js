@@ -4,6 +4,7 @@ import Dash from '../views/Dash.vue'
 import Notifications from '../components/Notifications.vue'
 import Logs from '../components/Logs.vue'
 import MessageLogs from '../components/MessageLogs.vue'
+import Journal from '../components/Journal.vue'
 import Errorlist from '../components/Errorlist.vue'
 import Setup from '../components/Setup.vue'
 
@@ -24,7 +25,21 @@ const routes = [
 			breadcrumbs: [
 				{text: 'Dashboard', href: '/', disabled: false },
 				{text: 'Widget: Очередь сообщений', href: '/', disabled: false },
-				{text: 'Очередь сообщений', href: '/messagelogs', disabled: true },
+				{text: 'Очередь сообщений', href: '/#/messagelogs', disabled: true },
+			],
+		},
+	},
+	{
+		path: '/journal',
+		name: 'journal',
+		component: Journal,
+		props: true,
+		meta: {
+			breadcrumbs: [
+				{text: 'Dashboard', href: '/', disabled: false },
+				{text: 'Widget: Очередь сообщений', href: '/', disabled: false },
+				{text: 'Очередь сообщений', href: '/#/messagelogs', disabled: false },
+				{text: 'Журнал ошибок и блокировок', href: '/#/journal', disabled: true },
 			],
 		},
 	},
@@ -35,7 +50,7 @@ const routes = [
 		meta: {
 			breadcrumbs: [
 				{text: 'Dashboard', href: '/', disabled: false },
-				{text: 'Логи', href: '/logs', disabled: true },
+				{text: 'Логи', href: '/#/logs', disabled: true },
 			],
 		},
 	},
