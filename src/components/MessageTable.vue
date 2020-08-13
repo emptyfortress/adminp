@@ -49,7 +49,7 @@
 				td {{ item.digest }}
 				td(:class="item.state === 'ошибка' ? 'tder' : '' || item.state === 'блокировано' ? 'tdbl' : ''")
 					v-icon(color="red" v-if="item.state === 'ошибка'").mr-2 mdi-alert-circle
-					v-icon(color="orange" v-if="item.state === 'блокировано'").mr-2 mdi-minus-circle-outline
+					v-icon(color="orange" v-if="item.state === 'блокировано'").mr-2 mdi-lock-outline
 					span {{ item.state }}
 				td {{ item.gservice }}
 				td {{ item.service }}
@@ -157,10 +157,4 @@ export default {
 
 <style scoped lang="scss">
 .tabs .ro {cursor: pointer;}
-.tder {
-	background: #FFCDD2;
-}
-.tdbl {
-	background: #FFE57F;
-}
 </style>

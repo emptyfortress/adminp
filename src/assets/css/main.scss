@@ -291,7 +291,7 @@ span.action {
 	position: absolute;
 	right: 0px;
 	top: 0;
-	background: #eee;
+	// background: #eee;
 	text-align: right;
 	padding-right: 1rem;
 	line-height: 45px;
@@ -303,6 +303,12 @@ span.action {
 }
 tr:hover span.action {
 	display: block;
+}
+.theme--light span.action {
+	background: #eee;
+}
+.theme--dark span.action {
+	background: #3a3a3a;
 }
 .quick {
 	position: absolute;
@@ -330,9 +336,18 @@ tr:hover span.action {
 	}
 }
 
-.tder {
+.theme--light .tder {
 	background: #FFCDD2;
 }
-.tdbl {
+.theme--light .tdbl {
 	background: #FFE57F;
+}
+.theme--dark .tder {
+	background: #ff6b7a4a;
+}
+.theme--dark .tdbl {
+	background: #fddb564a;
+}
+.pointer {
+	cursor: pointer;
 }

@@ -59,9 +59,9 @@ v-app
 				v-icon(color="white") mdi-plus
 
 		v-alert(v-show="scroll" transition="scale-transition").up
-			v-btn(fab color="white" @click="$vuetify.goTo(0)")
-				v-icon(dark) mdi-arrow-up
-			v-btn(x-small fab color="white" @click="$vuetify.goTo(9999)").down
+			v-btn(fab @click="$vuetify.goTo(0)")
+				v-icon mdi-arrow-up
+			v-btn(x-small fab @click="$vuetify.goTo(9999)").down
 				v-icon mdi-arrow-down
 	template(v-else)
 		Login
@@ -227,6 +227,9 @@ export default {
 		margin-left: 4px;
 		transform: translateY(9px);
 	}
+}
+.theme--dark .up .v-btn {
+	border: 1px solid #999;
 }
 .searchbox {
 	box-shadow: none;
