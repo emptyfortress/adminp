@@ -1,6 +1,6 @@
 <template lang="pug">
 .pa-5
-	.zag Очередь сообщений {{ $route.params }}
+	.zag Очередь сообщений
 	MessageTable(:headers="headers" :items="messages" :category="category")
 </template>
 

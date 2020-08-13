@@ -61,6 +61,8 @@ v-app
 		v-alert(v-show="scroll" transition="scale-transition").up
 			v-btn(fab color="white" @click="$vuetify.goTo(0)")
 				v-icon(dark) mdi-arrow-up
+			v-btn(x-small fab color="white" @click="$vuetify.goTo(9999)").down
+				v-icon mdi-arrow-down
 	template(v-else)
 		Login
 	lang //- это импорт флагов для переключения языка
@@ -215,9 +217,16 @@ export default {
 }
 .up {
 	position: fixed;
-	bottom: 2rem;
+	bottom: 0.7rem;
 	left: 50%;
 	background: transparent;
+	.v-btn {
+		box-shadow: 0 0 5px 1px rgba(0,0,0,.5);
+	}
+	.down {
+		margin-left: 4px;
+		transform: translateY(9px);
+	}
 }
 .searchbox {
 	box-shadow: none;
