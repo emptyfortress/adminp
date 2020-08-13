@@ -34,18 +34,18 @@
 					v-btn(depressed color="pink" dark x-small) Изменить
 	.d-flex.flex-wrap.justify-center
 		.one
-			.zg 
+			.zg
 				v-icon(color="orange").mr-3 mdi-lock-outline
 				span Блокировки
-			p Сообщение может быть обработано после снятия следующих блокировок:
-			v-btn(depressed dark small color="orange").mb-3 Снять все блокировки
+			p.mt-2 Сообщение может быть обработано после снятия следующих блокировок:
+			v-btn(depressed :disabled="list === 0" :dark="list !== 0" small color="orange" @click="modal = true" ).mb-3 Снять все блокировки
 			table.tabs
 				thead
 					tr
 						th Идентификатор объекта
 						th Время блокировки
 				tbody
-					tr(v-for="num in 55").ro
+					tr(v-for="num in list").ro
 						td(@click="cell = true").pointer Дайджест SDF32-{{num}}53KSF-{{num.toString().length === 1 ? prefix : ''}}{{num}}
 						td
 							span 12.10.2020 &#9473; 15:{{num.toString().length === 1 ? prefix : ''}}{{num}}
@@ -53,13 +53,17 @@
 								v-icon(color="#ccc") mdi-lock-outline
 							span.action
 								v-icon(color="teal") mdi-lock-open-variant-outline
-
+					tr(v-show="list === 0").white
+						td(colspan="2")
+							v-img(src="@/assets/img/nothing.svg" width="100").mx-auto.my-3
+							p.text-center.blue-grey--text Ничего не найдено
 					
 		.one
 			.zg
 				v-icon(color="red").mr-3 mdi-alert-circle
 				span  Ошибки
-			p При обработке сообщения возникли ошибки:
+			p.mt-2 При обработке сообщения возникли следующие ошибки:
+			v-btn(outlined small color="primary" style="visibility: hidden").mb-3 Экспорт в Excel
 			table.tabs
 				thead
 					tr
@@ -78,6 +82,15 @@
 								span Процедура ссылается на несуществующий объект
 							td 12.10.2020 &#9473; 15:{{num.toString().length === 1 ? prefix : ''}}{{num}}
 
+	v-dialog(v-model="modal" max-width="390")
+		v-card
+			v-card-title.headline Вы уверены?
+			v-card-text Снятие всех блокировок может привести к непредсказуемым последствиям.
+			v-card-text.font-weight-bold Могут пострадать котики и задания.
+			v-card-actions
+				v-spacer
+				v-btn(text @click="modal = false" small) Отмена
+				v-btn(color="orange" dark depressed @click="clear" small) Снять блокировки
 </template>
 
 <script>
@@ -87,6 +100,8 @@ export default {
 		return {
 			id: false,
 			prefix: 0,
+			list: 55,
+			modal: false,
 			headers: [
 				{text: 'ID входящего сообщения'},
 				{text: 'Дата создания'},
@@ -100,6 +115,15 @@ export default {
 			timeout: 2000,
 		}
 	},
+	methods: {
+		clear () {
+			let that = this
+			this.modal = false
+			setTimeout(function() {
+				that.list = 0
+			}, 1000)
+		},
+	},
 }
 
 </script>
@@ -108,7 +132,7 @@ export default {
 @import '@/assets/css/colors.scss';
 
 .tabs {
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 }
 .id {
 	font-size: 0.7rem;
@@ -120,12 +144,12 @@ export default {
 	}
 }
 .one {
-	/* width: 600px; */
 	min-width: 450px;
-	/* max-width: 850px; */
 	margin: 1rem;
 	.zg {
 		font-size: 1.2rem;
+		padding: .5rem 0;
+		border-bottom: 1px solid orange;
 	}
 }
 .theme--light .zg {
