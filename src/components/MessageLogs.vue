@@ -1,7 +1,7 @@
 <template lang="pug">
 .pa-5
-	.zag Очередь сообщений
-	MessageTable(:headers="headers" :items="messages")
+	.zag Очередь сообщений {{ $route.params }}
+	MessageTable(:headers="headers" :items="messages" :category="category")
 </template>
 
 <script>
@@ -13,11 +13,16 @@ export default {
 		return {
 			headers,
 			messages,
-			
 		}
 	},
 	components: {
 		MessageTable,
+	},
+	computed: {
+		category () {
+			let ar = [ 'Группа заданий', 'Задания', 'Согласования', 'Почта ГЗ', 'Почта заданий', 'Почта согласований']
+			return ar.indexOf(this.$route.params.category)
+		},
 	},
 }
 

@@ -71,7 +71,7 @@
 <script>
 
 export default {
-	props: ['headers', 'items'],
+	props: ['headers', 'items', 'category'],
 	data() {
 		return {
 			showByIndex: null,
@@ -92,6 +92,7 @@ export default {
 	},
 	mounted () {
 		this.colfilter.length = this.headers.length
+		this.type1 = parseInt(this.category)
 	},
 	computed: {
 		filteredItems () {
