@@ -87,7 +87,7 @@
 			v-card-title.headline Вы уверены?
 			v-card-text Снятие всех блокировок может привести к непредсказуемым последствиям.
 			v-card-text.font-weight-bold Могут пострадать котики и задания.
-			v-card-actions
+			v-card-actions.px-7.pb-7
 				v-spacer
 				v-btn(text @click="modal = false" small) Отмена
 				v-btn(color="orange" dark depressed @click="clear" small) Снять блокировки

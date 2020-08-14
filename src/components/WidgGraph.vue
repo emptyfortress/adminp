@@ -9,7 +9,7 @@
 
 		div(v-show="num === 2").mt-3
 			.fle
-				v-text-field(label="ID карточки" clearable hint="Поиск по текущей базе" counter="16" dense v-model="card").mt-3
+				v-text-field(label="ID карточки" clearable hint="Поиск по текущей базе" counter="16" dense v-model="cardid").mt-3
 				v-btn(icon @click="setSearch").ml-4
 					v-icon mdi-magnify
 			v-slide-x-transition(mode="out-in")
@@ -27,7 +27,7 @@ export default {
 	data () {
 		let that = this
 		return {
-			card: '',
+			cardid: '',
 			search: false,
 			series2: [{
 				data: [124, 71, 23, 35],
@@ -40,7 +40,7 @@ export default {
 					events: {
 						dataPointSelection: function(event,context,config) {
 							let category = that.chartOptions2.xaxis.categories[config.dataPointIndex]
-							that.goToSearch(category)
+							that.goToSearch(category, that.cardid)
 						},
 					},
 				},
@@ -172,8 +172,8 @@ export default {
 		goTo(e, b) {
 			this.$router.push({name: 'messagelogs', params: {category: e, item: b}})
 		},
-		goToSearch(e) {
-			this.$router.push({name: 'cardsearch', params: {category: e }})
+		goToSearch(e, b) {
+			this.$router.push({name: 'cardsearch', params: {category: e, cardid: b }})
 		},
 		setSearch() {
 			this.search = true
