@@ -16,19 +16,37 @@
 							th Исходящие ссылки
 					tbody
 						tr
-							td Дайджест карточка ГЗ
+							td Дайджест карточка ГЗ id:0 и очень длинный текст
 							td(:rowspan="num+1").main
 								v-card
 									v-card-title Card ID: {{cardid}}
 									v-card-text
 										CardTable
-							td Исходящее задание
+								br
+								.overline Сообщения карточки
+								table.tabs
+									thead
+										tr
+											th Creation date
+											th State
+											th Type ID
+											th Subtype ID
+											th Data
+									tbody
+										tr(v-for="n in 45")
+											td some text
+											td some text
+											td some text
+											td some text
+											td some text
+							td Исходящее задание id: aaabbbccc
 						tr(v-for="n in num")
 							td
-							td Дайджест карточки № {{n}}
+							td Дайджест карточки id {{n}} и очень длинный текст
 
 			v-tab-item(key="2")
-				p wlaks
+				.pa-5
+					.subtitle-1 Здесь будет pipeline
 
 
 </template>
@@ -59,6 +77,7 @@ export default {
 	margin-bottom: 6rem;
 	transition: all 0.3s ease;
 	border-collapse: collapse;
+	font-size: 0.9rem;
 	th {
 		height: 2.5rem;
 		position: sticky;
@@ -72,9 +91,12 @@ export default {
 	td {
 		padding: .5rem 1rem;
 		position: relative;
+		cursor: pointer;
 		&.main {
 			vertical-align: top;
 			padding: 3rem;
+			padding-top: 1rem;
+			cursor: default;
 		}
 	}
 }
