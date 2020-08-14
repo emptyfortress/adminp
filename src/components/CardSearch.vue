@@ -15,9 +15,12 @@
 							th Текущая карточка
 							th Исходящие ссылки
 					tbody
-						tr
-							td Дайджест карточка ГЗ id:0 и очень длинный текст
-							td(:rowspan="num+1").main
+						tr.only
+							td 
+								table.list
+									tr(v-for="n in 5")
+										td Длинный или не очень дайджест карточки ГЗ id:{{n}}
+							td.main
 								v-card
 									v-card-title Card ID: {{cardid}}
 									v-card-text
@@ -33,16 +36,22 @@
 											th Subtype ID
 											th Data
 									tbody
-										tr(v-for="n in 45")
-											td some text
-											td some text
-											td some text
-											td some text
-											td some text
-							td Исходящее задание id: aaabbbccc
-						tr(v-for="n in num")
+										tr(v-for="index in 7" :key="index").ro.re
+											td {{ messages[index-1].date }}
+											td(:class="messages[index-1].state === 'ошибка' ? 'tder' : '' || messages[index-1].state === 'блокировано' ? 'tdbl' : ''") 
+												v-icon(color="red" v-if="messages[index-1].state === 'ошибка'").mr-2 mdi-alert-circle
+												v-icon(color="orange" v-if="messages[index-1].state === 'блокировано'").mr-2 mdi-lock-outline
+												span {{ messages[index-1].state }}
+											td {{ messages[index-1].gservice }}
+											td {{ messages[index-1].service }}
+											td {{ messages[index-1].info }}
 							td
-							td Дайджест карточки id {{n}} и очень длинный текст
+								table.list
+									tr(v-for="n in num")
+										td Длинный или не очень дайджест карточки ГЗ id:{{n+5}}
+						//- tr(v-for="n in num")
+						//- 	td
+						//- 	td Дайджест карточки id {{n}} и очень длинный текст
 
 			v-tab-item(key="2")
 				.pa-5
@@ -53,12 +62,14 @@
 
 <script>
 import CardTable from '@/components/CardTable'
+import {messages} from '@/messages.js'
 
 export default {
 	data () {
 		return {
 			cardid: this.$route.params.cardid,
 			num: 8,
+			messages,
 		}
 	},
 	components: {
@@ -82,18 +93,14 @@ export default {
 		height: 2.5rem;
 		position: sticky;
 		top: 0;
-		text-transform: capitalize;
 		font-size: 0.75rem;
 		text-align: left;
 		padding: 0 1rem;
 		z-index: 3;
 	}
 	td {
-		padding: .5rem 1rem;
-		position: relative;
-		cursor: pointer;
+		vertical-align: top;
 		&.main {
-			vertical-align: top;
 			padding: 3rem;
 			padding-top: 1rem;
 			cursor: default;
@@ -102,16 +109,13 @@ export default {
 }
 .theme--dark .tabs1 {
 	th {
-		background: #424242;
+		background: #444;
 		color: #aaa;
 		border-right: 1px solid #111;
 	}
-	td {
+	.only > td {
 		border: 1px solid #666;
 		color: #aaa;
-		&:hover {
-			background: #3a3a3a;
-		}
 	}
 }
 .theme--light .tabs1 {
@@ -120,15 +124,10 @@ export default {
 		color: #666;
 		border-right: 1px solid #fff;
 	}
-	td {
+	.only > td {
 		border: 1px solid #cecece;
-		&:hover {
-			background: #fefefe;
-
-		}
 	}
 }
-
 
 .id {
 	position: absolute;
@@ -141,6 +140,40 @@ export default {
 	top: 0;
 	right: 0;
 }
-.cardtabs {
+.rel {
+	z-index: 2;
 }
+.list {
+	width: 100%;
+	border: none;
+	border-collapse: collapse;
+	td {
+		padding: .5rem;
+		cursor: pointer;
+	}
+}
+.theme--light .list td {
+	border-bottom: 1px solid #ccc;
+	background: #fff;
+	&:hover {
+		background: #efefef;
+	}
+}
+.theme--dark .list td {
+	border-bottom: 1px solid #666;
+	background: #383838;
+	&:hover {
+		background: #444;
+	}
+}
+.tabs1 .re {
+	height: auto;
+	td {
+		padding: .5rem;
+	}
+}
+.tabs {
+	margin-bottom: 0;
+}
+		
 </style>

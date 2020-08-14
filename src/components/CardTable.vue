@@ -24,7 +24,7 @@ td {
 	border: none;
 	font-size: 1.0rem;
 	padding: .2rem .5rem;
-	color: black;
+	/* color: black; */
 }
 .attr {
 	text-align: right;
