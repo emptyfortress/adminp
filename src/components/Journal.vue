@@ -53,7 +53,7 @@
 								v-icon(color="#ccc") mdi-lock-outline
 							span.action
 								v-icon(color="teal") mdi-lock-open-variant-outline
-					tr(v-show="list === 0").white
+					tr(v-show="list === 0")
 						td(colspan="2")
 							v-img(src="@/assets/img/nothing.svg" width="100").mx-auto.my-3
 							p.text-center.blue-grey--text Ничего не найдено

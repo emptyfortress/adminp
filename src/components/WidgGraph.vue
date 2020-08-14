@@ -5,7 +5,8 @@
 			apexchart(width="100%" type="bar" height="280" :options="chartOptions" :series="series")
 
 		#chart1(v-show="num === 1")
-			apexchart(width="100%" type="bar" height="280" :options="chartOptions1" :series="series1")
+			apexchart(width="100%" type="bar" height="280" :options="chartOptions1" :series="series1" )
+
 		div(v-show="num === 2").mt-3
 			.fle
 				v-text-field(label="ID карточки" clearable hint="Поиск по текущей базе" counter="16" dense v-model="card").mt-3
@@ -36,6 +37,12 @@ export default {
 				chart: {
 					type: 'bar',
 					height: 350,
+					events: {
+						dataPointSelection: function(event,context,config) {
+							let category = that.chartOptions2.xaxis.categories[config.dataPointIndex]
+							that.goToSearch(category)
+						},
+					},
 				},
 				plotOptions: {
 					bar: {
@@ -63,7 +70,6 @@ export default {
 				data: [21, 7, 25, 13, 22, 8],
 			}],
 			chartOptions1: {
-				// colors: [ '#DB3D54','#2696F7', '#E4B692', '#D82121'],
 				chart: {
 					type: 'bar',
 					height: 300,
@@ -75,7 +81,6 @@ export default {
 						enabled: true,
 					},
 				},
-				// colors: ['#265526', '#684B2B', '#D82121', '#263F63'],
 				theme: {
 					monochrome: {
 						enabled: true,
@@ -83,7 +88,6 @@ export default {
 						shadeTo: 'dark',
 						shadeIntensity: 0.65,
 					},
-					// palette: 'palette7',
 				},
 				responsive: [{
 					breakpoint: 480,
@@ -138,13 +142,9 @@ export default {
 						dataPointSelection: function(event,context,config) {
 							let category = that.series[config.seriesIndex].name
 							let series = that.chartOptions.xaxis.categories[config.dataPointIndex]
-							console.log(series, category)
 							that.goTo(series, category)
 						},
 					},
-				},
-				theme: {
-					// palette: 'palette7',
 				},
 				plotOptions: {
 					bar: {
@@ -171,6 +171,9 @@ export default {
 	methods: {
 		goTo(e, b) {
 			this.$router.push({name: 'messagelogs', params: {category: e, item: b}})
+		},
+		goToSearch(e) {
+			this.$router.push({name: 'cardsearch', params: {category: e }})
 		},
 		setSearch() {
 			this.search = true

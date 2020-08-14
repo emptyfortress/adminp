@@ -5,6 +5,7 @@ import Notifications from '../components/Notifications.vue'
 import Logs from '../components/Logs.vue'
 import MessageLogs from '../components/MessageLogs.vue'
 import Journal from '../components/Journal.vue'
+import CardSearch from '../components/CardSearch.vue'
 import Errorlist from '../components/Errorlist.vue'
 import Setup from '../components/Setup.vue'
 
@@ -26,6 +27,19 @@ const routes = [
 				{text: 'Dashboard', href: '/', disabled: false },
 				{text: 'Widget: Очередь сообщений', href: '/', disabled: false },
 				{text: 'Очередь сообщений', href: '/#/messagelogs', disabled: true },
+			],
+		},
+	},
+	{
+		path: '/cardsearch',
+		name: 'cardsearch',
+		component: CardSearch,
+		props: true,
+		meta: {
+			breadcrumbs: [
+				{text: 'Dashboard', href: '/', disabled: false },
+				{text: 'Widget: Поиск сообщений карточки', href: '/', disabled: false },
+				{text: 'Поиск сообщений карточки', href: '/#/cardsearch', disabled: true },
 			],
 		},
 	},
