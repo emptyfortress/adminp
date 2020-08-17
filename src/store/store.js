@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		isLogged: false,
+		isLogged: true,
 		drawer: true,
 		add: false,
 		widget1: [
