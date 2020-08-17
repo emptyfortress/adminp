@@ -1,8 +1,9 @@
 <template lang="pug">
 .pa-5
+	v-snackbar(v-model="cell" absolute color="teal" :timeout="timeout" top) ID скопирован!
 	.zag Сообщения карточки
 	.rel
-		v-btn(outlined color="primary").id Показать все ID
+		v-btn(outlined color="primary" @click="id = !id").id Показать все ID
 		v-text-field(v-model="cardid" label="Card ID" prepend-inner-icon="mdi-magnify" clearable single-line).poisk
 	v-tabs(centered).cardtabs
 			v-tab(key="1") Таблица
@@ -19,12 +20,12 @@
 							td 
 								table.list
 									tr(v-for="n in 5")
-										td Длинный или не очень дайджест карточки ГЗ id:{{n}}
+										td(@click="cell = true") Длинный или не очень дайджест карточки ГЗ id:{{n}}
 							td.main
 								v-card
-									v-card-title Card ID: {{cardid}}
+									v-card-title(@click="cell = true") Card ID: {{cardid}}
 									v-card-text
-										CardTable
+										CardTable(:id="id" @snack="cell = true")
 								br
 								.overline Сообщения карточки
 								table.tabs
@@ -48,7 +49,7 @@
 							td
 								table.list
 									tr(v-for="n in num")
-										td Длинный или не очень дайджест карточки ГЗ id:{{n+5}}
+										td(@click="cell = true") Длинный или не очень дайджест карточки ГЗ id:{{n+5}}
 						//- tr(v-for="n in num")
 						//- 	td
 						//- 	td Дайджест карточки id {{n}} и очень длинный текст
@@ -70,6 +71,9 @@ export default {
 			cardid: this.$route.params.cardid,
 			num: 8,
 			messages,
+			cell: false,
+			timeout: 2000,
+			id: false,
 		}
 	},
 	components: {
