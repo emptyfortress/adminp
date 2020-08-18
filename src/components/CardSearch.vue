@@ -37,7 +37,7 @@
 											th Subtype ID
 											th Data
 									tbody
-										tr(v-for="index in 7" :key="index").ro.re
+										tr(v-for="index in 7" :key="index" @click="$router.push('journal')").ro.re
 											td {{ messages[index-1].date }}
 											td(:class="messages[index-1].state === 'ошибка' ? 'tder' : '' || messages[index-1].state === 'блокировано' ? 'tdbl' : ''") 
 												v-icon(color="red" v-if="messages[index-1].state === 'ошибка'").mr-2 mdi-alert-circle
@@ -174,6 +174,7 @@ export default {
 	height: auto;
 	td {
 		padding: .5rem;
+		cursor: pointer;
 	}
 }
 .tabs {
