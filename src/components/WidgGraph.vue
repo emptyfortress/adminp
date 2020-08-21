@@ -10,15 +10,9 @@
 		#chart1(v-show="num === 2")
 			apexchart(width="100%" type="bar" height="280" :options="chartOptions1" :series="series1" )
 
-		div(v-show="num === 3").mt-3
-			.fle
-				v-text-field(label="ID карточки" clearable hint="Поиск по текущей базе" counter="16" dense v-model="cardid").mt-3
-				v-btn(icon @click="setSearch").ml-4
-					v-icon mdi-magnify
+		#chart2(v-show="num === 3")
 			v-slide-x-transition(mode="out-in")
-				#chart2(v-if="search")
-					apexchart(v-if="search" width="100%" type="bar" height="300" :options="chartOptions2" :series="series2")
-
+				apexchart(v-if="search" width="100%" type="bar" height="280" :options="chartOptions2" :series="series2")
 
 </template>
 
@@ -26,12 +20,10 @@
 import VueApexCharts from 'vue-apexcharts'
 
 export default {
-	props: ['database', 'num'],
+	props: ['database', 'num', 'search', 'cardid'],
 	data () {
 		let that = this
 		return {
-			cardid: '',
-			search: false,
 			series2: [{
 				data: [124, 71, 23, 35],
 			}],
@@ -39,7 +31,7 @@ export default {
 				colors: [ '#336087', '#666', '#D82121'],
 				chart: {
 					type: 'bar',
-					height: 350,
+					height: 300,
 					events: {
 						dataPointSelection: function(event,context,config) {
 							let category = that.chartOptions2.xaxis.categories[config.dataPointIndex]
@@ -49,7 +41,7 @@ export default {
 				},
 				plotOptions: {
 					bar: {
-						horizontal: true,
+						horizontal: false,
 					},
 				},
 				dataLabels: {
@@ -163,7 +155,7 @@ export default {
 					colors: ['transparent'],
 				},
 				xaxis: {
-					categories: ['Группа заданий', 'Задания', 'Согласования', 'Почта ГЗ', 'Почта заданий', 'Почта согласований' ],
+					categories: ['ГЗ', 'Задания', 'Согласования', 'Почта ГЗ', 'Почта заданий', 'Почта согласований' ],
 				},
 			},
 		}
@@ -178,9 +170,6 @@ export default {
 		goToSearch(e, b) {
 			this.$router.push({name: 'cardsearch', params: {category: e, cardid: b }})
 		},
-		setSearch() {
-			this.search = true
-		},
 	},
 }
 
@@ -194,11 +183,15 @@ export default {
 	margin-left: -1rem;
 }
 .fle {
+	position: absolute;
+	top: -66px;
+	right: 0;
+	width: 300px;
 	display: flex;
 	align-items: center;
 }
 #chart2 {
-	margin-top: 2rem;
+	margin-top: -2rem;
 }
 
 

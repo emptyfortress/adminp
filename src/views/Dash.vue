@@ -10,13 +10,17 @@
 					v-icon(small) mdi-cog
 				v-btn(icon small v-show="closeWidget" @click="removeWidget(item.id)").close
 					v-icon(small) mdi-close
-				div(v-if="!item.setup || item.id == 2")
+				div(v-if="!item.setup")
 					.myrow
 						.tit {{ item.text }}
-						.dtb
-							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database" v-if="item.showDb")
+						.dtb(v-if="item.showDb")
+							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database")
+						.search(v-if="item.id === 3 && item.mod.length")
+							v-text-field(label="ID карточки" clearable hint="Поиск по текущей базе" counter="16" dense v-model="cardid")
+							v-btn(icon @click="setSearch").ml-4
+								v-icon mdi-magnify
 					img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
-					WidgGraph(:database='database' :num="item.id" v-else).gra
+					WidgGraph(:database='database' :num="item.id" :search="search" :cardid="cardid" v-else).gra
 				div(v-else)
 					.tit Настройки
 					v-form
@@ -53,6 +57,8 @@ export default {
 			closeWidget: false,
 			refresh: true,
 			slider: 120,
+			search: false,
+			cardid: '',
 			widgets: [
 				{ id: 0, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 0, 'y': 0, 'w': 6, 'h': 10, 'i': '0', setup: false, text: 'Очередь входящих' },
 				{ id: 1, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 6, 'y': 0, 'w': 6, 'h': 10, 'i': '1', setup: false, text: 'Очередь исходящих' },
@@ -80,6 +86,9 @@ export default {
 		window.removeEventListener('keyup', this.setOff)
 	},
 	methods: {
+		setSearch() {
+			this.search = true
+		},
 		setOn(event) {
 			if (event.keyCode === 18) {
 				this.drag = true
@@ -178,5 +187,11 @@ export default {
 }
 .sec {
 	margin-top: -.5rem;
+}
+.search {
+	margin-top: -10px;
+	margin-left: 2rem;
+	display: flex;
+	align-items: center;
 }
 </style>

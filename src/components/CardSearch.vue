@@ -68,7 +68,6 @@ import {messages} from '@/messages.js'
 export default {
 	data () {
 		return {
-			cardid: this.$route.params.cardid,
 			num: 8,
 			messages,
 			cell: false,
@@ -78,6 +77,10 @@ export default {
 	},
 	components: {
 		CardTable,
+	},
+	computed: {
+		cardid () {return this.$route.params.cardid},
+		category () {return this.$route.params.category},
 	},
 }
 
