@@ -1,11 +1,11 @@
 <template lang="pug">
 .cardd
 	.clas
-		#chart(v-show="num === 0")
-			apexchart(width="100%" type="bar" height="280" :options="chartOptions" :series="series")
+		#chart(v-if="num === 0 && week1.length")
+			apexchart(width="100%" type="bar" height="300" :options="chartOptions" :series="series")
 
-		#chart(v-show="num === 1")
-			apexchart(width="100%" type="bar" height="280" :options="chartOptions" :series="series")
+		#chart(v-if="num === 1 && week2.length")
+			apexchart(width="100%" type="bar" height="300" :options="chartOptions" :series="series")
 
 		#chart1(v-show="num === 2")
 			apexchart(width="100%" type="bar" height="280" :options="chartOptions1" :series="series1" )
@@ -20,7 +20,7 @@
 import VueApexCharts from 'vue-apexcharts'
 
 export default {
-	props: ['database', 'num', 'search', 'cardid'],
+	props: ['database', 'num', 'search', 'cardid', 'week1', 'week2'],
 	data () {
 		let that = this
 		return {
@@ -41,7 +41,7 @@ export default {
 				},
 				plotOptions: {
 					bar: {
-						horizontal: false,
+						horizontal: true,
 					},
 				},
 				dataLabels: {

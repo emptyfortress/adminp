@@ -15,12 +15,16 @@
 						.tit {{ item.text }}
 						.dtb(v-if="item.showDb")
 							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database")
+						.search1(v-if="item.id === 0 && item.mod.length" )
+							v-select(:items="time" placeholder="Период" dense v-model="week1" hide-details)
+						.search1(v-if="item.id === 1 && item.mod.length" )
+							v-select(:items="time" placeholder="Период" dense v-model="week2" hide-details)
 						.search(v-if="item.id === 3 && item.mod.length")
 							v-text-field(label="ID карточки" clearable hint="Поиск по текущей базе" counter="16" dense v-model="cardid")
 							v-btn(icon @click="setSearch").ml-4
 								v-icon mdi-magnify
 					img(src="@/assets/img/disconnected.svg" v-if="item.mod.length === 0").discon
-					WidgGraph(:database='database' :num="item.id" :search="search" :cardid="cardid" v-else).gra
+					WidgGraph(:database='database' :num="item.id" :search="search" :cardid="cardid" :week1="week1" :week2="week2" v-else).gra
 				div(v-else)
 					.tit Настройки
 					v-form
@@ -28,6 +32,8 @@
 							v-col(cols="6").px-5
 								v-text-field(label="Название" v-model="item.text")
 								v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database по умолчанию")
+								v-select(:items="time" v-model="week1" dense placeholder="Период" v-if="item.id === 0")
+								v-select(:items="time" v-model="week2" dense placeholder="Период" v-if="item.id === 1")
 								v-checkbox(v-model="item.showDb" label="Разрешить выбор db")
 							v-col(cols="6").px-5
 								v-checkbox(v-model="refresh" label="Автообновление данных")
@@ -59,6 +65,8 @@ export default {
 			slider: 120,
 			search: false,
 			cardid: '',
+			week1: [],
+			week2: [],
 			widgets: [
 				{ id: 0, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 0, 'y': 0, 'w': 6, 'h': 10, 'i': '0', setup: false, text: 'Очередь входящих' },
 				{ id: 1, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 6, 'y': 0, 'w': 6, 'h': 10, 'i': '1', setup: false, text: 'Очередь исходящих' },
@@ -66,7 +74,7 @@ export default {
 				{ id: 3, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 6, 'y': 9, 'w': 6, 'h': 9, 'i': '3', setup: false, text: 'Поиск сообщений' },
 			],
 			database: ['DVM тестовая', 'База 1', 'База 2', 'SQL big','Postgress'],
-			d1: [],
+			time: ['сегодня', 'вчера', 'текущая неделя', 'текущий месяц' ],
 		}
 	},
 	computed: {
@@ -193,5 +201,10 @@ export default {
 	margin-left: 2rem;
 	display: flex;
 	align-items: center;
+}
+.search1 {
+	margin-top: -10px;
+	margin-left: 2rem;
+	width: 200px;
 }
 </style>
