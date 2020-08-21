@@ -5,7 +5,7 @@
 			apexchart(width="100%" type="bar" height="300" :options="chartOptions" :series="series")
 
 		#chart(v-if="num === 1 && week2.length")
-			apexchart(width="100%" type="bar" height="300" :options="chartOptions" :series="series")
+			apexchart(width="100%" type="bar" height="300" :options="chartOptions0" :series="series0")
 
 		#chart1(v-show="num === 2")
 			apexchart(width="100%" type="bar" height="280" :options="chartOptions1" :series="series1" )
@@ -158,6 +158,54 @@ export default {
 					categories: ['ГЗ', 'Задания', 'Согласования', 'Почта ГЗ', 'Почта заданий', 'Почта согласований' ],
 				},
 			},
+			series0: [
+				{
+					name: 'Ошибка',
+					data: [144, 65, 157, 161, 258, 160],
+				},
+				{
+					name: 'В работе',
+					data: [176, 105, 105, 198, 154, 194],
+				},
+				{
+					name: 'Блокировано',
+					data: [135, 141, 148, 152, 153, 141],
+				},
+			],
+			chartOptions0: {
+				colors: [ '#A2333A','#336087', '#F0831E', '#D82121'],
+				chart: {
+					toolbar: {
+						show: true,
+						tools: {
+							download: true,
+						},
+					},
+					events: {
+						dataPointSelection: function(event,context,config) {
+							let category = that.series[config.seriesIndex].name
+							let series = that.chartOptions.xaxis.categories[config.dataPointIndex]
+							that.goTo0(series, category)
+						},
+					},
+				},
+				plotOptions: {
+					bar: {
+						horizontal: false,
+					},
+				},
+				dataLabels: {
+					enabled: false,
+				},
+				stroke: {
+					show: true,
+					width: 2,
+					colors: ['transparent'],
+				},
+				xaxis: {
+					categories: ['ГЗ', 'Задания', 'Согласования', 'Почта ГЗ', 'Почта заданий', 'Почта согласований' ],
+				},
+			},
 		}
 	},
 	components: {
@@ -166,6 +214,9 @@ export default {
 	methods: {
 		goTo(e, b) {
 			this.$router.push({name: 'messagelogs', params: {category: e, item: b}})
+		},
+		goTo0(e, b) {
+			this.$router.push({name: 'messagelogs0', params: {category: e, item: b}})
 		},
 		goToSearch(e, b) {
 			this.$router.push({name: 'cardsearch', params: {category: e, cardid: b }})

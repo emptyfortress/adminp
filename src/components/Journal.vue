@@ -4,8 +4,8 @@
 	.zag Журнал ошибок и блокировок
 	.d-flex.mb-3
 		v-btn(depressed outlined small color="primary" @click="id = !id") Показать все ID
-		v-spacer
-		v-btn(depressed outlined color="pink" small) Изменить дату активации
+		//- v-spacer
+		//- v-btn(depressed outlined color="pink" small) Изменить дату активации
 	table.tabs
 		thead
 			tr
@@ -22,16 +22,16 @@
 			tr.ro
 				td DF345-SDF32-53KSF-ADFL3-LKJ98
 				td 12.10.2020 &#9473; 15:34
-				td.tder
-					v-icon(color="red").mr-1 mdi-alert-circle
+				td.tdbl
 					v-icon(color="red").mr-2 mdi-lock-outline
+					v-icon(color="red").mr-1 mdi-alert-circle
 					span Ошибка, Блокировано
 				td Почта ГЗ
 				td Подготовьте отчет за 1 квартал
 				td Отправлено исполнителям
 				td
 					span.mr-3 12.10.2020 &#9473; 15:41
-					v-btn(depressed color="pink" dark x-small) Изменить
+					//- v-btn(depressed color="pink" dark x-small) Изменить
 	.d-flex.flex-wrap.justify-center
 		.one
 			.zg

@@ -4,6 +4,7 @@ import Dash from '../views/Dash.vue'
 import Notifications from '../components/Notifications.vue'
 import Logs from '../components/Logs.vue'
 import MessageLogs from '../components/MessageLogs.vue'
+import MessageLogs0 from '../components/MessageLogs0.vue'
 import Journal from '../components/Journal.vue'
 import CardSearch from '../components/CardSearch.vue'
 import Errorlist from '../components/Errorlist.vue'
@@ -18,6 +19,19 @@ const routes = [
 		component: Dash,
 	},
 	{
+		path: '/messagelogs0',
+		name: 'messagelogs0',
+		component: MessageLogs0,
+		props: true,
+		meta: {
+			breadcrumbs: [
+				{text: 'Dashboard', href: '/', disabled: false },
+				{text: 'Widget: Очередь исходящих', href: '/', disabled: false },
+				{text: 'Очередь исходящих', href: '/#/messagelogs0', disabled: true },
+			],
+		},
+	},
+	{
 		path: '/messagelogs',
 		name: 'messagelogs',
 		component: MessageLogs,
@@ -25,8 +39,8 @@ const routes = [
 		meta: {
 			breadcrumbs: [
 				{text: 'Dashboard', href: '/', disabled: false },
-				{text: 'Widget: Очередь сообщений', href: '/', disabled: false },
-				{text: 'Очередь сообщений', href: '/#/messagelogs', disabled: true },
+				{text: 'Widget: Очередь входящих', href: '/', disabled: false },
+				{text: 'Очередь входящих', href: '/#/messagelogs', disabled: true },
 			],
 		},
 	},
