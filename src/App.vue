@@ -8,13 +8,6 @@ v-app
 				v-img( src="@/assets/img/adm-logo.svg" transition="scale-transition" )
 				span(v-show="logo") Administration
 			v-spacer
-			//- v-scale-transition(origin="center right" mode="out-in")
-			//- 	v-card(v-show="searchMode").searchbox
-			//- 		input(placeholder="Найти" autofocus)
-			//- v-btn( href="" icon  v-show="offsetTop" @click="toggleSearch")
-			//- 	v-icon mdi-home-search-outline
-			//- v-btn( href="" icon  v-show="offsetTop")
-			//- 	v-icon mdi-bell-outline
 			v-btn( href="" icon  v-show="offsetTop" @click="$vuetify.theme.dark = !$vuetify.theme.dark").mr-3
 				v-icon mdi-brightness-4
 
@@ -37,12 +30,6 @@ v-app
 
 		v-content(v-scroll="handleScroll")
 			v-container(fluid :class="drawer ? '' : 'leftmargin'").rel.pa-0
-				//- transition(name="fade" mode="out-in")
-				//- 	v-btn(fab outlined color="#ccc" small  @click="back").back
-				//- 		v-icon(color="#aaa") mdi-arrow-left
-				//- transition(name="fade" mode="out-in")
-				//- 	v-btn(fab outlined color="#ccc" small  @click="forward").forward
-				//- 		v-icon(color="#aaa") mdi-arrow-right
 
 			transition(name="slide-fade" mode="out-in")
 				Breadcrumbs(v-if="$route.name !== 'home'")

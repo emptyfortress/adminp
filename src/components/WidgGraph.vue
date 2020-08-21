@@ -4,10 +4,13 @@
 		#chart(v-show="num === 0")
 			apexchart(width="100%" type="bar" height="280" :options="chartOptions" :series="series")
 
-		#chart1(v-show="num === 1")
+		#chart(v-show="num === 1")
+			apexchart(width="100%" type="bar" height="280" :options="chartOptions" :series="series")
+
+		#chart1(v-show="num === 2")
 			apexchart(width="100%" type="bar" height="280" :options="chartOptions1" :series="series1" )
 
-		div(v-show="num === 2").mt-3
+		div(v-show="num === 3").mt-3
 			.fle
 				v-text-field(label="ID карточки" clearable hint="Поиск по текущей базе" counter="16" dense v-model="cardid").mt-3
 				v-btn(icon @click="setSearch").ml-4
