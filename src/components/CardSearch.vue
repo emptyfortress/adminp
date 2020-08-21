@@ -9,7 +9,7 @@
 			v-tab(key="1") Входящие сообщения
 			v-tab(key="2") Исходящие сообщения
 			v-tab-item(key="1")
-				TabTable(@snack="cell = true" :id="id")
+				TabTable(@snack="cell = true" :id="id" :cardid="cardid")
 
 			v-tab-item(key="2")
 				.pa-5
@@ -24,9 +24,9 @@ import TabTable from '@/components/TabTable'
 export default {
 	data () {
 		return {
-			id: false,
 			cell: false,
 			timeout: 2000,
+			id: false,
 		}
 	},
 	computed: {

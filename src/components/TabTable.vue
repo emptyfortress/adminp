@@ -60,12 +60,11 @@ import CardTable from '@/components/CardTable'
 import {messages} from '@/messages.js'
 
 export default {
-	props: ['id'],
+	props: ['id', 'cardid'],
 	data () {
 		return {
 			num: 8,
 			messages,
-			
 		}
 	},
 	components: {
