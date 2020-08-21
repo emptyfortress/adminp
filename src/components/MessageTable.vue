@@ -5,18 +5,19 @@
 			v-text-field(v-model="filter" label="Поиск" prepend-inner-icon="mdi-magnify" clearable single-line)
 
 		v-col
-			v-row(justify="space-around")
+			v-row(justify="space-around" align="center")
+				v-btn(outlined small color="primary") Показать все ID
 				v-chip-group(active-class="tt" v-model="type1" ).mr-8
-					v-chip.mr-2 ГЗ
-					v-chip.mr-2 Задания
-					v-chip.mr-2 Согласования
-					v-chip.mr-2 Почта ГЗ
-					v-chip.mr-2 Почта заданий
-					v-chip.mr-2 Почта согласований
+					v-chip(small).mr-2 ГЗ
+					v-chip(small).mr-2 Задания
+					v-chip(small).mr-2 Согласования
+					v-chip(small).mr-2 Почта ГЗ
+					v-chip(small).mr-2 Почта заданий
+					v-chip(small).mr-2 Почта согласований
 				v-chip-group(active-class="tt" v-model="type2" )
-					v-chip.mr-2 Ошибка
-					v-chip.mr-2 В работе
-					v-chip.mr-2 Блокировано
+					v-chip(small).mr-2 Ошибка
+					v-chip(small).mr-2 В работе
+					v-chip(small).mr-2 Блокировано
 
 		v-col(cols="12" sm="2").tool
 			template(v-for="(item, index) in buttons")
@@ -47,22 +48,24 @@
 					v-checkbox.check
 				td {{ item.date }}
 				td {{ item.digest }}
-				td(:class="item.state === 'ошибка' ? 'tder' : '' || item.state === 'блокировано' ? 'tdbl' : ''")
+				td(:class="item.state === 'ошибка' ? 'tder' : '' || item.state === 'блокировано' ? 'tdbl' : '' || item.state === 'блокировано, ошибка' ? 'tdbl' : '' ")
 					v-icon(color="red" v-if="item.state === 'ошибка'").mr-2 mdi-alert-circle
-					v-icon(color="orange" v-if="item.state === 'блокировано'").mr-2 mdi-lock-outline
+					v-icon(color="red" v-if="item.state === 'блокировано'").mr-2 mdi-lock-outline
+					span(v-if="item.state === 'блокировано, ошибка'")
+						v-icon(color="red" ).mr-2 mdi-lock-outline
+						v-icon(color="red" ).mr-2 mdi-alert-circle
 					span {{ item.state }}
 				td {{ item.gservice }}
 				td {{ item.service }}
 				td {{ item.type }}
-				td {{ item.info }}
 				td
-					span {{ item.database }}
+					span {{ item.info }}
 					span.action
 						i.icon-star-empty
 						i.icon-check
 						i.icon-trash-line
 			tr(v-show="filteredItems.length === 0")
-				td(colspan="9")
+				td(colspan="8")
 					v-img(src="@/assets/img/nothing.svg" width="130").mx-auto.my-3
 					p.text-center.blue-grey--text Ничего не найдено
 
@@ -132,8 +135,7 @@ export default {
 						item.gservice.toLowerCase().includes(filterValue) ||
 						item.service.toLowerCase().includes(filterValue) ||
 						item.type.toLowerCase().includes(filterValue) ||
-						item.info.toLowerCase().includes(filterValue) ||
-						item.database.toLowerCase().includes(filterValue)
+						item.info.toLowerCase().includes(filterValue)
 				}
 				return result.filter(filt)
 			}

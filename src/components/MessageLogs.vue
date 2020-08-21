@@ -1,6 +1,8 @@
 <template lang="pug">
 .pa-5
-	.zag Очередь сообщений
+	.zag
+		v-icon(x-large color="#999").mr-3 mdi-inbox-arrow-down-outline
+		span Очередь входящих сообщений
 	MessageTable(:headers="headers" :items="messages" :category="category")
 </template>
 
@@ -9,6 +11,7 @@ import MessageTable from '@/components/MessageTable'
 import {headers, messages} from '@/messages.js'
 
 export default {
+	props: ['type'],
 	data () {
 		return {
 			headers,
@@ -27,3 +30,7 @@ export default {
 }
 
 </script>
+
+<style scoped lang="scss">
+
+</style>
