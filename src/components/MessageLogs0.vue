@@ -1,5 +1,6 @@
 <template lang="pug">
 .pa-5
+	v-select(:items="bd" label="База данных").small
 	.zag
 		v-icon(x-large color="#999").mr-3 mdi-inbox-arrow-up-outline
 		span Очередь исходящих сообщений
@@ -16,6 +17,12 @@ export default {
 		return {
 			headers,
 			messages,
+			bd: [
+				'тестовая',
+				'производство',
+				'DB1',
+				'DB 2',
+			],
 		}
 	},
 	components: {
@@ -32,5 +39,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.small {
+	width: 300px;
+	margin: 0 auto;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+}
 
 </style>

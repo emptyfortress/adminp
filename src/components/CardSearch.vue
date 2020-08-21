@@ -12,9 +12,7 @@
 				TabTable(@snack="cell = true" :id="id" :cardid="cardid")
 
 			v-tab-item(key="2")
-				.pa-5
-					.subtitle-1 Здесь будет pipeline
-
+				TabTable(@snack="cell = true" :id="id" :cardid="cardid")
 
 </template>
 
