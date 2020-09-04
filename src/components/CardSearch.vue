@@ -6,13 +6,13 @@
 		v-btn(outlined color="primary" @click="id = !id").id Показать все ID
 		v-text-field(v-model="cardid" label="Card ID" prepend-inner-icon="mdi-magnify" clearable single-line).poisk
 	v-tabs(centered).cardtabs
-			v-tab(key="1") Входящие сообщения
-			v-tab(key="2") Исходящие сообщения
-			v-tab-item(key="1")
-				TabTable(@snack="cell = true" :id="id" :cardid="cardid")
+		v-tab(key="1") Входящие сообщения
+		v-tab(key="2") Исходящие сообщения
+		v-tab-item(key="1")
+			TabTable(@snack="cell = true" :id="id" :cardid="cardid")
 
-			v-tab-item(key="2")
-				TabTable(@snack="cell = true" :id="id" :cardid="cardid")
+		v-tab-item(key="2")
+			TabTable(@snack="cell = true" :id="id" :cardid="cardid")
 
 </template>
 
