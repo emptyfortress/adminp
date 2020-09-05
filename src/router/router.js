@@ -17,6 +17,9 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: Dash,
+		props: {
+			plus: true,
+		},
 	},
 	{
 		path: '/messagelogs0',
@@ -86,6 +89,9 @@ const routes = [
 		path: '/setup',
 		name: 'setup',
 		component: Setup,
+		props: {
+			plus: true,
+		},
 		meta: {
 			breadcrumbs: [
 				{text: 'Dashboard', href: '/', disabled: false },

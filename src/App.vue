@@ -42,7 +42,7 @@ v-app
 		Footer
 		Dialog
 		v-alert(transition="scale-transition").plus
-			v-btn(v-show="$route.name === 'home'" fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
+			v-btn(v-show="plus" fab large @click="toggleAdd" :class="add ? 'active' : '' " ).fab
 				v-icon(color="white") mdi-plus
 
 		v-alert(v-show="scroll" transition="scale-transition").up
@@ -64,9 +64,11 @@ import Breadcrumbs from './components/Breadcrumbs'
 import Login from './views/Login'
 import './assets/css/palette.scss'
 import lang from './components/lang.vue'
+import {plus} from '@/components/mixins/plus'
 
 export default {
 	name: 'App',
+	mixins: [plus],
 	components: {
 		Drawer,
 		AddDrawer,
