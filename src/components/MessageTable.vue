@@ -6,7 +6,6 @@
 
 		v-col
 			v-row(justify="space-around" align="center")
-				v-btn(outlined small color="primary") Показать все ID
 				v-chip-group(active-class="tt" v-model="type1" ).mr-8
 					v-chip(small).mr-2 ГЗ
 					v-chip(small).mr-2 Задания

@@ -361,3 +361,7 @@ tr:hover span.action {
 .v-data-table.tabs tbody tr.v-data-table__expanded__content {
 	box-shadow: none;
 }
+
+.v-chip-group .v-slide-group__content {
+	padding: 0 !important;
+}

@@ -1,9 +1,10 @@
 <template lang="pug">
 .pa-5
-	v-select(:items="bd" label="База данных").small
 	.zag
 		v-icon(x-large color="#999").mr-3 mdi-inbox-arrow-down-outline
 		span Очередь входящих сообщений
+		v-select(:items="bd" label="База данных").small
+	v-btn(outlined small color="primary") Показать все ID
 	MessageTable(:headers="headers" :items="messages" :category="category")
 </template>
 
@@ -40,10 +41,9 @@ export default {
 
 <style scoped lang="scss">
 .small {
-	width: 300px;
-	margin: 0 auto;
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	width: 200px;
+	display: inline-block;
+	margin-left: 2rem;
+	transform: translateY(-9px);
 }
 </style>
