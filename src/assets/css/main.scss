@@ -5,6 +5,10 @@
 	color: #999;
 	text-align: center;
 }
+.lnk {
+	cursor: pointer;
+	color: $link;
+}
 .status {
 	font-size: 1.1rem;
 	/* text-align: left; */
@@ -365,3 +369,4 @@ tr:hover span.action {
 .v-chip-group .v-slide-group__content {
 	padding: 0 !important;
 }
+

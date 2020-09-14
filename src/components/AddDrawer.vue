@@ -16,6 +16,11 @@ v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide
 					v-scroll-y-transition(mode="out-in")
 						.act(v-if="active")
 							v-icon(color="white" ) mdi-check-bold
+	.pa-5(v-show="$route.name === 'setup'")
+		.zg Добавить узел
+		v-text-field(label="Название")
+		p some more attirbutes here
+		v-btn(depressed color="primary") Добавить
 
 </template>
 
@@ -100,5 +105,10 @@ export default {
 	position: absolute;
 	top: 2px;
 	left: 2px;
+}
+.zg {
+	font-size: 1.3rem;
+	margin-top: 2rem;
+	text-align: center;
 }
 </style>

@@ -55,4 +55,5 @@ export default {
 .tb {
 	padding: 3px 5px;
 }
+
 </style>
