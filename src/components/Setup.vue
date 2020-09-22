@@ -2,8 +2,8 @@
 .pa-5
 	.zag Настройки
 	v-tabs(centered v-model="tabs").cardtabs
-		v-tab(key="1") Общие
-		v-tab(key="2") Worker service
+		v-tab(key="1" @click="setTab(0)") Общие
+		v-tab(key="2" @click="setTab(1)") Worker service
 		v-tab-item(key="1").pa-5
 			.d-flex.justify-space-between.align-center
 				.zg Соединения
@@ -26,8 +26,17 @@ import Uzel from '@/components/Uzel'
 export default {
 	data () {
 		return {
-			tabs: 0,
 		}
+	},
+	computed: {
+		tabs () {
+			return this.$store.getters.setupTab
+		},
+	},
+	methods: {
+		setTab (e) {
+			this.$store.commit('setTab', e)
+		},
 	},
 	components: {
 		SetupTable,

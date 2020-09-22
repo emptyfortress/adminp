@@ -8,6 +8,7 @@ export default new Vuex.Store({
 		isLogged: true,
 		drawer: true,
 		add: false,
+		setupTab: 0,
 		widget1: [
 			{ id: 0, smart: true, url: '/notifications', badge: 5, 'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '0', selected: true, text: 'Проблемы' },
 			{ id: 1, smart: true, url: '/', badge: 2, 'x': 2, 'y': 0, 'w': 2, 'h': 2, 'i': '1', selected: true, text: 'Сервера' },
@@ -52,6 +53,7 @@ export default new Vuex.Store({
 		chat: state => { return state.chat },
 		widget1: state => { return state.widget1 },
 		widget2: state => { return state.widget2 },
+		setupTab: state => { return state.setupTab },
 	},
 	mutations: {
 		login (state) { state.isLogged = true },
@@ -69,6 +71,7 @@ export default new Vuex.Store({
 		setOverlay (state, payload) { state.overlay = payload },
 		toggleChat (state) { state.chat = !state.chat },
 		updateWidget1 (state, payload) { state.widget1 = payload },
+		setTab (state, payload) { state.setupTab = payload },
 	},
 	actions: {},
 	modules: {},

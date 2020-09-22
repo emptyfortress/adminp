@@ -16,11 +16,20 @@ v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide
 					v-scroll-y-transition(mode="out-in")
 						.act(v-if="active")
 							v-icon(color="white" ) mdi-check-bold
-	.pa-5(v-show="$route.name === 'setup'")
+	.pa-5(v-show="$route.name === 'setup' && tabs === 1")
 		.zg Добавить узел
 		v-text-field(label="Название")
-		p some more attirbutes here
-		v-btn(depressed color="primary") Добавить
+		v-text-field(label="Атрибут 1")
+		v-text-field(label="Атрибут 2")
+		v-text-field(label="Атрибут 3")
+		v-btn(depressed color="primary" @click="$store.commit('toggleAdd')").mt-8 Добавить
+
+	.pa-5(v-show="$route.name === 'setup' && tabs === 0")
+		.zg Добавить соединение
+		v-select(:items="type" label="Тип соединения")
+		v-text-field(label="Имя")
+		v-text-field(label="Строка")
+		v-btn(depressed color="primary" @click="$store.commit('toggleAdd')").mt-8 Добавить
 
 </template>
 
@@ -29,10 +38,16 @@ v-navigation-drawer(v-model="add" stateless app right temporary width="30%" hide
 export default {
 	data() {
 		return {
-			order: 1,
+			type: [
+				'SQL', 'Docsvision', 'TCP', 'GraphQL', 'Менеджер решений',
+			],
+
 		}
 	},
 	computed: {
+		tabs () {
+			return this.$store.getters.setupTab
+		},
 		add: {
 			get() {
 				return this.$store.getters.add
