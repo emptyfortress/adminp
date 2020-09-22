@@ -29,8 +29,12 @@ export default {
 		}
 	},
 	computed: {
-		tabs () {
-			return this.$store.getters.setupTab
+		tabs: {
+			get: function () {
+				return this.$store.getters.setupTab
+			},
+			set: function () {
+			},
 		},
 	},
 	methods: {

@@ -3,16 +3,19 @@
 	v-snackbar(v-model="cell" absolute color="teal" :timeout="timeout" top) ID скопирован!
 	.zag Сообщения карточки
 	.rel
-		v-btn(outlined color="primary" @click="id = !id").id Показать все ID
+		.id
+			v-btn(outlined color="primary" @click="id = !id") Показать все ID
+			v-btn(icon).ml-2
+				v-icon() mdi-refresh
 		v-text-field(v-model="cardid" label="Card ID" prepend-inner-icon="mdi-magnify" clearable single-line).poisk
 	v-tabs(centered).cardtabs
 		v-tab(key="1") Входящие сообщения
 		v-tab(key="2") Исходящие сообщения
 		v-tab-item(key="1")
-			TabTable(@snack="cell = true" :id="id" :cardid="cardid")
+			TabTable(@snack="cell = true" :id="id" :cardid="cardid" :tab="1")
 
 		v-tab-item(key="2")
-			TabTable(@snack="cell = true" :id="id" :cardid="cardid")
+			TabTable(@snack="cell = true" :id="id" :cardid="cardid" :tab="2")
 
 </template>
 
@@ -48,7 +51,7 @@ export default {
 	left: 0;
 }
 .poisk {
-	width: 400px;
+	max-width: 400px;
 	position: absolute;
 	top: 0;
 	right: 0;

@@ -23,8 +23,9 @@ div
 						v-card-text
 							CardTable(:id="id" @snack="$emit('snack')")
 					br
-					.overline Сообщения карточки
-					table.tabs
+					.overline(v-if="tab === 1") Входящие сообщения
+					.overline(v-else) Исходящие сообщения
+					table(v-if="tab === 1").tabs
 						thead
 							tr
 								th Creation date
@@ -48,6 +49,35 @@ div
 								td {{ messages[index-1].gservice }}
 								td {{ messages[index-1].service }}
 								td {{ messages[index-1].info }}
+					table(v-else).tabs
+						thead
+							tr
+								th Дата создания
+								th Сервис обработки
+								th Тип сообщения
+								th Информация по событию
+								th Отложенная <br>отправка 
+								th Дата активации
+						tbody
+							tr(v-show="id" @click="$emit('snack')").id
+								td DF345-SDF32-53KSF
+								td DF345-SDF32-53KSF
+								td DF345-SDF32-53KSF
+								td DF345-SDF32-53KSF
+								td DF345-SDF32-53KSF
+								td DF345-SDF32-53KSF
+							tr(v-for="message in inmessages" :key="index" @click="$router.push('journal')").ro.re
+								td {{ message.date }}
+								td {{ message.service }}
+								td Сообщение la la
+								td {{ message.info }}
+								td.text-center {{ message.delay }}
+								td( @click.stop="")
+									v-edit-dialog(:return-value.sync="message.date1" v-if="message.date1") {{ message.date1 }}
+										template( v-slot:input )
+												v-text-field(v-model="message.date1" label="Дата" append-icon="mdi-unfold-more-horizontal")
+										v-btn(icon  small v-if="message.date1").ml-3
+											v-icon(color="red") mdi-timer-outline
 				td
 					table.list
 						tr(v-for="n in num")
@@ -58,13 +88,15 @@ div
 <script>
 import CardTable from '@/components/CardTable'
 import {messages} from '@/messages.js'
+import {inmessages} from '@/inmessages.js'
 
 export default {
-	props: ['id', 'cardid'],
+	props: ['id', 'cardid', 'tab'],
 	data () {
 		return {
 			num: 8,
 			messages,
+			inmessages,
 		}
 	},
 	components: {

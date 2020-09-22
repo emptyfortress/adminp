@@ -4,7 +4,7 @@
 		.d-flex
 			v-card-title.headline.mb Узел Worker Service 1
 			v-spacer
-			v-btn(text color="primary") Подключить процесс
+			v-btn(text color="primary" @click="dialog = !dialog") Подключить процесс
 		v-card-text
 			table.sm
 				tr
@@ -84,7 +84,7 @@
 		.d-flex
 			v-card-title.headline.mb Узел Worker Service 2
 			v-spacer
-			v-btn(text color="primary") Подключить процесс
+			v-btn(text color="primary" @click="dialog = !dialog") Подключить процесс
 		v-card-text
 			table.sm
 				tr
@@ -126,6 +126,19 @@
 					.d-flex
 						v-checkbox(label="x86" dense hide-details).mr-5
 						v-checkbox(label="x64" dense hide-details)
+
+	v-dialog(v-model="dialog" persistent max-width="450")
+		v-card
+			v-card-title( class="headline" ) Подключить процесс
+			v-card-text Здесь параметры
+			v-form.px-5
+				v-text-field(label="Название")
+				v-text-field(label="Конфигурация")
+			v-card-text Здесь еще параметры
+			v-card-actions
+				v-spacer
+				v-btn( color="primary" text @click="dialog = false" )  Отмена
+				v-btn( color="primary" text @click="dialog = false" )  Сохранить
 </template>
 
 
@@ -133,6 +146,7 @@
 
 export default {
 	data: () => ({
+		dialog: false,
 		sel: [
 			'BackOffice сервис обработки заданий',
 			'BackOffice сервис обработки ГЗ',
