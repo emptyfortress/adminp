@@ -170,7 +170,7 @@
 }
 
 .theme--light.v-expansion-panels .v-expansion-panel {
-	border-bottom: 1px solid #ccc;
+	// border-bottom: 1px solid #ccc;
 	background: transparent;
 	&::before {
 		box-shadow: none;
@@ -179,6 +179,7 @@
 .theme--light.v-expansion-panels .v-expansion-panel--active {
 	background: #fff;
 	border: 1px solid #ccc;
+	box-shadow: 0 2px 6px #ccc;
 }
 
 .theme--light.v-icon, .theme--light.v-btn .v-icon {

@@ -4,7 +4,6 @@
 		.d-flex
 			v-card-title.headline.mb Узел Worker Service 1
 			v-spacer
-			v-btn(text color="primary" @click="dialog = !dialog") Подключить процесс
 		v-card-text
 			table.sm
 				tr
@@ -13,6 +12,9 @@
 				tr
 					td LogTraceLevel:
 					td 4
+			.d-flex.align-center.justify-space-between.mt-3
+				.proc Всего процессов: 2
+				v-btn(small color="primary" depressed @click="dialog = !dialog") Подключить процесс
 			.process
 				table.sm
 					tr
@@ -23,9 +25,9 @@
 						td
 							v-select(:items="sel" value="BackOffice сервис обработки заданий" dense hide-details).sel
 				div
-					v-btn(depressed small)
-						v-icon mdi-restart
-						span IIS
+					//- v-btn(depressed small)
+					//- 	v-icon mdi-restart
+					//- 	span IIS
 					v-btn(icon small) 
 						v-icon mdi-trash-can-outline
 			.bottom
@@ -56,9 +58,9 @@
 						td
 							v-select(:items="sel" value="BackOffice сервис обработки заданий" dense hide-details).sel
 				div
-					v-btn(depressed small)
-						v-icon mdi-restart
-						span IIS
+					//- v-btn(depressed small)
+					//- 	v-icon mdi-restart
+					//- 	span IIS
 					v-btn(icon small) 
 						v-icon mdi-trash-can-outline
 			.bottom
@@ -84,7 +86,6 @@
 		.d-flex
 			v-card-title.headline.mb Узел Worker Service 2
 			v-spacer
-			v-btn(text color="primary" @click="dialog = !dialog") Подключить процесс
 		v-card-text
 			table.sm
 				tr
@@ -93,6 +94,9 @@
 				tr
 					td LogTraceLevel:
 					td 4
+			.d-flex.align-center.justify-space-between.mt-3
+				.proc Всего процессов: 1
+				v-btn(small color="primary" depressed @click="dialog = !dialog").mt-3 Подключить процесс
 			.process
 				table.sm
 					tr
@@ -103,9 +107,9 @@
 						td
 							v-select(:items="sel" value="BackOffice сервис обработки заданий" dense hide-details).sel
 				div
-					v-btn(depressed small)
-						v-icon mdi-restart
-						span IIS
+					//- v-btn(depressed small)
+					//- 	v-icon mdi-restart
+					//- 	span IIS
 					v-btn(icon small) 
 						v-icon mdi-trash-can-outline
 			.bottom
@@ -197,7 +201,7 @@ export default {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	border-top: 1px solid #ccc;
-	margin-top: 2rem;
+	margin-top: 1rem;
 	padding: 1rem 0;
 }
 .zg {
@@ -245,8 +249,12 @@ export default {
 .move {
 	margin-top: -1rem;
 	margin-bottom: 0.9rem;
-
-
+}
+.proc {
+	font-size: 1.0rem;
+	font-weight: bold;
+	background: $yellow;
+	padding: 3px 10px;
 }
 
 </style>
