@@ -2,7 +2,7 @@
 .wr
 	v-card.all
 		.d-flex
-			v-card-title.headline.mb Узел Worker Service 1
+			v-card-title.headline.mb {{ uzel }} 1
 			v-spacer
 		v-card-text
 			table.sm
@@ -13,6 +13,10 @@
 					td LogTraceLevel:
 					td 4
 			.d-flex.align-center.justify-space-between.mt-3
+				v-edit-dialog
+					span.my {{ uzel }} 1
+					template( v-slot:input )
+						v-text-field(v-model="uzel" label="Edit" single-line)
 				.proc Всего процессов: 2
 				v-btn(small color="primary" depressed @click="dialog = !dialog") Подключить процесс
 			.process
@@ -25,9 +29,6 @@
 						td
 							v-select(:items="sel" value="BackOffice сервис обработки заданий" dense hide-details).sel
 				div
-					//- v-btn(depressed small)
-					//- 	v-icon mdi-restart
-					//- 	span IIS
 					v-btn(icon small) 
 						v-icon mdi-trash-can-outline
 			.bottom
@@ -151,6 +152,7 @@
 export default {
 	data: () => ({
 		dialog: false,
+		uzel: 'Узел Worker Service',
 		sel: [
 			'BackOffice сервис обработки заданий',
 			'BackOffice сервис обработки ГЗ',
@@ -251,10 +253,17 @@ export default {
 	margin-bottom: 0.9rem;
 }
 .proc {
-	font-size: 1.0rem;
-	font-weight: bold;
+	font-size: 0.8rem;
 	background: $yellow;
 	padding: 3px 10px;
+	border-radius: 32px;
+	color: #000;
+}
+.my {
+	/* font-weight: bold; */
+	color: $link;
+	font-size: 1.0rem;
+	/* border-bottom: 1px dotted $link; */
 }
 
 </style>
