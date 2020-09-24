@@ -9,6 +9,15 @@
 	cursor: pointer;
 	color: $link;
 }
+.edit {
+	cursor: pointer;
+	// color: $link;
+	span {
+		border-bottom: 1px dotted $link;
+	}
+
+	
+}
 .status {
 	font-size: 1.1rem;
 	/* text-align: left; */

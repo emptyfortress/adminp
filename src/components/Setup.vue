@@ -16,29 +16,43 @@
 				v-expansion-panels( multiple )
 					v-expansion-panel( v-for="item in conn1" :key="item.id" )
 						v-expansion-panel-header {{ item.name }}
-						v-expansion-panel-content
-							.item
+						v-expansion-panel-content.mt-4
+							ConnectTable(:item="item" @dial="dialog = !dialog")
+
 				v-expansion-panels( multiple )
 					v-expansion-panel( v-for="item in conn2" :key="item.id" )
 						v-expansion-panel-header {{ item.name }}
-						v-expansion-panel-content
-							.item
+						v-expansion-panel-content.mt-4
+							ConnectTable(:item="item" @dial="dialog = !dialog")
 
 			//- SetupTable.mt-9
 
 		v-tab-item(key="2").pa-5
 			Uzel
+
+	v-dialog(v-model="dialog" persistent max-width="450")
+		v-card
+			v-card-title( class="headline" ) Добавить экземпляр соединения
+			v-card-text Тип соединения, имя и другие детали
+			v-form.px-5
+				v-text-field(label="Строка")
+				v-text-field(label="Логин")
+				v-text-field(label="Пароль")
+			v-card-actions
+				v-spacer
+				v-btn( color="primary" text @click="dialog = false" )  Отмена
+				v-btn( color="primary" text @click="dialog = false" )  Сохранить
 </template>
 
 <script>
 import SetupTable from '@/components/SetupTable'
 import Uzel from '@/components/Uzel'
-
-
+import ConnectTable from '@/components/ConnectTable'
 
 export default {
 	data () {
 		return {
+			dialog: false,
 			conn1: [
 				{ id: 0, name: 'Тестовая DVM', type: 'SQL' },
 				{ id: 1, name: 'Боевая DVM', type: 'SQL' },
@@ -68,6 +82,7 @@ export default {
 	components: {
 		SetupTable,
 		Uzel,
+		ConnectTable,
 	},
 }
 
@@ -91,9 +106,6 @@ export default {
 	gap: 2rem;
 	grid-template-columns: repeat(2, 1fr);
 	align-items: start;
-	.item {
-		height: 100px;
-	}
 
 }
 .v-expansion-panel--active > .v-expansion-panel-header {
