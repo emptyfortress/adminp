@@ -16,7 +16,7 @@
 						v-expansion-panel-header {{ types[i].title }}
 						v-expansion-panel-content.mt-4
 							.myrow
-								v-select(label="Тип соединения" dense :items="select" :value="types[i].title")
+								v-select(label="Тип соединения" dense :items="select" :value="types[i].title" disabled)
 								v-spacer
 								.proc Всего соединений: {{ types[i].connections }}
 								v-spacer
@@ -28,9 +28,14 @@
 					v-expansion-panel( v-for="(n,i) in 2" :key="n" )
 						v-expansion-panel-header {{types[i+2].title}}
 						v-expansion-panel-content.mt-4
-							v-select(label="Тип соединения" dense :items="select" :value="types[i+2].title")
-
-							//- ConnectTable(:item="item" @dial="dialog = !dialog")
+							.myrow
+								v-select(label="Тип соединения" dense :items="select" :value="types[i+2].title" disabled)
+								v-spacer
+								.proc Всего соединений: {{ types[i+2].connections }}
+								v-spacer
+								v-btn(@click="toggleDialog" small depressed color="primary")
+									span Добавить экземпляр
+							Exchange(v-if="i === 0")
 
 		v-tab-item(key="2").pa-5
 			Uzel
@@ -40,9 +45,10 @@
 <script>
 import SetupTable from '@/components/SetupTable'
 import Uzel from '@/components/Uzel'
-import ConnectTable from '@/components/ConnectTable'
 import Dialog from '@/components/Dialog'
 import Docsvision from '@/components/Docsvision'
+import Exchange from '@/components/Exchange'
+
 
 
 
@@ -58,7 +64,7 @@ export default {
 				{ id: 3, title: 'Менеджер решений', connections: 0},
 			],
 			conn1: [
-				{ id: 0, name: 'Тестовая DVM', type: 'SQL' },
+				{ id: 0, name: 'Тестовая DVM', type: 'SQL', connections: 3  },
 				{ id: 1, name: 'Боевая DVM', type: 'SQL' },
 				{ id: 2, name: 'Current55', type: 'Docsvision' },
 			],
@@ -91,7 +97,7 @@ export default {
 		Uzel,
 		Dialog,
 		Docsvision,
-		ConnectTable,
+		Exchange,
 	},
 }
 

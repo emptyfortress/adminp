@@ -1,5 +1,10 @@
 <template lang="pug">
 .greyblock.mt-3(:class="edited ? 'active' : ''")
+	.close
+		v-btn(icon)
+			v-icon mdi-content-duplicate
+		v-btn(icon)
+			v-icon mdi-trash-can-outline
 	.zg {{ name }}
 	table.tabs1
 		tr
@@ -67,12 +72,11 @@ export default {
 .greyblock {
 	padding: 1rem;
 	padding-top: 1.3rem;
-	background: #eee;
+	background: #efefef;
 	border-radius: 4px;
 	position: relative;
 	&.active {
 		border: 1px dashed red;
-		/* background: #ffedf0; */
 	}
 	.zg {
 		position: absolute;
@@ -82,6 +86,11 @@ export default {
 		font-size: 0.9rem;
 		padding: 1px 15px;
 		border-radius: 20px;
+	}
+	.close {
+		position: absolute;
+		top: .5rem;
+		right: .5rem;
 	}
 }
 </style>
