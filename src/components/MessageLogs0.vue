@@ -5,18 +5,18 @@
 		span Очередь исходящих сообщений
 		v-select(:items="bd" label="База данных").small
 	v-btn(outlined small color="primary") Показать все ID
-	MessageTable(:headers="headers" :items="messages" :category="category")
+	MessageOut(:headers="headersout" :items="messages" :category="category")
 </template>
 
 <script>
-import MessageTable from '@/components/MessageTable'
-import {headers, messages} from '@/messages.js'
+import MessageOut from '@/components/MessageOut'
+import {headersout, messages} from '@/messages.js'
 
 export default {
 	props: ['type'],
 	data () {
 		return {
-			headers,
+			headersout,
 			messages,
 			bd: [
 				'тестовая',
@@ -27,7 +27,7 @@ export default {
 		}
 	},
 	components: {
-		MessageTable,
+		MessageOut,
 	},
 	computed: {
 		category () {

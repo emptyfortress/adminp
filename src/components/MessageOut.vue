@@ -45,29 +45,29 @@
 			tr(v-for="item in filteredItems" @click="$router.push('/journal')").ro
 				td(@click.stop="")
 					v-checkbox.check
-				td {{ item.date }}
 				td {{ item.digest }}
-				td(:class="item.state === 'ошибка' ? 'tder' : '' || item.state === 'блокировано' ? 'tdbl' : '' || item.state === 'блокировано, ошибка' ? 'tdbl' : '' ")
-					v-icon(color="red" v-if="item.state === 'ошибка'").mr-2 mdi-alert-circle
-					v-icon(color="red" v-if="item.state === 'блокировано'").mr-2 mdi-lock-outline
-					span(v-if="item.state === 'блокировано, ошибка'")
-						v-icon(color="red" ).mr-2 mdi-lock-outline
-						v-icon(color="red" ).mr-2 mdi-alert-circle
-					span {{ item.state }}
-				td {{ item.gservice }}
+				td {{ item.date }}
 				td {{ item.service }}
-				td {{ item.type }}
+				td Осмысленное задание
+				td {{ item.info }}
 				td
-					span {{ item.info }}
+					span(v-if="item.delay") 1
+					span(v-else) 0
+				td
+					div(v-if="item.delay")
+						span 02.12.19 &mdash; 12:19:35
+						v-btn(icon small @click.stop="").ml-3
+							v-icon(color="red") mdi-timer-outline
+				td
+					span DVM рабочая лошадка
 					span.action
 						i.icon-star-empty
 						i.icon-check
 						i.icon-trash-line
 			tr(v-show="filteredItems.length === 0")
-				td(colspan="8")
+				td(colspan="9")
 					v-img(src="@/assets/img/nothing.svg" width="130").mx-auto.my-3
 					p.text-center.blue-grey--text Ничего не найдено
-
 </template>
 
 <script>

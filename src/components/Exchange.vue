@@ -24,9 +24,9 @@
 				td Email сервера:
 				td.edit.pl-5
 					Edit(:prop="empty" @save="saving")
-			tr
-				td(colspan="2")
-					v-checkbox(v-model="check" label="Использовать по умолчанию" dense hide-details).small
+		.d-flex.justify-space-between
+			v-checkbox(v-model="check" label="Использовать по умолчанию" dense hide-details).small
+			v-checkbox(v-model="check0" label="Использовать настройки по умолчанию" dense hide-details).small
 		v-card-actions(v-show="edited")
 			v-spacer
 			v-btn(text color small @click="edited = false") Отмена
@@ -56,9 +56,9 @@
 				td Email сервера:
 				td.edit.pl-5
 					Edit(:prop="empty" @save="saving1")
-			tr
-				td(colspan="2")
-					v-checkbox(v-model="check1" label="Использовать по умолчанию" dense hide-details).small
+		.d-flex.justify-space-between
+			v-checkbox(v-model="check1" label="Использовать по умолчанию" dense hide-details).small
+			v-checkbox(v-model="check1" label="Использовать настройки по умолчанию" dense hide-details).small
 
 		.inner
 			.block
@@ -149,9 +149,9 @@
 				td Версия:
 				td.edit.pl-5
 					v-select(:items="version" dense hide-details value="2007 SP1" @change="saving2").sm
-			tr
-				td(colspan="2")
-					v-checkbox(v-model="check2" label="Использовать по умолчанию" dense hide-details).small
+		.d-flex.justify-space-between
+			v-checkbox(v-model="check2" label="Использовать по умолчанию" dense hide-details).small
+			v-checkbox(v-model="check2" label="Использовать настройки по умолчанию" dense hide-details).small
 
 		.inner
 			.block
@@ -181,13 +181,6 @@
 			v-spacer
 			v-btn(text color small @click="edited2 = false") Отмена
 			v-btn(depressed small @click="edited2 = false" color="primary") Сохранить
-			//- tr
-			//- 	td Имя профиля:
-			//- 	td.edit.pl-5
-			//- 		Edit(:prop="empty" @save="saving2")
-
-
-
 </template>
 
 <script>
@@ -205,7 +198,9 @@ export default {
 		edited1: false,
 		edited2: false,
 		check: false,
+		check0: false,
 		check1: false,
+		check2: false,
 		select: ['MS Exchange', 'SMPT/POP3', 'MS Exchange Web Services'],
 	}),
 	components: {
@@ -224,6 +219,13 @@ export default {
 	},
 	watch: {
 		check: function (newv) {
+			if (newv) {
+				this.edited = true
+			} else {
+				this.edited = false
+			}
+		}, 
+		check0: function (newv) {
 			if (newv) {
 				this.edited = true
 			} else {

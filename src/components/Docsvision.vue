@@ -23,7 +23,9 @@
 			td Начальный URL:
 			td.edit.pl-5
 				Edit(:prop="url" @save="saving")
-	v-checkbox(v-model="check" label="Использовать по умолчанию" dense hide-details)
+	.d-flex.justify-space-between
+		v-checkbox(v-model="check" label="Использовать по умолчанию" dense hide-details).small
+		v-checkbox(v-model="check" label="Использовать настройки по умолчанию" dense hide-details).small
 	v-card-actions(v-show="edited")
 		v-spacer
 		v-btn(text color small @click="edited = false") Отмена
