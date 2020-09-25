@@ -56,11 +56,11 @@ export default {
 	data () {
 		return {
 			dialog: false,
-			select: ['Docsvison', 'SQL', 'Exchange', 'Менеджер решений'],
+			select: ['Docsvison', 'SQL', 'Почтовый сервер', 'Менеджер решений'],
 			types: [
 				{ id: 0, title: 'Docsvison', connections: 1 },
 				{ id: 1, title: 'SQL', connections: 0},
-				{ id: 2, title: 'Exchange', connections: 3},
+				{ id: 2, title: 'Почтовый сервер', connections: 3},
 				{ id: 3, title: 'Менеджер решений', connections: 0},
 			],
 			conn1: [
