@@ -57,8 +57,8 @@
 				td.edit.pl-5
 					Edit(:prop="empty" @save="saving1")
 		.d-flex.justify-space-between
-			v-checkbox(v-model="check1" label="Использовать по умолчанию" dense hide-details).small
-			v-checkbox(v-model="check1" label="Использовать настройки по умолчанию" dense hide-details).small
+			v-checkbox(v-model="check1[0]" label="Использовать по умолчанию" dense hide-details).small
+			v-checkbox(v-model="check1[1]" label="Использовать настройки по умолчанию" dense hide-details).small
 
 		.inner
 			.block
@@ -150,8 +150,8 @@
 				td.edit.pl-5
 					v-select(:items="version" dense hide-details value="2007 SP1" @change="saving2").sm
 		.d-flex.justify-space-between
-			v-checkbox(v-model="check2" label="Использовать по умолчанию" dense hide-details).small
-			v-checkbox(v-model="check2" label="Использовать настройки по умолчанию" dense hide-details).small
+			v-checkbox(v-model="check2[0]" label="Использовать по умолчанию" dense hide-details).small
+			v-checkbox(v-model="check2[1]" label="Использовать настройки по умолчанию" dense hide-details).small
 
 		.inner
 			.block
@@ -199,8 +199,8 @@ export default {
 		edited2: false,
 		check: false,
 		check0: false,
-		check1: false,
-		check2: false,
+		check1: [],
+		check2: [],
 		select: ['MS Exchange', 'SMPT/POP3', 'MS Exchange Web Services'],
 	}),
 	components: {

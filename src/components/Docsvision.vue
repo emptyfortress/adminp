@@ -24,8 +24,8 @@
 			td.edit.pl-5
 				Edit(:prop="url" @save="saving")
 	.d-flex.justify-space-between
-		v-checkbox(v-model="check" label="Использовать по умолчанию" dense hide-details).small
-		v-checkbox(v-model="check" label="Использовать настройки по умолчанию" dense hide-details).small
+		v-checkbox(v-model="check[0]" label="Использовать по умолчанию" dense hide-details).small
+		v-checkbox(v-model="check[1]" label="Использовать настройки по умолчанию" dense hide-details).small
 	v-card-actions(v-show="edited")
 		v-spacer
 		v-btn(text color small @click="edited = false") Отмена
@@ -36,8 +36,6 @@
 <script>
 import Edit from '@/components/Edit'
 
-
-
 export default {
 	data: () => ({
 		name: 'Current55',
@@ -45,7 +43,7 @@ export default {
 		bd: '',
 		url: '',
 		edited: false,
-		check: false,
+		check: [],
 	}),
 	components: {
 		Edit,
@@ -56,13 +54,11 @@ export default {
 		},
 	},
 	watch: {
-		check: function (newv) {
-			if (newv) {
+		check () {
+			if (this.check.length) {
 				this.edited = true
-			} else {
-				this.edited = false
-			}
-		}, 
+			} else this.edited = false
+		},
 	},
 }
 

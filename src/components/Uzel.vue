@@ -22,7 +22,9 @@
 			.process
 				table.sm
 					tr
-						td.zg Рабочий процесс
+						td.zg
+							.bullet 
+							span Рабочий процесс
 						td.lnk BackOffice_Docsvision55_ExchContent66
 					tr
 						td Конфигурация
@@ -52,7 +54,9 @@
 			.process
 				table.sm
 					tr
-						td.zg Рабочий процесс
+						td.zg
+							.bullet 
+							span Рабочий процесс
 						td.lnk BackOffice_Docsvision55_ExchContent66
 					tr
 						td Конфигурация
@@ -101,7 +105,9 @@
 			.process
 				table.sm
 					tr
-						td.zg Рабочий процесс
+						td.zg
+							.bullet 
+							span Рабочий процесс
 						td.lnk BackOffice_Docsvision55_ExchContent66
 					tr
 						td Конфигурация
@@ -211,6 +217,7 @@ export default {
 }
 .theme--light .zg {
 	color: black;
+
 }
 .sel {
 	width: 300px;
@@ -260,10 +267,16 @@ export default {
 	color: #000;
 }
 .my {
-	/* font-weight: bold; */
 	color: $link;
 	font-size: 1.0rem;
-	/* border-bottom: 1px dotted $link; */
+}
+.bullet {
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	margin-right: .3rem;
+	background: $yellow;
+	border-radius: 15px;
 }
 
 </style>
