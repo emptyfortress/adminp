@@ -254,10 +254,15 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/css/colors.scss';
 
+.theme--light .greyblock {
+	background: #efefef;
+}
+.theme--dark .greyblock {
+	background: #555;
+}
 .greyblock {
 	padding: 1rem;
 	padding-top: 1.3rem;
-	background: #efefef;
 	border-radius: 4px;
 	position: relative;
 	&.active {

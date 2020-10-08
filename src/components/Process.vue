@@ -82,13 +82,18 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/css/colors.scss';
 
+.theme--light .block.edi {
+	border: 1px dashed red;
+	background: #FCE4EC;
+}
+.theme--dark .block.edi {
+	border: 1px dashed red;
+	background: #9c0b2426;
+}
 .block {
 	margin-top: 1rem;
 	border-top: 1px solid #ccc;
 	transition: .5s all ease;
-	&.edi {
-		border: 1px dashed red;
-	}
 }
 
 .process {
@@ -141,8 +146,14 @@ export default {
 .theme--light .bottom > div {
 	background: #eee;
 }
+.theme--light .edi .bottom > div {
+	background: #FFCDD2;
+}
 .theme--dark .bottom > div {
 	background: #555;
+}
+.theme--dark .edi .bottom > div {
+	background: #654545;
 }
 .move {
 	margin-top: -1rem;
