@@ -2,8 +2,12 @@
 .wr
 	v-card.all
 		.d-flex
-			v-card-title.headline.mb {{ uzel }} 1
+			v-card-title.headline.mb 
+				v-icon(size="26" color="green").mr-3 mdi-circle-slice-8
+				span {{ uzel }} 1
 			v-spacer
+			v-btn(icon)
+				v-icon mdi-reload
 		v-card-text
 			table.sm
 				tr
@@ -19,78 +23,18 @@
 						v-text-field(v-model="uzel" label="Edit" single-line)
 				.proc Всего процессов: 2
 				v-btn(small color="primary" depressed @click="dialog = !dialog") Подключить процесс
-			.process
-				table.sm
-					tr
-						td.zg
-							.bullet 
-							span Рабочий процесс
-						td.lnk BackOffice_Docsvision55_ExchContent66
-					tr
-						td Конфигурация
-						td
-							v-select(:items="sel" value="BackOffice сервис обработки заданий" dense hide-details).sel
-				div
-					v-btn(icon small) 
-						v-icon mdi-trash-can-outline
-			.bottom
-				.left
-					table.sm
-						tr
-							td Соединение Docsvision
-							td 
-								v-select(:items="sel1" dense value="Connect55")
-						tr
-							td Соединение Exchange
-							td
-								v-select(:items="sel1" dense value="Connect66")
 
-				.right
-					v-checkbox(label="Отключено" dense)
-					.move Тайм-аут 0x000fd3400AA (10 0000)
-					.d-flex
-						v-checkbox(label="x86" dense hide-details).mr-5
-						v-checkbox(label="x64" dense hide-details)
-			.process
-				table.sm
-					tr
-						td.zg
-							.bullet 
-							span Рабочий процесс
-						td.lnk BackOffice_Docsvision55_ExchContent66
-					tr
-						td Конфигурация
-						td
-							v-select(:items="sel" value="BackOffice сервис обработки заданий" dense hide-details).sel
-				div
-					//- v-btn(depressed small)
-					//- 	v-icon mdi-restart
-					//- 	span IIS
-					v-btn(icon small) 
-						v-icon mdi-trash-can-outline
-			.bottom
-				.left
-					table.sm
-						tr
-							td Соединение Docsvision
-							td 
-								v-select(:items="sel1" dense value="Connect55")
-						tr
-							td Соединение Exchange
-							td
-								v-select(:items="sel1" dense value="Connect66")
-
-				.right
-					v-checkbox(label="Отключено" dense)
-					.move Тайм-аут 0x000fd3400AA (10 0000)
-					.d-flex
-						v-checkbox(label="x86" dense hide-details).mr-5
-						v-checkbox(label="x64" dense hide-details)
+			Process
+			Process
 		
 	v-card.all
 		.d-flex
-			v-card-title.headline.mb Узел Worker Service 2
+			v-card-title.headline.mb
+				v-icon(size="26" color="red").mr-3 mdi-circle-slice-8
+				span {{ uzel }} 2
 			v-spacer
+			v-btn(icon)
+				v-icon mdi-reload
 		v-card-text
 			table.sm
 				tr
@@ -102,41 +46,8 @@
 			.d-flex.align-center.justify-space-between.mt-3
 				.proc Всего процессов: 1
 				v-btn(small color="primary" depressed @click="dialog = !dialog").mt-3 Подключить процесс
-			.process
-				table.sm
-					tr
-						td.zg
-							.bullet 
-							span Рабочий процесс
-						td.lnk BackOffice_Docsvision55_ExchContent66
-					tr
-						td Конфигурация
-						td
-							v-select(:items="sel" value="BackOffice сервис обработки заданий" dense hide-details).sel
-				div
-					//- v-btn(depressed small)
-					//- 	v-icon mdi-restart
-					//- 	span IIS
-					v-btn(icon small) 
-						v-icon mdi-trash-can-outline
-			.bottom
-				.left
-					table.sm
-						tr
-							td Соединение Docsvision
-							td 
-								v-select(:items="sel1" dense value="Connect55")
-						tr
-							td Соединение Exchange
-							td
-								v-select(:items="sel1" dense value="Connect66")
 
-				.right
-					v-checkbox(label="Отключено" dense)
-					.move Тайм-аут 0x000fd3400AA (10 0000)
-					.d-flex
-						v-checkbox(label="x86" dense hide-details).mr-5
-						v-checkbox(label="x64" dense hide-details)
+			Process
 
 	v-dialog(v-model="dialog" persistent max-width="450")
 		v-card
@@ -154,23 +65,16 @@
 
 
 <script>
+import Process from '@/components/Process'
 
 export default {
 	data: () => ({
 		dialog: false,
 		uzel: 'Узел Worker Service',
-		sel: [
-			'BackOffice сервис обработки заданий',
-			'BackOffice сервис обработки ГЗ',
-			'BackOffice сервис обработки почты',
-			'BackOffice сервис обработки согласований',
-		],
-		sel1: [
-			'Connect55',
-			'Connect66',
-		],
-		
 	}),
+	components: {
+		Process,
+	},
 }
 
 </script>
@@ -189,12 +93,6 @@ export default {
 	flex-grow: 1;
 	padding: 1rem;
 }
-.sm {
-	font-size: .9rem;
-	td {
-		padding: 3px 15px 3px 0;
-	}
-}
 .log {
 	font-size: .7rem;
 	text-transform: uppercase;
@@ -202,62 +100,6 @@ export default {
 	padding: 4px 10px;
 	background: $grey;
 	display: inline-block;
-}
-.process {
-	display: flex;
-	gap: 1rem;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	border-top: 1px solid #ccc;
-	margin-top: 1rem;
-	padding: 1rem 0;
-}
-.zg {
-	font-weight: bold;
-}
-.theme--light .zg {
-	color: black;
-
-}
-.sel {
-	width: 300px;
-	font-size: .9rem;
-	height: 36px;
-	margin: 0;
-}
-.bottom {
-	display: flex;
-	gap: 1rem;
-	> div {
-		padding: 1rem;
-		border-radius: 6px;
-	}
-	.v-select {
-		font-size: .9rem;
-		height: 36px;
-		margin: 0;
-		width: 150px;
-	}
-}
-.theme--light .bottom > div {
-	background: #eee;
-}
-.theme--dark .bottom > div {
-	background: #555;
-}
-
-.v-input--selection-controls.v-input .v-label {
-	font-size: .9rem;
-}
-.v-input--selection-controls:not(.v-input--hide-details) .v-input__slot {
-	margin: 0;
-}
-.v-input.v-input--dense.theme--light.v-input--selection-controls.v-input--checkbox {
-	margin: 0;
-}
-.move {
-	margin-top: -1rem;
-	margin-bottom: 0.9rem;
 }
 .proc {
 	font-size: 0.8rem;
@@ -269,14 +111,6 @@ export default {
 .my {
 	color: $link;
 	font-size: 1.0rem;
-}
-.bullet {
-	width: 15px;
-	height: 15px;
-	display: inline-block;
-	margin-right: .3rem;
-	background: $yellow;
-	border-radius: 15px;
 }
 
 </style>
