@@ -3,9 +3,9 @@ div
 	table.tabs1
 		thead
 			tr
-				th Входящие ссылки
+				th Родительская карточка
 				th Текущая карточка
-				th Исходящие ссылки
+				th Дочерние карточки
 		tbody
 			tr(v-show="id" @click="$emit('snack')").id
 				td DF345-SDF32-53KSF

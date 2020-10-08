@@ -14,7 +14,7 @@
 					.myrow
 						.tit {{ item.text }}
 						.dtb(v-if="item.showDb")
-							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Соединение DV")
+							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-transit-connection-variant" dense placeholder="Соединение DV")
 						.search1(v-if="item.id === 0 && item.mod.length" )
 							v-select(:items="time" placeholder="Период" dense v-model="week1" hide-details)
 						.search1(v-if="item.id === 1 && item.mod.length" )
@@ -73,7 +73,7 @@ export default {
 				{ id: 2, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 0, 'y': 9, 'w': 6, 'h': 9, 'i': '2', setup: false, text: 'Загрузка Service Workers' },
 				{ id: 3, url: '/notifications/errorlist', mod: [], showDb: true, 'x': 6, 'y': 9, 'w': 6, 'h': 9, 'i': '3', setup: false, text: 'Поиск сообщений' },
 			],
-			database: ['DVM тестовая', 'База 1', 'База 2', 'SQL big','Postgress'],
+			database: ['Current55', 'Current66', 'Current88', 'Current99'],
 			time: ['сегодня', 'вчера', 'текущая неделя', 'текущий месяц' ],
 		}
 	},

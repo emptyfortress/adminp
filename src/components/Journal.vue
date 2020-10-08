@@ -18,7 +18,7 @@
 				td DF345-SDF32-53KSF
 				td DF345-SDF32-53KSF
 				td DF345-SDF32-53KSF
-				td DF345-SDF32-53KSF
+				//- td DF345-SDF32-53KSF
 			tr.ro
 				td DF345-SDF32-53KSF-ADFL3-LKJ98
 				td 12.10.2020 &#9473; 15:34
@@ -29,8 +29,8 @@
 				td Почта ГЗ
 				td Подготовьте отчет за 1 квартал
 				td Отправлено исполнителям
-				td
-					span.mr-3 12.10.2020 &#9473; 15:41
+				//- td
+				//- 	span.mr-3 12.10.2020 &#9473; 15:41
 					//- v-btn(depressed color="pink" dark x-small) Изменить
 	.d-flex.flex-wrap.justify-center
 		.one
@@ -109,7 +109,7 @@ export default {
 				{text: 'Сервис обработки'},
 				{text: 'Тип сообщения'},
 				{text: 'Событие'},
-				{text: 'Дата активации сообщения'},
+				// {text: 'Дата активации сообщения'},
 			],
 			cell: false,
 			timeout: 2000,

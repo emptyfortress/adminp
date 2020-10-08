@@ -16,7 +16,7 @@ const headersout = [
 	{ text: 'Информация по событию', align: 'start', sortable: true, value: 'info'},
 	{ text: 'Отложенная отправка', align: 'start', sortable: true, value: 'delay'},
 	{ text: 'Дата активации', align: 'start', sortable: true, value: 'activation'},
-	{ text: 'Подключенная БД', align: 'start', sortable: true, value: 'bd'},
+	// { text: 'Подключенная БД', align: 'start', sortable: true, value: 'bd'},
 ]
 
 const messages = [

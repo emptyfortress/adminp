@@ -42,7 +42,7 @@
 						v-card.quick.elevation-3(v-show="filterByIndex === index")
 							v-text-field(autofocus clearable :key="index" v-model="colfilter[index]")
 		tbody
-			tr(v-for="item in filteredItems" @click="$router.push('/journal')").ro
+			tr(v-for="item in filteredItems").ro
 				td(@click.stop="")
 					v-checkbox.check
 				td {{ item.digest }}
@@ -58,12 +58,17 @@
 						span 02.12.19 &mdash; 12:19:35
 						v-btn(icon small @click.stop="").ml-3
 							v-icon(color="red") mdi-timer-outline
-				td
-					span DVM рабочая лошадка
+
 					span.action
 						i.icon-star-empty
 						i.icon-check
 						i.icon-trash-line
+				//- td
+				//- 	span DVM рабочая лошадка
+				//- 	span.action
+				//- 		i.icon-star-empty
+				//- 		i.icon-check
+				//- 		i.icon-trash-line
 			tr(v-show="filteredItems.length === 0")
 				td(colspan="9")
 					v-img(src="@/assets/img/nothing.svg" width="130").mx-auto.my-3

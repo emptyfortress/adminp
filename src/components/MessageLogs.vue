@@ -3,7 +3,7 @@
 	.zag
 		v-icon(x-large color="#999").mr-3 mdi-inbox-arrow-down-outline
 		span Очередь входящих сообщений
-		v-select(:items="bd" label="База данных").small
+		v-select(:items="bd" label="Соединение" value="Current55" disabled).small
 	v-btn(outlined small color="primary") Показать все ID
 	MessageTable(:headers="headers" :items="messages" :category="category")
 </template>
@@ -19,10 +19,10 @@ export default {
 			headers,
 			messages,
 			bd: [
-				'тестовая',
-				'производство',
-				'DB1',
-				'DB 2',
+				'Current55',
+				'Current66',
+				'Current88',
+				'Current99',
 			],
 		}
 	},
