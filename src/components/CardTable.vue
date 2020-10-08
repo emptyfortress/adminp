@@ -8,13 +8,13 @@ table.noborder
 		td.attr Дайждест:
 		td Подготовьте отчет за 3 квартал.
 		td(v-show="id" @click="$emit('snack')").dark [UI89-RTD2-345Q]
+	//- tr
+	//- 	td.attr Целевой сервис обработки:
+	//- 	td Backoffice
+	//- 	td(v-show="id" @click="$emit('snack')").dark [54KJ-PLMN-345Q]
 	tr
-		td.attr Целевой сервис обработки:
-		td Backoffice
-		td(v-show="id" @click="$emit('snack')").dark [54KJ-PLMN-345Q]
-	tr
-		td.attr Подключенная БД:
-		td DVM тестовая
+		td.attr Соединение DV:
+		td Current55
 		td
 
 </template>
@@ -41,6 +41,7 @@ td {
 .attr {
 	text-align: right;
 	color: #999;
+	padding-right: 1rem;
 }
 .dark {
 	padding: 0 1rem;

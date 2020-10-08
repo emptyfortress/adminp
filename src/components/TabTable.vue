@@ -15,8 +15,8 @@ div
 			tr.only
 				td 
 					table.list
-						tr(v-for="n in 5")
-							td(@click="$emit('snack')") Длинный или не очень дайджест карточки ГЗ id:{{n}}
+						tr
+							td(@click="$emit('snack')") Длинный или не очень дайджест карточки ГЗ id: 1
 				td.main
 					v-card
 						v-card-title(@click="$emit('snack')") Card ID: {{cardid}}
@@ -49,6 +49,7 @@ div
 								td {{ messages[index-1].gservice }}
 								td {{ messages[index-1].service }}
 								td {{ messages[index-1].info }}
+
 					table(v-else).tabs
 						thead
 							tr
@@ -66,7 +67,7 @@ div
 								td DF345-SDF32-53KSF
 								td DF345-SDF32-53KSF
 								td DF345-SDF32-53KSF
-							tr(v-for="message in inmessages" :key="index" @click="$router.push('journal')").ro.re
+							tr(v-for="(message, index) in inmessages" :key="index" @click="$router.push('journal')").ro.re
 								td {{ message.date }}
 								td {{ message.service }}
 								td Сообщение la la

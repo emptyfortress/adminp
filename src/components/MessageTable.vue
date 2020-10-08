@@ -54,7 +54,7 @@
 						v-icon(color="red" ).mr-2 mdi-lock-outline
 						v-icon(color="red" ).mr-2 mdi-alert-circle
 					span {{ item.state }}
-				td {{ item.gservice }}
+				//- td {{ item.gservice }}
 				td {{ item.service }}
 				td {{ item.type }}
 				td

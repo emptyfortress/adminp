@@ -14,7 +14,7 @@
 					.myrow
 						.tit {{ item.text }}
 						.dtb(v-if="item.showDb")
-							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Database")
+							v-select(:items="database" v-model="item.mod" prepend-icon="mdi-database" dense placeholder="Соединение DV")
 						.search1(v-if="item.id === 0 && item.mod.length" )
 							v-select(:items="time" placeholder="Период" dense v-model="week1" hide-details)
 						.search1(v-if="item.id === 1 && item.mod.length" )

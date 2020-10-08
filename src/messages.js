@@ -2,7 +2,7 @@ const headers = [
 	{ text: 'create date', align: 'start', sortable: true, value: 'date'},
 	{ text: 'object ID', align: 'start', sortable: true, value: 'digest'},
 	{ text: 'state', align: 'start', sortable: true, value: 'state'},
-	{ text: 'Main.info Type ID', align: 'start', sortable: true, value: 'gservice'},
+	// { text: 'Main.info Type ID', align: 'start', sortable: true, value: 'gservice'},
 	{ text: 'type ID', align: 'start', sortable: true, value: 'service'},
 	{ text: 'Subtype ID', align: 'start', sortable: true, value: 'type'},
 	{ text: 'Data', align: 'start', sortable: true, value: 'info'},
