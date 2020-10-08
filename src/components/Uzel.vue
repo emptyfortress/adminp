@@ -31,7 +31,7 @@
 		.d-flex
 			v-card-title.headline.mb
 				v-icon(size="26" color="red").mr-3 mdi-circle-slice-8
-				span {{ uzel }} 2
+				span {{ uzel1 }} 2
 			v-spacer
 			v-btn(icon)
 				v-icon mdi-reload
@@ -44,6 +44,10 @@
 					td LogTraceLevel:
 					td 4
 			.d-flex.align-center.justify-space-between.mt-3
+				v-edit-dialog
+					span.my {{ uzel1 }} 2
+					template( v-slot:input )
+						v-text-field(v-model="uzel1" label="Edit" single-line)
 				.proc Всего процессов: 1
 				v-btn(small color="primary" depressed @click="dialog = !dialog").mt-3 Подключить процесс
 
@@ -71,6 +75,7 @@ export default {
 	data: () => ({
 		dialog: false,
 		uzel: 'Узел Worker Service',
+		uzel1: 'Узел Worker Service',
 	}),
 	components: {
 		Process,

@@ -4,7 +4,6 @@
 		table.sm
 			tr
 				td.zg
-					.bullet
 					span Процесс
 				td.lnk BackOffice_Docsvision55_ExchContent66
 			tr
@@ -110,7 +109,12 @@ export default {
 	}
 }
 .zg {
-	font-weight: bold;
+	span {
+		background: $yellow;
+		font-size: 0.9rem;
+		padding: 1px 15px;
+		border-radius: 20px;
+	}
 }
 .theme--light .zg {
 	color: black;
